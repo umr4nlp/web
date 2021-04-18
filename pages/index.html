@@ -16,125 +16,37 @@
       <td>
 
         <div id="contents">
-
-          <h1>Workshop Description</h1>
-
-         <p>Linguistic annotation of natural language corpora is the backbone of supervised methods of statistical
-          natural language processing and has contributed to breakthroughs in practical natural language applications,
-          most notably in Machine Translation, Machine Reading, Question Answering, and Recognizing Textual Entailment.
-          Nonetheless, challenges remain in developing systems that can actually ``understand'' human language, including
-          the ability to track entities in a text, understand the relations between these entities, track events and
-          their participants described in a text, understand how events unfold in time, and distinguish events that
-          have actually happened from events that are planned or intended, are uncertain, or did not happen at all.
-          The fifteenth LAW and third DMR workshops are combined for the first time to provide a forum for presentation
-          and discussion of innovative research on all aspects of linguistic annotation, with a special focus on the
-           design and annotation of representations of the various elements of meaning contributing to understanding.</p>
-
-          <p>This workshop intends to bring together researchers who are producers and consumers of linguistic annotations
-          and meaning representations. Through their interaction, we will gain a deeper understanding of both the kinds
-          of annotations generally, and the key elements of meaning representations specifically, that are the most
-          valuable to the NLP community. The workshop will also provide an opportunity for researchers to critically
-          examine existing annotation frameworks and to explore opportunities and identify challenges in the design
-            and use of linguistic annotations in multilingual settings.</p>
-
-         <p> Given that this is the first joint LAW and DMR workshop, a final goal of this workshop will be to explore
-          multi-layered annotations and how different types of annotations can be brought together to enhance progress
-          towards true understanding. This may include annotation schemas representing multiple facets of meaning (for
-          example, both semantic roles and coreference), or leveraging one type of annotation to bootstrap obtaining
-          another (for example, leveraging automatic SRL for a sentential meaning representation). This may also include
-          annotations from multiple modalities (for example, transcribed text and accompanying images), as understanding
-           can often hinge upon linguistic meaning within a particular situated context.</p>
-
-          The workshop will include long (8+1 pages) and short (4+1 pages) papers, posters, and demonstrations relating
-          to the following topics:
-
-          <ul>
-            <li>Creation/evaluation of annotation schemas and meaning representations;</li>
-            <li>Cross-framework comparison of annotations and meaning representations;</li>
-            <li>Methods for manual and automatic annotation, including automatic parsing of meaning representations;</li>
-            <li>Use and evaluation of annotation software and frameworks;</li>
-            <li>Semi-supervised "human in the loop" methods of annotation and  crowd-sourcing approaches;</li>
-            <li>Using annotations and meaning representations in real-world applications;</li>
-            <li>Issues in applying annotations and meaning representations to multilingual settings;</li>
-            <li>Multi-layered and multi-modal annotations;</li>
-            <li>Any other topics that address the design, processing, and use of linguistic annotations and/or meaning
-              representations.</li>
-          </ul>
-
-          <h2>Background</h2>
-          <p>Linguistic annotation of natural language corpora is the backbone of supervised methods of statistical
-            natural language processing.
-            The <b>L</b>inguistic <b>A</b>nnotation <b>W</b>orkshop (LAW) is the
-            annual workshop of the <b>ACL Special Interest Group on Annotation
-              (<a href="http://www.cs.vassar.edu/sigann/">SIGANN</a>)</b>, and it
-            provides a forum for the presentation and discussion of innovative research
-            on all aspects of linguistic annotation, including the creation and evaluation of
-            annotation schemes, methods for automatic and manual annotation, use and
-            evaluation of annotation software and frameworks, representation of
-            linguistic data and annotations, semi-supervised “human in the loop”
-            methods of annotation, crowd-sourcing approaches, and more. As in the
-            past, the LAW will provide a forum for annotation researchers to work
-            towards standardization, best practices, and interoperability of
-            annotation information and software.</p>
-
-
-          <h2>Anti-Harassment Policy</h2>
-          <p><a href="https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy">ACL
-              Anti-Harassment Policy</a>.</p>
-
-          <h2>Author Responsibilities</h2>
-          <p>Papers must be of original, previously-unpublished work. Papers must be anonymized to support double-blind
-            reviewing. If the paper is available as a preprint, this must be indicated on the submission form but not in
-            the paper itself. In addition, EMNLP 2021 will follow&nbsp;<a
-              href="https://www.aclweb.org/adminwiki/index.php?title=ACL_Policies_for_Submission,_Review_and_Citation"
-              target="_blank">the same policy</a> as ACL'2018&nbsp;establishing an anonymity period (from submission to
-            author notification) during which non-anonymous posting of preprints is not allowed. Also included in that
-            policy are instructions to reviewers to not rate papers down for not citing recent preprints. Authors are
-            asked to cite published versions of papers instead of preprint versions when possible.</p>
+The goal of the  Uniform Meaning
+Representation (UMR) project is to design  a meaning representation that can be used
+to annotate the semantic content of a text. UMR
+is primarily based on Abstract Meaning Representation
+(AMR), an annotation framework initially designed for
+English, but also draws from other meaning representations.
+UMR extends AMR to other languages, particularly
+morphologically complex, low-resource languages.
+UMR also adds features to AMR that are critical
+to semantic interpretation and enhances AMR by proposing a companion document-level representation
+that captures linguistic phenomena such as coreference
+as well as temporal and modal dependencies that potentially
+go beyond sentence boundaries. UMR is intended to be
+scalable, learnable, and cross-linguistically plausible. It is designed to support both lexical and logical inference.
 
         </div>
 
       <td class="sidebar">
 
         <div>
+          <h3>Sponsors</h3>
+        This project is supported by a grant from the IIS Di-
+vision of National Science Foundation (Awards No. 1763926,
 
-          <h3>Important&nbsp;Dates</h3>
-          <p>All submission deadlines are 11:50 p.m. PDT.</p>
-          <table>
-            <tr>
-              <td>First call for workshop papers</td>
-              <td>April 3, 2021</td>
-            </tr>
-            <!--
-            <tr>
-              <td>Second call for workshop papers</td>
-              <td><del>18 Mar 2020</del><br>15 July 2020</td>
-            </tr>
-            -->
-            <tr>
-              <td>Workshop papers due</td>
-              <td>August 5, 2021</td>
-            </tr>
-            <tr>
-              <td>Notification of acceptance</td>
-              <td>September 5, 2021</td>
-            </tr>
-            <tr>
-              <td>Camera-ready papers due</td>
-              <td>September 15, 2021</td>
-            </tr>
-            <tr>
-              <td>Workshop date</td>
-              <td>November 10-11, 2021</td>
-            </tr>
-
-          </table>
-
-
+1764048, 1764091) entitled Building a Uniform Meaning Rep-
+resentation for Natural Language Processing awarded to Nian-
+wen Xue, James Pustejovsky, Martha Palmer and William Croft.
           <h3>News</h3>
 
             <p>
-                <b>April 3, 2021</b>: Call for papers has been been posted.
+                <b>May 1, 2021</b>: UMR website is now up and running.
             </p>
           <!--
           <p><b>11 December 2020</b>: Added <a href="./virtual-conference-information.html">presentation information</a></p>
