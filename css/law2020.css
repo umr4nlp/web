@@ -51,7 +51,7 @@ table, th, td, img {
 }
 
 #subheader {
-    background-color: #3D550C;
+    background-color: #008080;
     border-bottom: 5px solid #e6e6e6;
     color: #fff;
     height: 30px;
@@ -245,7 +245,7 @@ body {
 }
 
 #footer {
-    background: #3D550C;
+    background: #008080;
     border-top: 2px solid #ECF87F;
     padding: 6px 0 0;
     position: absolute;
