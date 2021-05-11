@@ -40,7 +40,7 @@ import shutil
 # these as needed.
 
 PAGES = ["guidelines", "index", "participation", "people", "publications",
-        "tools", "data"]
+        "tools", "data", "sponsors"]
 IMAGES = [os.path.join("images", "logo", "umr_logo.svg")]
 STYLESHEETS = [os.path.join("css", "law2020.css")]
 
