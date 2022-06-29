@@ -40,8 +40,9 @@ import shutil
 # these as needed.
 
 PAGES = ["guidelines", "index", "participation", "people", "publications",
-        "tools", "data", "sponsors"]
+        "tools", "data", "activities", "sponsors"]
 IMAGES = [os.path.join("images", "logo", "umr_logo.svg")]
+PDFS = [os.path.join("pdfs",  "umr_tutorial_lrec2022.pdf")]
 STYLESHEETS = [os.path.join("css", "law2020.css")]
 
 
@@ -93,3 +94,8 @@ if __name__ == "__main__":
         target = os.path.join(site, os.path.basename(image))
         print(os.path.abspath(target))
         shutil.copyfile(image, target)
+
+    for pdf in PDFS:
+        target = os.path.join(site, os.path.basename(pdf))
+        print(os.path.abspath(target))
+        shutil.copyfile(pdf, target)
