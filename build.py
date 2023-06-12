@@ -42,7 +42,7 @@ import shutil
 PAGES = ["guidelines", "index", "participation", "people", "publications",
         "tools", "data", "activities", "sponsors"]
 IMAGES = [os.path.join("images", "logo", "umr_logo.svg")]
-PDFS = [os.path.join("pdfs",  "umr_tutorial_lrec2022.pdf")]
+PDFS = [os.path.join("pdfs",  "umr_tutorial_lrec2022.pdf"), os.path.join("pdfs",  "IJCAI_2023_Tutorial_Meaning_Representation.pdf")]
 STYLESHEETS = [os.path.join("css", "law2020.css")]
 
 
