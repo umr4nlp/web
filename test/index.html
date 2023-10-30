@@ -47,7 +47,7 @@
 	</ul>
 </div> -->
 
-<div class="navbar navbar-expand-lg navbar-light bg-secondary">
+<div class="navbar navbar-expand-lg navbar-light bg-secondary" id="navigation">
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<ul class="navbar-nav">
 			<li class="active"><a class="nav-link" href="index.html">Home</a></li>
@@ -84,24 +84,41 @@ as well as temporal and modal dependencies that potentially
 go beyond sentence boundaries. UMR is intended to be
 scalable, learnable, and cross-linguistically plausible. It is designed to support both lexical and logical inference.--> 
 
-      <div class="container-fluid">
+      <div class="container-fluid" id="main_body">
         <div class="row pt-3 justify-content-center">
           <div class="row pt-3 ">
             <div class="col col-sm-3">
               <!-- End of column -->
             </div>
             <div class="col-lg-6">
-              <h1 style="text-align: center;">Welcome to the Uniform Meaning Representation Project!</h1>
+              <h1> Welcome to the Uniform Meaning Representation Project!</h1>
+              
+              <p> The Uniform Meaning (UMR) project is a collaborative research program between faculty and students at the 
+                                              University of Colorado, Boulder, Brandeis University, and the University of New Mexico, whose goal is to design a meaning representation that can be used
+                                              to annotate the semantic content of a text in any language.</p>
+
+              <p> UMR extends AMR to other languages, particularly
+                                              morphologically complex, low-resource languages.
+                                              UMR also adds features to AMR that are critical
+                                              to semantic interpretation and enhances AMR by proposing a companion document-level representation
+                                              that captures linguistic phenomena such as coreference
+                                              as well as temporal and modal dependencies that potentially
+                                              go beyond sentence boundaries. UMR is intended to be
+                                              scalable, learnable, and cross-linguistically plausible. It is designed to support both lexical and logical inference.
+                                              </p>
+              <!-- End of column -->
             </div>
             <div class="col col-sm-3">
               <!-- End of column -->
             </div>
         </div>
         <div class="row pt-3 ">
-          <div class="col col-sm-3">
+          <div class="col col-sm-2">
             <!-- End of column -->
           </div>
-          <div class="col-lg-6 mx-auto">
+          <div class="col-sm-4">
+            <h3>Latest News</h3>
+            <p></p>
             <div id="carousel" class="carousel slide" data-ride="carousel">
               <ol id="carouselIndicators" class="carousel-indicators">
                 <li type="button" data-target="#carousel" data-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></li>
@@ -110,34 +127,45 @@ scalable, learnable, and cross-linguistically plausible. It is designed to suppo
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img class="d-block w-20" src="../images/carousel/Slide1Placeholder.svg" alt="First slide">
+                  <img class="d-block w-20" style="height:300px" src="../images/carousel/Slide1Placeholder.svg" alt="First slide">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Example image</h5>
+                    <p>et occurit minime fallentia credis</p>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block w-20" src="../images/carousel/Slide2Placeholder.svg" alt="Second slide">
+                  <img class="d-block w-20" style="height:300px" src="../images/carousel/Slide2Placeholder.svg" alt="Second slide">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Example image</h5>
+                    <p>lumina non fumat vapor est qui manat aquai</p>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block w-20" src="../images/carousel/Slide3Placeholder.svg" alt="Third slide">
+                  <img class="d-block w-20" style="height:300px" src="../images/carousel/Slide3Placeholder.svg" alt="Third slide">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Example image</h5>
+                    <p>quippe vaporatos piscis fornace coquebam</p>
+                  </div>
                 </div>
               </div>
             <!-- End of Carousel -->
             </div>
             <!-- End of column -->
           </div>
-          <div class="col col-sm-3">
-            <div>
-              <h3>News</h3>
+          <div class="col col-sm-5" style="margin:0px; padding-top:30px;">
+            <div class="news">
               <ul>
                   <li>
                       <b>May 1, 2021</b>: UMR website is now up and running.
                   </li>
                 
-                <li>
-                  <b>11 December 2020</b>: Added <a href="./virtual-conference-information.html">presentation information</a>
-                </li>
-      
-                <li>
-                  <b>27 November 2020</b>: Added abstract for invited talk
-                </li>
+                  <li>
+                    <b>11 December 2020</b>: Added <a href="./virtual-conference-information.html">presentation information</a>
+                  </li>
+        
+                  <li>
+                    <b>27 November 2020</b>: Added abstract for invited talk
+                  </li>
               </ul>
             
     
@@ -149,26 +177,54 @@ scalable, learnable, and cross-linguistically plausible. It is designed to suppo
           </div>
           <!-- End of row -->
         </div>
+      <!-- End of container -->
+      </div>
+
+      <div class="container-fluid" id="sponsors">
+        <div class="row pt-3 justify-content-center">
+          <div class="col-sm-3">
+            <!-- End of column -->
+          </div> 
+          <div class="col-lg-6">
+            <p>The UMR project is a collaboration between the <br> 
+              <b>University of Colorado, Boulder</b>, <b>Brandeis University</b>, and the <b>University of New Mexico</b>,<br> 
+              with funding from the <b>National Science Foundation</b>,<br> <b>IIS Division</b>
+              (Awards No. 1763926, 1764048, 1764091) and <b>CNS Division</b> (Awards No. 2213804, 2213805).</p>
+              <!-- End of column -->
+          </div>
+          <div class="col-sm-3">
+            <!-- End of column -->
+          </div>
+          <!-- End of row -->
+        </div>
+        <div class="row pt-3 justify-content-evenly">
+          <div class="col-2">
+            <!-- End of column -->
+          </div>
+          <div class="col-8">
+            <table style="table-layout: fixed; width:100%">
+              <tr>
+                <td><img src="../images/sponsors/nsf.png"></td>
+                <td><img src="../images/sponsors/CUBoulder.png"></td>
+                <td><img src="../images/sponsors/Brandeis.png"></td>
+                <td><img src="../images/sponsors/UNM.gif"></td>
+              </tr>
+              <!-- End of table -->
+            </table>
+            <!-- End of column -->
+          </div>
+          <div class="col-2">
+            <!-- End of column -->
+          </div>
+          <!-- End of row -->
+        </div>
         <div class="row pt-3 justify-content-center">
           <div class="col col-sm-3">
             <!-- End of column -->
           </div>
-          <div class="col-lg-6 mx-auto">
-            <p style="text-align: center;">The goal of the  Uniform Meaning
-            Representation (UMR) project is to design  a meaning representation that can be used
-            to annotate the semantic content of a text. UMR
-            is primarily based on Abstract Meaning Representation
-            (AMR), an annotation framework initially designed for
-            English, but also draws from other meaning representations.
-            UMR extends AMR to other languages, particularly
-            morphologically complex, low-resource languages.
-            UMR also adds features to AMR that are critical
-            to semantic interpretation and enhances AMR by proposing a companion document-level representation
-            that captures linguistic phenomena such as coreference
-            as well as temporal and modal dependencies that potentially
-            go beyond sentence boundaries. UMR is intended to be
-            scalable, learnable, and cross-linguistically plausible. It is designed to support both lexical and logical inference.
-            </p>
+          <div class="col-lg-6">
+            <p>Interested in participating in the UMR Project?<br>
+               Contact us <a href="participation.html">here!</a></p>
             <!-- End of column -->
           </div>
           <div class="col col-sm-3">

@@ -50,6 +50,10 @@ table, th, td, img {
     padding-bottom: 0px;
 }
 
+#header p {
+    text-align: left;
+}
+
 #subheader {
     background-color: #008080;
     border-bottom: 5px solid #e6e6e6;
@@ -63,25 +67,24 @@ table, th, td, img {
 /** Navigation **/
 
 #navigation {
-    display: inline-block;
     list-style: none;
     line-height: 20px;
     margin: 0;
-    padding-top: 10px;
+    padding-top: 5px;
     padding-left: 0px;
+    border-bottom: 2px solid #e6e6e6;
 }
 
 #navigation ul {
     display: inline-block;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding-left: 2%;
 }
 
 #navigation li {
     font-family: Roboto, Helvetica, Arial, sans-serif;
     float: left;
-    padding-right: 30px;
     text-align: center;
 }
 
@@ -107,13 +110,14 @@ table, th, td, img {
 }
 
 h1, h2, h3, h4 {
-    color: rgb(101,29,35);
+    color: #651d23;
 }
 
 h1 {
     font-size: 24px;
     font-weight: bold;
     margin: 0 0 20px;
+    text-align: center;
 }
 
 h2 {
@@ -146,7 +150,8 @@ p {
     color: #111111;
     font-size: 16px;
     line-height: 20px;
-    margin: 0 0 20px;
+    margin: 0 0 10px;
+    text-align: center;
 }
 
 a {
@@ -183,6 +188,34 @@ li {
     color: #111111;
     font-size: 16px;
     line-height: 22px;
+}
+
+div.news ul li {
+    color: #111111;
+    font-size: 16px;
+    line-height: 22px;
+    list-style-type: none;
+    margin:15px 15px;
+}
+
+div.news ul {
+    padding-left: 0px;
+}
+
+div.news ul li::before {
+    content: "➢   ";
+    color:#91111b;
+    font-size: 25px;
+}
+
+div.news::before {
+    content: '';
+    position: absolute;
+    left: -3;
+    bottom: 0;
+    width: 1px;
+    height: 89%;
+    border-left: 3px solid #b6b6b6;
 }
 
 .left { text-align: left; }
@@ -236,6 +269,28 @@ li {
 	font-size: 18px;
 }
 
+#carousel p {
+    color: #ffffff;
+    margin: 5px 0px 0px;
+}
+
+#sponsors img {
+    width: 50%;
+    filter: contrast(30%) brightness(135%);
+}
+
+#sponsors p {
+    color:#747474;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+#sponsors table tr td {
+    table-layout: fixed;
+    text-align: center;
+    width:100%
+}
 
 /*------------------------------ FOOTER ------------------------------*/
 body {
