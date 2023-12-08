@@ -2,6 +2,7 @@
 body {
     background-color: #cacaca;
     margin: 0;
+    zoom: 90%;
 }
 
 body, p {
@@ -97,6 +98,17 @@ table, th, td, img {
 
 #navigation li a:hover {
     color: #f1c40f;
+}
+
+.dropdown-menu {
+    background-color: #008080;
+    border-radius: 0;
+    border-top: none;
+    margin-top: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #008080;
 }
 
 
@@ -285,6 +297,34 @@ div.topics ul li::before {
 #carousel p {
     color: #ffffff;
     margin: 5px 0px 0px;
+    text-wrap: nowrap;
+    text-align: center;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+}
+
+#carousel h5 a{
+    color: inherit;
+}
+
+#carousel h5 a:hover{
+    color:#a5a5a5
+}
+
+#carousel img {
+    width: 100%;
+    max-height: 100%;
+    filter:contrast(75%) brightness(35%);
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#carousel {
+    background-color: #a5a5a5;
+    border-radius: 5px;
+    width: 85%;
+    margin: auto;
 }
 
 #sponsors img {
