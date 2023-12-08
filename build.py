@@ -40,10 +40,12 @@ import shutil
 # these as needed.
 
 PAGES = ["guidelines", "index", "participation", "people", "publications",
-        "tools", "data", "activities", "sponsors"]
+        "tools", "data", "activities", "sponsors", "UMRParsingWorkshop"]
 IMAGES = [os.path.join("images", "logo", "umr_logo.svg")]
 PDFS = [os.path.join("pdfs",  "umr_tutorial_lrec2022.pdf"), os.path.join("pdfs",  "IJCAI_2023_Tutorial_Meaning_Representations.pdf")]
 STYLESHEETS = [os.path.join("css", "law2020.css")]
+# RESOURCES = [os.path.join("resources", "nav-pages.txt")]
+SUBFOLDERS = ["events"]
 
 
 def include_file(infile, include_file, outfile):
@@ -63,12 +65,20 @@ def include_file(infile, include_file, outfile):
 if __name__ == "__main__":
 
     site = os.sys.argv[1]
+    folders = [os.path.join(site, sf) for sf in SUBFOLDERS]
 
     # delete old files
     if os.path.exists(site):
         shutil.rmtree(site)
 
+    for folder in folders:
+        if os.path.exists(folder):
+            shutil.rmtree(folder)
+
     os.makedirs(site)
+
+    for folder in folders:
+        os.makedirs(folder)
 
     for page in PAGES:
         fname_in = os.path.join("pages", "%s.html" % page)
@@ -99,3 +109,8 @@ if __name__ == "__main__":
         target = os.path.join(site, os.path.basename(pdf))
         print(os.path.abspath(target))
         shutil.copyfile(pdf, target)
+
+    # for resource in RESOURCES:
+    #     target = os.path.join(site, os.path.basename(resource))
+    #     print(os.path.abspath(target))
+    #     shutil.copyfile(resource, target)
