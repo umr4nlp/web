@@ -124,18 +124,21 @@ h2 {
     font-size: 18px;
     font-weight: normal;
     margin: 0 0 18px;
+    text-align: center;
 }
 
 h3 {
     font-size: 150%;
     font-weight: bold;
     margin: 4 0 14px;
+    text-align: center;
 }
 
 h4 {
     font-size: 125%;
     font-weight: bold;
     margin: 0 0 4px;
+    text-align: center;
 }
 
 body table td {
@@ -216,6 +219,16 @@ div.news::before {
     width: 1px;
     height: 89%;
     border-left: 3px solid #b6b6b6;
+}
+
+div.topics ul li{
+    list-style-type: none;
+}
+
+div.topics ul li::before {
+    content: "➢   ";
+    color:#91111b;
+    font-size: 25px;
 }
 
 .left { text-align: left; }
