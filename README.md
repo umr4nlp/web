@@ -7,7 +7,7 @@ $ python3 build.py deploy
 
 #uncommited directory/file in 'deploy' is visible from all branches
 
-$ git checkout [YOUR BRANCH NAME]
+$ git checkout brandeis
 
 $ mv deploy/* .
 
