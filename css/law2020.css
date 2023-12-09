@@ -1,8 +1,7 @@
 
 body {
-    background-color: #cacaca;
+    background-color: #fff;
     margin: 0;
-    zoom: 90%;
 }
 
 body, p {
@@ -26,7 +25,7 @@ table, th, td, img {
 /*------------------------------ HEADER ------------------------------*/
 
 #header {
-    background: linear-gradient(#1E90FF, #87CEEB);
+    background: linear-gradient(#59981A, #ECF87F);
     border-bottom: 2px solid #ddd;
     color: #fff;
     padding-left: 20px;
@@ -39,7 +38,7 @@ table, th, td, img {
     font-family: Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.0;
     font-size: 32px;
-    /* font-weight: bold;  Removed this because the bootstrap font uhh idk*/
+    font-weight: bold;
     padding-left: 40px;
     padding-bottom: 5px;
 }
@@ -51,12 +50,8 @@ table, th, td, img {
     padding-bottom: 0px;
 }
 
-#header p {
-    text-align: left;
-}
-
 #subheader {
-    background-color: #008080;
+    background-color: #3D550C;
     border-bottom: 5px solid #e6e6e6;
     color: #fff;
     height: 30px;
@@ -68,24 +63,25 @@ table, th, td, img {
 /** Navigation **/
 
 #navigation {
+    display: inline-block;
     list-style: none;
     line-height: 20px;
     margin: 0;
-    padding-top: 5px;
+    padding-top: 10px;
     padding-left: 0px;
-    border-bottom: 2px solid #e6e6e6;
 }
 
 #navigation ul {
     display: inline-block;
     list-style: none;
     margin: 0;
-    padding-left: 2%;
+    padding: 0;
 }
 
 #navigation li {
     font-family: Roboto, Helvetica, Arial, sans-serif;
     float: left;
+    padding-right: 30px;
     text-align: center;
 }
 
@@ -100,17 +96,6 @@ table, th, td, img {
     color: #f1c40f;
 }
 
-.dropdown-menu {
-    background-color: #008080;
-    border-radius: 0;
-    border-top: none;
-    margin-top: 8px;
-}
-
-.dropdown-item:hover {
-    background-color: #008080;
-}
-
 
 /*------------------------------ CONTENTS ------------------------------*/
 
@@ -122,35 +107,31 @@ table, th, td, img {
 }
 
 h1, h2, h3, h4 {
-    color: #651d23;
+    color: rgb(101,29,35);
 }
 
 h1 {
     font-size: 24px;
     font-weight: bold;
     margin: 0 0 20px;
-    text-align: center;
 }
 
 h2 {
     font-size: 18px;
     font-weight: normal;
     margin: 0 0 18px;
-    text-align: center;
 }
 
 h3 {
     font-size: 150%;
     font-weight: bold;
     margin: 4 0 14px;
-    text-align: center;
 }
 
 h4 {
     font-size: 125%;
     font-weight: bold;
     margin: 0 0 4px;
-    text-align: center;
 }
 
 body table td {
@@ -165,8 +146,7 @@ p {
     color: #111111;
     font-size: 16px;
     line-height: 20px;
-    margin: 0 0 10px;
-    text-align: center;
+    margin: 0 0 20px;
 }
 
 a {
@@ -203,44 +183,6 @@ li {
     color: #111111;
     font-size: 16px;
     line-height: 22px;
-}
-
-div.news ul li {
-    color: #111111;
-    font-size: 16px;
-    line-height: 22px;
-    list-style-type: none;
-    margin:15px 15px;
-}
-
-div.news ul {
-    padding-left: 0px;
-}
-
-div.news ul li::before {
-    content: "➢   ";
-    color:#91111b;
-    font-size: 25px;
-}
-
-div.news::before {
-    content: '';
-    position: absolute;
-    left: -3;
-    bottom: 0;
-    width: 1px;
-    height: 89%;
-    border-left: 3px solid #b6b6b6;
-}
-
-div.topics ul li{
-    list-style-type: none;
-}
-
-div.topics ul li::before {
-    content: "➢   ";
-    color:#91111b;
-    font-size: 25px;
 }
 
 .left { text-align: left; }
@@ -294,56 +236,6 @@ div.topics ul li::before {
 	font-size: 18px;
 }
 
-#carousel p {
-    color: #ffffff;
-    margin: 5px 0px 0px;
-    text-wrap: nowrap;
-    text-align: center;
-    overflow: visible;
-    display: flex;
-    justify-content: center;
-}
-
-#carousel h5 a{
-    color: inherit;
-}
-
-#carousel h5 a:hover{
-    color:#a5a5a5
-}
-
-#carousel img {
-    width: 100%;
-    max-height: 100%;
-    filter:contrast(75%) brightness(35%);
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-#carousel {
-    background-color: #a5a5a5;
-    border-radius: 5px;
-    width: 85%;
-    margin: auto;
-}
-
-#sponsors img {
-    width: 50%;
-    filter: contrast(30%) brightness(135%);
-}
-
-#sponsors p {
-    color:#747474;
-    font-size: 14px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-}
-
-#sponsors table tr td {
-    table-layout: fixed;
-    text-align: center;
-    width:100%
-}
 
 /*------------------------------ FOOTER ------------------------------*/
 body {
@@ -353,7 +245,7 @@ body {
 }
 
 #footer {
-    background: #008080;
+    background: #3D550C;
     border-top: 2px solid #ECF87F;
     padding: 6px 0 0;
     position: absolute;
