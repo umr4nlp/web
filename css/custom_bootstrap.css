@@ -5953,7 +5953,7 @@ textarea.form-control-lg {
   width: 100%;
   margin-right: -100%;
   backface-visibility: hidden;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease;
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-item {
