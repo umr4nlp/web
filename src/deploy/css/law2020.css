@@ -26,7 +26,8 @@ table, th, td, img {
 /*------------------------------ HEADER ------------------------------*/
 
 #header {
-    background: linear-gradient(#1E90FF, #87CEEB);
+    /* background: linear-gradient(#1E90FF, #87CEEB); */
+    background-color: #87CEEB;
     border-bottom: 2px solid #ddd;
     color: #fff;
     padding-left: 20px;
@@ -36,6 +37,7 @@ table, th, td, img {
 
 #header .title {
     min-width: 1200px;  /* needed to avoid nasty overlapping lines */
+    text-align: center;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.0;
     font-size: 32px;
