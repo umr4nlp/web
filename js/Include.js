@@ -8,8 +8,6 @@ if (document.readyState !== 'loading') {
     });
 }
 
-function myInitCode() {}
-
 async function createSharedElements() {
     await createNavbar();
     await createHeader();
@@ -17,7 +15,7 @@ async function createSharedElements() {
 }
 
 async function createNavbar() {
-    fetch('../include/navigation.html')
+    fetch('include/navigation.html')
         .then(response => response.text())
             .then(data => {
                 var navbar = document.createElement('div');
@@ -32,7 +30,7 @@ async function createNavbar() {
 }
 
 async function createHeader() {
-    fetch('../include/title.html')
+    fetch('include/title.html')
         .then(response => response.text())
             .then(data => {
                 var title = document.createElement('div');
@@ -47,7 +45,7 @@ async function createHeader() {
 }
 
 async function createFooter() {
-    fetch('../include/footer.html')
+    fetch('include/footer.html')
         .then(response => response.text())
             .then(data => {
                 var navbar = document.createElement('footer');
