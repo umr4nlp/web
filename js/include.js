@@ -13,7 +13,7 @@ async function createSharedElements() {
 }
 
 async function createNavbar() {
-    fetch('include/navigation.html')
+    await fetch('include/navigation.html')
         .then(response => response.text())
             .then(data => {
                 var navbar = document.createElement('div');
@@ -22,13 +22,12 @@ async function createNavbar() {
                 navbar.innerHTML = data;
 
                 document.getElementById('wrapper').prepend(navbar);
+                return Promise.resolve();
             })
-
-    return Promise.resolve();
 }
 
 async function createHeader() {
-    fetch('include/title.html')
+    await fetch('include/title.html')
         .then(response => response.text())
             .then(data => {
                 var title = document.createElement('div');
@@ -37,13 +36,12 @@ async function createHeader() {
                 title.innerHTML = data;
 
                 document.getElementById('wrapper').prepend(title);
+                return Promise.resolve();
             })
-
-    return Promise.resolve();
 }
 
 async function createFooter() {
-    fetch('include/footer.html')
+    await fetch('include/footer.html')
         .then(response => response.text())
             .then(data => {
                 var navbar = document.createElement('footer');
@@ -52,7 +50,6 @@ async function createFooter() {
                 navbar.innerHTML = data;
 
                 document.getElementById('wrapper').append(navbar);
+                return Promise.resolve();
             })
-    
-    return Promise.resolve();
 }
