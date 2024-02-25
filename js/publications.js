@@ -8,7 +8,7 @@ if (document.readyState !== 'loading') {
 
 function getPubs()
 {
-    var filepath = '../resources/pubs.csv'
+    var filepath = 'resources/pubs.csv'
 
     var csv = fetch(filepath)
     .then(response => response.text())
