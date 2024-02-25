@@ -30,7 +30,7 @@ async function createNavbar() {
 }
 
 async function createHeader() {
-    fetch('include/title.html')
+    fetch('web/include/title.html')
         .then(response => response.text())
             .then(data => {
                 var title = document.createElement('div');
