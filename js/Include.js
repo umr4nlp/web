@@ -1,8 +1,11 @@
-async function createSharedElements() {
-    await createNavbar();
-    await createHeader();
-    await createFooter();
-}
+document.addEventListener('DOMContentLoaded', function() {
+
+    async function createSharedElements() {
+        await createNavbar();
+        await createHeader();
+        await createFooter(); 
+    }
+})
 
 async function createNavbar() {
     fetch('../include/navigation.html')
