@@ -1,6 +1,10 @@
-window.addEventListener('load', function() {
+if (document.readyState !== 'loading') {
     getPubs();
-})
+} else {
+    document.addEventListener('DOMContentLoaded', function () {
+        getPubs();
+    });
+}
 
 function getPubs()
 {
