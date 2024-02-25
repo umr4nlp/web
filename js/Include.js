@@ -9,8 +9,8 @@ if (document.readyState !== 'loading') {
 }
 
 async function createSharedElements() {
-    await createNavbar();
     await createHeader();
+    await createNavbar();
     await createFooter(); 
 }
 
