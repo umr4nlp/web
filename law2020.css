@@ -1,0 +1,467 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #fff;
+    margin: 0;
+    zoom: 90%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3.5rem;    
+}
+
+
+body, p {
+    xfont-family: Roboto, Helvetica, Arial, sans-serif; /* screws up on non-asci letters */
+    font-family: Roboto, Helvetica, Arial;
+}
+#wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#main_body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    padding-bottom: 5vh;
+  }
+
+table, th, td, img {
+    border: 0px;
+}
+
+.clearfix:after, #contents:after {
+    clear: both;
+    content: "";
+    height: 1%;
+    line-height: 0;
+    visibility: hidden;
+}
+
+
+/*------------------------------ HEADER ------------------------------*/
+
+#header {
+    /* background: linear-gradient(#1E90FF, #87CEEB); */
+    background-color: #ffffff;
+    background-image: url('images/header/Jan.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 4px solid #ddd;
+    color: #fff;
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#header .bg_filter {
+    backdrop-filter: blur(4px) contrast(30%);
+    /* min-width: 1200px;  needed to avoid nasty overlapping lines */
+    width: 100%;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    font-weight: 500;
+    line-height: 1.0;
+    font-size: 32px;
+    /* font-weight: bold;  Removed this because the bootstrap font uhh idk*/
+    background-color: #417474;
+    border-color: #000;
+    color: #eee;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* #header .body {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    padding-left: 40px;
+    padding-bottom: 0px;
+} */
+
+#subheader {
+    background-color: #008080;
+    border-bottom: 5px solid #e6e6e6;
+    color: #fff;
+    height: 30px;
+    padding-left: 60px;
+    padding-bottom: 20px;
+}
+
+
+/** Navigation **/
+
+#navigation {
+    display: flex;
+    list-style: none;
+    line-height: 20px;
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 0px;
+    border-bottom: 3px solid #e6e6e6;
+    border-top: 2px solid #e6e6e6;
+    min-height: 5vh;
+}
+  
+
+#navigation ul {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding-left: 2%;
+}
+
+#navigation li {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    float: left;
+    text-align: center;
+}
+
+#navigation li a {
+    color: #eee;
+    font-size: 20px;
+    line-height: 26px;
+    text-decoration: none;
+}
+
+#navigation li a:hover {
+    color: #f1c40f;
+}
+
+.dropdown-menu {
+    background-color: #008080;
+    border-radius: 0;
+    border-top: none;
+    margin-top: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #008080;
+}
+
+
+/*------------------------------ CONTENTS ------------------------------*/
+
+#contents {
+    min-height: 500px;
+    max-width: 880px;
+    margin-left: 50px;
+    padding: 25px 20px 10px 10px;
+}
+
+h1, h2, h3, h4 {
+    color: #80242c;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0 0 18px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 150%;
+    font-weight: bold;
+    margin: 4 0 14px;
+    text-align: center;
+}
+
+h4 {
+    font-size: 125%;
+    font-weight: bold;
+    margin: 0 0 4px;
+    text-align: center;
+}
+
+body table td {
+    padding: 10px;
+}
+
+body table {
+    margin-top: 10px;
+}
+
+p {
+    color: #111111;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+a {
+    font-weight: bold;
+    color: #39646d;
+}
+
+a.paper {
+    font-weight: normal;
+    color: #39646d;
+    text-decoration: None;
+}
+
+a:hover { color: #39646d; }
+a:visited { color: #39646d; }
+
+table.dates {
+    margin-left: 20px;
+    border-collapse: collapse;
+}
+
+table.dates td {
+    padding: 7px;
+    border: 1px solid #006699;
+    font-size: 14px;
+}
+
+table.committee a {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+li {
+    color: #111111;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+div.news ul li {
+    color: #111111;
+    font-size: 16px;
+    line-height: 22px;
+    list-style-type: none;
+    margin:15px 15px;
+}
+
+div.news ul {
+    padding-left: 0px;
+}
+
+/* div.news ul li::before {
+    content: "➢   ";
+    color:#91111b;
+    font-size: 25px;
+} */
+
+div.news::before {
+    content: '';
+    position: absolute;
+    left: -3;
+    bottom: 0;
+    width: 1px;
+    height: 89%;
+    border-left: 3px solid #b6b6b6;
+}
+
+div.topics ul li{
+    list-style-type: none;
+}
+
+div.topics ul li::before {
+    content: "➢   ";
+    color:#91111b;
+    font-size: 25px;
+}
+
+.left { text-align: left; }
+.right { text-align: right; }
+.center {
+    text-align: center;
+    color: #39646d;
+    font-weight: bold;
+}
+
+.indent { margin-left: 20px; }
+
+.p_name { width: 200px; font-size: 18px; }
+.p_affiliation { padding-left: 20px; font-size: 18px; }
+
+.example {
+    color: #39646d;
+}
+
+.sidebar {
+    width: 400px;
+    padding-top: 25px;
+    padding-left: 40px;
+    padding-right: 20px;
+}
+
+.sidebar div {
+    padding-left: 20px;
+    border-left: 3px solid #e6e6e6;
+}
+
+.sidebar table {
+    margin-left: 20px;
+    border-collapse: collapse;
+}
+
+.sidebar td {
+    padding: 5px;
+    border: 1px solid #006699;
+    font-size: 12px;
+}
+
+.sidebar p {
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.sidebar h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+	font-size: 18px;
+}
+
+#carousel p {
+    color: #ffffff;
+    margin: 5px 0px 0px;
+    text-wrap: nowrap;
+    text-align: center;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+}
+
+#carousel h5 a{
+    color: inherit;
+}
+
+#carousel h5 a:hover{
+    color:#a5a5a5
+}
+
+#carousel img {
+    width: 100%;
+    max-height: 100%;
+    filter:contrast(75%) brightness(35%);
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#carousel {
+    background-color: #a5a5a5;
+    border-radius: 5px;
+    width: 85%;
+    margin: auto;
+}
+
+#sponsors img {
+    width: 50%;
+    filter: contrast(10%) brightness(175%);
+}
+
+#sponsors p {
+    color:#747474;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+#sponsors table tr td {
+    table-layout: fixed;
+    text-align: center;
+    width:100%
+}
+
+/*------------------------------ FOOTER ------------------------------*/
+
+#footer {
+    background: #008080;
+    border-top: 2px solid #ECF87F;
+    display: flex;
+    flex-shrink: 0;
+    width: 100%;
+    height: 5vh;
+    padding: 10px 10px 10px 50px;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 314159;
+}
+
+#footer p {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #fff;
+    font-style: normal;
+    padding-left: 10px;
+}
+
+#footer p a {
+    color: #fff;
+    font-weight: bold;
+}
+
+
+/*------------------------------ PUBLICATIONS ------------------------------*/
+
+.year_label {
+    font-size: 36px;
+    color:#80242c;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.pub_span {
+    min-height: 120px;
+    padding-bottom: 10px;
+}
+
+.pub_title {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 4px;
+}
+
+.pub_authors {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 3px;
+}
+
+.pub_journal {
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 15px;
+    color:#999999;
+    padding-bottom: 3px;
+}
+
+.pub_link a{
+    color:#80242c;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.pub_link {
+    padding-bottom: 10px;
+}
