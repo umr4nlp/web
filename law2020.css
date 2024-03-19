@@ -504,7 +504,7 @@ div.topics ul li::before {
 .person_name {
     color:#80242c;
     text-align: center;
-    font-size: 1vw;
+    font-size: 24px;
     font-weight: bold;
 }
 
