@@ -43,7 +43,7 @@ function decodePeople(csv)
 
 async function imageExists(image_name) {
     try {
-        fetch("/images/people/" + image_name + ".jpg")
+        fetch("web/images/people/" + image_name + ".jpg")
             .then(response => response.blob())
             {
                 return image_name;
