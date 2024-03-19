@@ -136,7 +136,7 @@ function createPeopleCards(people)
 
             // Add image
             name_split = person.name.split(" ")
-            let image_path = "/images/people/" + name_split[0] + name_split[1][0] + ".jpg";
+            let image_path = "web/images/people/" + name_split[0] + name_split[1][0] + ".jpg";
             const person_image = document.createElement("img")
             person_image.setAttribute("class", "card-img-top")
             person_image.setAttribute("src", image_path)
@@ -144,7 +144,7 @@ function createPeopleCards(people)
             person_card.prepend(person_image)
 
             person_image.onerror = () => {
-                person_image.setAttribute("src", "/images/people/placeholder.jpg");
+                person_image.setAttribute("src", "web/images/people/placeholder.jpg");
             };
 
             // Append to category
