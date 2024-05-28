@@ -157,6 +157,27 @@ table, th, td, img {
 }
 
 
+.navbar .dropdown-menu .dropdown-submenu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+.dropdown-submenu .dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
+
+.dropdown-submenu:hover > .dropdown-menu,
+.dropdown-submenu:focus > .dropdown-menu {
+    display: block;
+}
+
+
+
 /*------------------------------ CONTENTS ------------------------------*/
 
 #contents {
