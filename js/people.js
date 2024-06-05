@@ -121,7 +121,7 @@ function createPeopleCards(people)
             if(person.email.trim().length !== 0)
             {
                 let email = document.createElement("a");
-                email.setAttribute("href", person.email);
+                email.setAttribute("href", "mailto:" + person.email);
                 email.innerHTML = "Email";
                 person_email.setAttribute("style", "padding-bottom:10px;")
 
