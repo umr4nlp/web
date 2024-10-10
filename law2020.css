@@ -1,6 +1,6 @@
 
 html, body {
-    height: 100%;
+    height: fit-content;
     margin: 0;
 }
 
@@ -10,7 +10,7 @@ body {
     zoom: 90%;
     display: flex;
     flex-direction: column;
-    padding-bottom: 3.5rem;    
+    /* padding-bottom: 3.5rem;     */
 }
 
 
@@ -55,7 +55,7 @@ table, th, td, img {
     background-repeat: no-repeat;
     border-bottom: 4px solid #ddd;
     color: #fff;
-    min-height: 20vh;
+    height: 20vh;
     display: flex;
     align-items: center;
     width: 100%;
@@ -108,30 +108,39 @@ table, th, td, img {
 
 /** Navigation **/
 
+#navbar {
+    position: sticky;
+    top: 0;
+    /* width: 100%; */
+    z-index: 1;
+}
+
 #navigation {
     display: flex;
     list-style: none;
     line-height: 20px;
     margin: 0;
     padding-top: 5px;
-    padding-left: 0px;
+    justify-content: center;
     border-bottom: 3px solid #e6e6e6;
     border-top: 2px solid #e6e6e6;
     min-height: 5vh;
+    width: 100%
 }
-  
 
 #navigation ul {
-    display: inline-block;
+    display: flex;
     list-style: none;
     margin: 0;
     padding-left: 2%;
+    width: fit-content;
 }
 
 #navigation li {
     font-family: Roboto, Helvetica, Arial, sans-serif;
     float: left;
     text-align: center;
+    text-wrap: nowrap;
 }
 
 #navigation li a {
@@ -150,6 +159,7 @@ table, th, td, img {
     border-radius: 0;
     border-top: none;
     margin-top: 8px;
+    width: fit-content;
 }
 
 .dropdown-item:hover {
@@ -420,7 +430,7 @@ div.topics ul li::before {
     height: 5vh;
     padding: 10px 10px 10px 50px;
     justify-content: center;
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     z-index: 314159;
 }
@@ -442,6 +452,29 @@ div.topics ul li::before {
 
 
 /*------------------------------ PUBLICATIONS ------------------------------*/
+
+#pub_button {
+    position: sticky;
+    top: 15rem;
+    width: fit-content; 
+    align-self: center; 
+    height: fit-content; 
+    background-color: #b3b3b3; 
+    border: none;
+    margin-top: 5rem;
+    margin-right: 15rem;
+}
+
+#pub_body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* align-self: center; */
+}
+
+#year_select {
+    width: 25%;
+}
 
 .year_label {
     font-size: 36px;

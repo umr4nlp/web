@@ -121,6 +121,6 @@ async function addPubs(pubs)
             this_year.appendChild(pub_span);
         })
         
-        document.getElementById("main_body").appendChild(this_year);
+        document.getElementById("pub_body").appendChild(this_year);
     })
 }
