@@ -102,9 +102,7 @@ table, th, td, img {
 
 .dropdown-menu {
     background-color: #008080;
-    border-radius: 0;
-    border-top: none;
-    margin-top: 8px;
+    border-width: 20px;
 }
 
 .dropdown-item:hover {

@@ -7,4 +7,5 @@ data.html
 participation.html
 activities.html, 
 sponsors.html
-events/UMRPartsingWorkshop.html
+events/UMRParsingWorkshop.html
+events/SummerSchool2025.html
