@@ -317,6 +317,16 @@ div.topics ul li::before {
     font-size: 25px;
 }
 
+div.topics ul.venue li::before {
+    content: "";
+    color:#91111b;
+    font-size: 25px;
+}
+
+ul.venue li {
+    font-size: 18px;
+}
+
 .left { text-align: left; }
 .right { text-align: right; }
 .center {
