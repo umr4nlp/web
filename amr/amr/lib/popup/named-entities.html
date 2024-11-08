@@ -1,0 +1,288 @@
+﻿
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="max-age=3600" />
+    <title>named-entities</title>
+   <link rel="shortcut icon" href="https://www.isi.edu/amr/amr/images/AMR-favicon.ico">
+    <script type="text/javascript">
+    <!--
+    function toggle(id) {
+       if ((s = document.getElementById(id)) != null) {
+          if (s.style.display == 'none') {
+             s.style.display = 'inline';
+          } else {
+             s.style.display = 'none';
+          }
+       }
+    }
+
+    function toggle_group(group_id, url, new_search_help_id) {
+       if (((s = document.getElementById('new_search_on_next_click_p')) == null) || (s.value == 0)) {          
+          i = 1;         
+          id = group_id + '_' + i;
+          while ((s = document.getElementById(id)) != null) {
+             if (s.style.display == 'none') {
+                s.style.display = 'inline';
+             } else {
+                s.style.display = 'none';
+             }
+             i = i + 1;
+             id = group_id + '_' + i;
+          }
+       }
+
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          new_search_value = s.value;
+          s.value = 0;
+          if ((new_search_help_id != 0) && ((s2 = document.getElementById(new_search_help_id)) != null)) {
+             s2.style.display = 'none';
+          }
+          if ((new_search_value == 1) && (url != 0)) {
+             popUpBottom(url,750,400);
+          }
+       }
+    }
+
+    function set_group_display(group_id, value) {
+       i = 1;         
+       id = group_id + '_' + i;
+       while ((s = document.getElementById(id)) != null) {
+          s.style.display = value;
+          i = i + 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function popUpBottom(URL,width,height) {
+       day = new Date();
+       id = day.getTime();
+       eval("myWindow = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=" + width + ",height=" + height + "');");
+    }
+
+    function popUpWarning(warning) {
+       newwindow=window.open('','Warning','height=160,width=400,resizable=1,scrollbars=1,toolbar=0,statusbar=0,menubar=0');
+       var tmp = newwindow.document;
+       tmp.write('<html>\n');
+       tmp.write('  <head><title>AMR Editor Warning</title></head>\n');
+       tmp.write('  <body' + ' style="background-color:#FFFFEE;">\n');
+       tmp.write('    <h3>Warning</h3>\n');
+       tmp.write('    ' + warning + '\n');
+       tmp.write('    <p>\n');
+       tmp.write('    <input type="submit" title="Close this window." value="OK" onclick="self.close();">\n');
+       tmp.write('  </body>\n');
+       tmp.write('</html>\n');
+       tmp.close();
+    }
+
+    function new_search_on_next_click(new_search_help_id) {
+       if ((s = document.getElementById(new_search_help_id)) != null) {
+          s.style.display = 'inline';
+       }
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          s.value = 1;
+       }
+    }
+
+    function set(id, value) {
+       if ((s = document.getElementById(id)) != null) {
+	  s.value = value;
+       }
+    }
+
+    function set_group_pairwise(snt_id, odd_value, even_value) {
+       gi = 0;
+       group_id = snt_id + '_' + gi;
+       i = 1;
+       id = group_id + '_' + i;
+       while (((s = document.getElementById(id)) != null) || (gi == 0)) {
+          while ((s = document.getElementById(id)) != null) {
+	     s.style.display = odd_value;
+             i = i + 1;
+	     id = group_id + '_' + i;
+	     if ((s = document.getElementById(id)) != null) {
+	        s.style.display = even_value;
+	     }
+             i = i + 1;
+	     id = group_id + '_' + i;
+          }
+          gi = gi + 1;
+          group_id = snt_id + '_' + gi;
+          i = 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function clear(id) {
+       if (s = document.getElementById(id)) {
+          s.value = '';
+       }
+    }
+
+    function goto_page_loc(hash, id, y) {
+       var s ;
+       var page_dynamically_created_p = 0;
+       if (page_dynamically_created_p) {
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+             s.focus();
+             if (document.body.scrollTop > 0) {
+               document.body.scrollTop += y;
+             } else {
+               // document.body.scrollTop = document.body.scrollHeight;
+               // s.focus();
+             }
+          } 
+       } else {
+          window.location.hash = hash;
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+          }
+       }
+    }
+
+    function redirect(url) {
+       window.location = url;
+    }
+
+    function initialize() {
+    }
+
+    
+    -->
+    </script>
+  </head>
+  <body bgcolor="#FFFFEE">
+<table width="100%" border="0" cellpadding="3" cellspacing="0"><tr bgcolor="#BBCCFF"><td>&nbsp; <font size="+1"><b>Named Entities</b> &nbsp; (AMR annotation guidance)</font></td></tr></table>
+<br />
+
+Related pages: <a href="../ne-types.html" target="_POPUP">List of NE types</a>,
+<a href="ne-type-selection.html" target="_POPUP">Selecting an NE type</a>.
+<p>
+
+<b>Examples of named entities (NEs):</b> New York, Michael Bloomberg, Manhattan, CIA, Panama Canal, Titanic<br>
+
+<p>
+<b>Example:</b>&nbsp; "France"<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(c&nbsp;/&nbsp;country&nbsp;:wiki&nbsp;"France"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:<font color="red">name</font></font>&nbsp;(n&nbsp;/&nbsp;<font color="red">name</font>&nbsp;<font color="red">:op1</font>&nbsp;"France"))<br>
+</span>
+<p>
+
+<p>
+<b>Example:</b>&nbsp; "New York"<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(c&nbsp;/&nbsp;city&nbsp;:wiki&nbsp;"New_York_City"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:<font color="red">name</font></font>&nbsp;(n&nbsp;/&nbsp;<font color="red">name</font>&nbsp;<font color="red">:op1</font>&nbsp;"New"&nbsp;<font color="red">:op2</font>&nbsp;"York"))<br>
+</span>
+<p>
+
+<p>
+<b>Example:</b>&nbsp; "The poet William Shakespeare was born in Stratford-upon-Avon."<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b&nbsp;/&nbsp;bear-02<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(p&nbsp;/&nbsp;poet&nbsp;:wiki&nbsp;"William_Shakespeare"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:<font color="red">name</font></font>&nbsp;(n&nbsp;/&nbsp;<font color="red">name</font>&nbsp;<font color="red">:op1</font>&nbsp;"William"&nbsp;<font color="red">:op2</font>&nbsp;"Shakespeare"))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:location&nbsp;(c&nbsp;/&nbsp;city&nbsp;:wiki&nbsp;"Stratford-upon-Avon"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:<font color="red">name</font></font>&nbsp;(n2&nbsp;/&nbsp;<font color="red">name</font>&nbsp;<font color="red">:op1</font>&nbsp;"Stratford-upon-Avon")))<br>
+</span>
+<p>
+
+A named entity is expressed by a concept denoting its type (e.g. <i>city</i>),
+followed by role <i><font color="red">:<font color="red">name</font></font></i> and concept <i><font color="red">name</font></i>, which in turn has sub-roles such as <i><font color="red">:op1</font></i> and <i><font color="red">:op2</font></i>.
+This substructure is required, even if the named entity has only a single word as in <i>Russia</i> or <i>Obama</i>.<br>
+Note that we don't split hyphenated compounds (such as Stratford-upon-Avon) or possessive suffixes (such as the 's in People's Mujahedin).
+
+<p>
+
+The AMR is a bit complex, but the AMR Editor facilitates <b>adding a <i>named entity</i> to an AMR</b>, providing you with two choices:
+<ol>
+   <li> <b>Template:</b> click on the blue "add-ne" box and fill in all the blanks.<br>
+	Click on the blue <a href="../roles.html" title="Show list of roles (and examples)" target="_BLANK">role:</a> or <a href="../ne-types.html" title="Show list of named-entity types" target="_BLANK">NE type:</a> boxes to get help making the right selection.
+   <li> Alternatively, type in a <b>text command</b> such as: &nbsp; <font style="font-family:Courier;color:#007700;">x :location city New York</font><br>
+	where <i>x</i> is the parent variable, <i>:location</i> is the role, <i>city</i> is the type of named entity,
+	and <i>New York</i> is the specific <font color="red">name</font>, with one or more components.
+</ol>
+
+For <b>text input</b>, typically faster in the long run, there are a number of <b>support features</b>
+<ul>
+   <li> If you are not sure about a role, just type &nbsp; <font style="font-family:Courier;color:#007700;">:?</font> &nbsp; instead of a real role.<br>
+	This will summon a popup window, from which you can choose the proper role by clicking.
+   <li> If you are not sure about a named entity type, just type &nbsp; <font style="font-family:Courier;color:#007700;">?</font> &nbsp; instead of a real named entity type.<br>
+	This will summon a popup window, from which you can choose the proper named entity by clicking.
+   <li> If the AMR already contains the named-entity type (e.g. <i>mayor</i>), 
+	you can add a <font color="red">name</font> by type something like &nbsp; <font style="font-family:Courier;color:#007700;">m :nam<nobr>e</nobr> Michael Bloomberg</font>
+</ul>
+
+<hr>
+
+<h3>Examples: How to enter a named entity in the AMR Editor, step by step</h3>
+
+<p>
+<b>Example:</b>&nbsp; "Michael Bloomberg laughed ."<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(l&nbsp;/&nbsp;laugh-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(p&nbsp;/&nbsp;person&nbsp;:wiki&nbsp;"Michael_Bloomberg"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:<font color="red">name</font></font>&nbsp;(n&nbsp;/&nbsp;<font color="red">name</font>&nbsp;<font color="red">:op1</font>&nbsp;"Michael"&nbsp;<font color="red">:op2</font>&nbsp;"Bloomberg")))<br>
+</span>
+<p>
+
+<ol>
+   <li> Type &nbsp; <font style="font-family:Courier;color:#007700;">top laugh-<nobr>01</nobr></font>
+   <li> Type &nbsp; <font style="font-family:Courier;color:#007700;">l :arg0 person Michael Bloomberg</font>
+</ol>
+
+<p>
+<b>Example:</b>&nbsp; "New York Mayor Michael Bloomberg lives in Manhattan ."<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(l&nbsp;/&nbsp;live-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(p&nbsp;/&nbsp;person&nbsp;:wiki&nbsp;"Michael_Bloomberg"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:<font color="red">name</font></font>&nbsp;(n2&nbsp;/&nbsp;<font color="red">name</font>&nbsp;<font color="red">:op1</font>&nbsp;"Michael"&nbsp;<font color="red">:op2</font>&nbsp;"Bloomberg")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0-of&nbsp;(h&nbsp;/&nbsp;have-org-role-91<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(c&nbsp;/&nbsp;city&nbsp;:wiki&nbsp;"New_York_City"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:<font color="red">name</font></font>&nbsp;(n&nbsp;/&nbsp;<font color="red">name</font>&nbsp;<font color="red">:op1</font>&nbsp;"New"&nbsp;<font color="red">:op2</font>&nbsp;"York"))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2&nbsp;(m&nbsp;/&nbsp;mayor)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:location&nbsp;(c2&nbsp;/&nbsp;city-district&nbsp;:wiki&nbsp;"Manhattan"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:<font color="red">name</font></font>&nbsp;(n3&nbsp;/&nbsp;<font color="red">name</font>&nbsp;<font color="red">:op1</font>&nbsp;"Manhattan")))<br>
+</span>
+<p>
+
+<ol>
+   <li> Type &nbsp; <font style="font-family:Courier;color:#007700;">top live</font>
+   <li> Click on &nbsp; <font style="color:blue;text-decoration:underline;">live</font>
+   <li> In popup-window, click on sense &nbsp; <font style="color:blue;text-decoration:underline;">live.01</font>
+   <li> Type &nbsp; <font style="font-family:Courier;color:#007700;">l :arg0 mayor Michael Bloomberg</font>
+   <li> Let's assume you are not sure about the proper role to relate <i>mayor</i> and <i>New York</i>.<br>
+	Type &nbsp; <font style="font-family:Courier;color:#007700;">m :?</font>
+   <li> In popup-window, click on role &nbsp; <font style="color:blue;text-decoration:underline;">:poss</font>
+   <li> You will now see &nbsp; <font style="font-family:Courier;">m :poss</font>
+   <li> Complete typing &nbsp; <font style="font-family:Courier;">m :poss <font color="#007700"> city New York</font></font>
+   <li> Let's assume you are not sure about the proper exact named-entity type for <i>Manhattan</i>.<br>
+        Type &nbsp; <font style="font-family:Courier;color:#007700;">l :location ?</font>
+   <li> In popup-window, click on entity type &nbsp; <font style="color:blue;text-decoration:underline;">city-district</font>
+   <li> You will now see &nbsp; <font style="font-family:Courier;">l :location city-district</font>
+   <li> Complete typing &nbsp; <font style="font-family:Courier;">l :location city-district <font color="#007700">Manhattan</font></font>
+</ol>
+
+<a name="collapsed">
+<p><hr><p>
+<h3>Mistake to avoid: collapsed <font color="red">:<font color="red">name</font></font> construction</h3>
+
+<span style="color:#FF5599;">
+<span style="color:red;font-weight:bold;">Incorrect:</span> &nbsp; <span style="font-family:Courier;">(c / country <font color="red">:<font color="red">name</font></font> "France")</span></span><p>
+
+The <span style="color:#007700;font-weight:bold;">correct</span> way is to use <font color="red">:<font color="red">name</font></font> <font color="red">name</font> <font color="red">:op1</font> ... even if the <font color="red">name</font> has only a single component:
+<p>
+<b>Example:</b>&nbsp; "France"<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(c&nbsp;/&nbsp;country&nbsp;:wiki&nbsp;"France"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:<font color="red">name</font></font>&nbsp;(n&nbsp;/&nbsp;<font color="red">name</font>&nbsp;<font color="red">:op1</font>&nbsp;"France"))<br>
+</span>
+<p>
+
+<b>Video recommendation:</b> <i>Annotating names in AMR</i> (2 minutes) on the <a href="../videos.html">video</a> page.
+<p>
+<a onclick="window.close();"><span style="color:#999999;text-decoration:underline">close this window</span></a>
+  </body>
+</html>

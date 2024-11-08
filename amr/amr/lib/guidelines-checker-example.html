@@ -1,0 +1,565 @@
+﻿
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="max-age=3600" />
+    <title>check consensus</title>
+    <link rel="stylesheet" type="text/css" href="../../css/handheld/default.css" media="handheld"/>
+    <link rel="stylesheet" type="text/css" href="../../css/handheld/default.css" media="only screen and (max-device-width:480px)"/>
+   <link rel="shortcut icon" href="../images/AMR-favicon.ico">
+    <script type="text/javascript">
+    <!--
+    function toggle(id) {
+       if ((s = document.getElementById(id)) != null) {
+          if (s.style.display == 'none') {
+             s.style.display = 'inline';
+          } else {
+             s.style.display = 'none';
+          }
+       }
+    }
+
+    function toggle_group(group_id, url, new_search_help_id) {
+       if (((s = document.getElementById('new_search_on_next_click_p')) == null) || (s.value == 0)) {          
+          i = 1;         
+          id = group_id + '_' + i;
+          while ((s = document.getElementById(id)) != null) {
+             if (s.style.display == 'none') {
+                s.style.display = 'inline';
+             } else {
+                s.style.display = 'none';
+             }
+             i = i + 1;
+             id = group_id + '_' + i;
+          }
+       }
+
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          new_search_value = s.value;
+          s.value = 0;
+          if ((new_search_help_id != 0) && ((s2 = document.getElementById(new_search_help_id)) != null)) {
+             s2.style.display = 'none';
+          }
+          if ((new_search_value == 1) && (url != 0)) {
+             popUpBottom(url,750,400);
+          }
+       }
+    }
+
+    function popUpBottom(URL,width,height) {
+       day = new Date();
+       id = day.getTime();
+       eval("myWindow = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=" + width + ",height=" + height + "');");
+    }
+
+    function popUpWarning(warning) {
+       newwindow=window.open('','Warning','height=160,width=400,resizable=1,scrollbars=1,toolbar=0,statusbar=0,menubar=0');
+       var tmp = newwindow.document;
+       tmp.write('<html>\n');
+       tmp.write('  <head><title>AMR Editor Warning</title></head>\n');
+       tmp.write('  <body' + ' style="background-color:#FFFFEE;">\n');
+       tmp.write('    <h3>Warning</h3>\n');
+       tmp.write('    ' + warning + '\n');
+       tmp.write('    <p>\n');
+       tmp.write('    <input type="submit" title="Close this window." value="OK" onclick="self.close();">\n');
+       tmp.write('  </body>\n');
+       tmp.write('</html>\n');
+       tmp.close();
+    }
+
+    function new_search_on_next_click(new_search_help_id) {
+       if ((s = document.getElementById(new_search_help_id)) != null) {
+          s.style.display = 'inline';
+       }
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          s.value = 1;
+       }
+    }
+
+    function set(id, value) {
+       if ((s = document.getElementById(id)) != null) {
+	  s.value = value;
+       }
+    }
+
+    function set_group_pairwise(snt_id, odd_value, even_value) {
+       gi = 0;
+       group_id = snt_id + '_' + gi;
+       i = 1;
+       id = group_id + '_' + i;
+       while (((s = document.getElementById(id)) != null) || (gi == 0)) {
+          while ((s = document.getElementById(id)) != null) {
+	     s.style.display = odd_value;
+             i = i + 1;
+	     id = group_id + '_' + i;
+	     if ((s = document.getElementById(id)) != null) {
+	        s.style.display = even_value;
+	     }
+             i = i + 1;
+	     id = group_id + '_' + i;
+          }
+          gi = gi + 1;
+          group_id = snt_id + '_' + gi;
+          i = 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function clear(id) {
+       if (s = document.getElementById(id)) {
+          s.value = '';
+       }
+    }
+
+    function goto_page_loc(hash, id, y) {
+       var s ;
+       var page_dynamically_created_p = 0;
+       if (page_dynamically_created_p) {
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+             s.focus();
+             if (document.body.scrollTop > 0) {
+               document.body.scrollTop += y;
+             } else {
+               // document.body.scrollTop = document.body.scrollHeight;
+               // s.focus();
+             }
+          } 
+       } else {
+          window.location.hash = hash;
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+          }
+       }
+    }
+
+    function redirect(url) {
+       window.location = url;
+    }
+
+    
+   function highlight_elems(group_id, value) {
+      if (group_id != '') {
+         i = 1;
+         id = group_id + '-' + i;
+         while ((s = document.getElementById(id)) != null) {
+	    if (! s.origColor) {
+	       if (s.style.color) {
+	          s.origColor = s.style.color;
+	       } else {
+	          s.origColor = '#000000';
+	       }
+	    }
+	    if (value == '1') {
+	       s.style.color = '#0000FF';
+	       if (s.innerHTML == '-') {
+		  s.style.innerHtml = s.innerHTML;
+		  s.innerHTML = '- &nbsp; &#x2190; <i>here</i>';
+	          s.style.fontWeight = 900;
+	       } else {
+	          s.style.fontWeight = 'bold';
+	       }
+	    } else {
+	       s.style.fontWeight = 'normal';
+	       s.style.color = s.origColor;
+	       if (s.style.innerHtml != null) {
+	          s.innerHTML = s.style.innerHtml;
+	       }
+	    }
+	    i = i + 1;
+	    id = group_id + '-' + i;
+         }
+      }
+   }
+
+    function popUpBottom(URL,width,height) {
+       day = new Date();
+       id = day.getTime();
+       eval("myWindow = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=" + width + ",height=" + height + "');");
+    }
+
+    function posteditAMR(snt_id,username,workset_name,button_tr_id) {
+       if ((s = document.getElementById(button_tr_id)) != null) {
+	  s.style.backgroundColor = "#7799FF";
+	  var logsid = get_logsid();
+	  if ((logsid == '') && ((s2 = document.getElementById('logsid')) != null)) {
+	     logsid = s2.value;
+	  }
+	  var newWindow=window.open('','postedit');
+	  newWindow.focus();
+	  var tmp = newWindow.document;
+	  tmp.write('<html>\n  <head><title>postedit</title></head>\n');
+	  tmp.write('  <body style="background-color:#FFFFEE;" onload="document.getElementById(\'postedit-amr\').submit();">\n');
+	  tmp.write('    <form name="postedit-amr" id="postedit-amr" enctype="multipart/form-data" action="http://www.isi.edu/cgi-bin/div3/mt/amr-editor/load-amr.cgi" method="post">\n');
+	  tmp.write('      <input type="hidden" id="workset-p"     name="workset-p"     value="1">\n');
+	  tmp.write('      <input type="hidden" id="logsid"        name="logsid"        value="' + logsid       + '">\n');
+	  tmp.write('      <input type="hidden" id="load-username" name="load-username" value="' + username     + '">\n');
+	  tmp.write('      <input type="hidden" id="workset-name3" name="workset-name3" value="' + workset_name + '">\n');
+	  tmp.write('      <input type="hidden" id="current-workset-snt-id" name="current-workset-snt-id" value="' + snt_id + '">\n');
+	  tmp.write('      <input type="hidden" id="amr-editor-load-command" name="amr-editor-load-command" value="Load AMR at ISI for post-editing">\n');
+	  tmp.write('      <input type="hidden" id="load-amr-editor-file" name="load-amr-editor-file" value="/nfs/isd/ulf/public_html/amr/AMR-editor-c.html">\n');
+	  tmp.write('    </form>\n');
+	  tmp.write('  </body>\n');
+	  tmp.write('</html>\n');
+	  tmp.close();
+       }
+    }
+
+    function get_logsid () {
+       var cookies = document.cookie.split(";");
+       for (var i=0;i<cookies.length;i++) {
+          var cookie = cookies[i];
+          if (cookie.match(/AMR_editor_login=/)) {
+             return cookie.replace(/^\s*AMR_editor_login=(.*)$/, "$1");
+          }
+       }
+       return '';
+    }
+
+   function set_style_for_ids(style,id_list) {
+      var ids = id_list.split(/\s+/);
+      var len = ids.length;
+      var s;
+      for (var i=0; i<len; i++) {
+	 var id = ids[i];
+	 if ((s = document.getElementById(id)) != null) {
+	    s.setAttribute("style", style);
+	    s.style.cssText = style;
+	 }
+      }
+   }
+
+   function reset_style_for_ids(default_style,id_list) {
+      var ids = id_list.split(/\s+/);
+      var len = ids.length;
+      var s;
+      for (var i=0; i<len; i++) {
+	 var id = ids[i];
+	 if ((s = document.getElementById(id)) != null) {
+	    var ostyle = default_style;
+	    if (s.hasAttribute("ostyle")) {
+	       ostyle = s.getAttribute("ostyle");
+	    }
+	    s.setAttribute("style", ostyle);
+	    s.style.cssText = ostyle;
+	 }
+      }
+   }
+
+    -->
+    </script>
+  </head>
+  <body bgcolor="#FFFFEE">
+<table width="100%" border="0" cellpadding="3" cellspacing="0"><tr bgcolor="#BBCCFF"><td>&nbsp; <b><font class="large1" size="+1">AMR Checker</font></b> &nbsp; &nbsp; guidelines &nbsp; &nbsp; <span style="color:#777777;">for annotator</span>&nbsp; consensus &nbsp; &nbsp; <span style="color:#777777;">Sat May 25, 2013 at 14:04:55</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td></tr></table>
+<p><font color="red" size="+1">This is the AMR Checker output for the consensus guideline AMRs, which have been thoroughly edited.<br>
+So these remaining warnings are examples of <i>false alarms</i> by the AMR Checker, occurring in 22 out of 253 sentences.</font>
+<p><span style="color:#777777;"> &nbsp; To jump to the <a href="guidelines-checker-example.html#summary" style="color:black;text-decoration:none;">summary</a> at the bottom of this page, click <a href="guidelines-checker-example.html#summary" title="Jump to the summary at the bottom of this page." style="color:#777777;">here</a>.<br> &nbsp; To get a quick <a href="about-checker.html" style="color:black;text-decoration:none;" target="_BLANK">overview</a> of the AMR Checker, what it can do and some of its shortcomings, click <a href="about-checker.html" title="Learn about the AMR Checker." style="color:#777777;" target="_BLANK">here</a>.</span><p>
+
+<a name="isi_0001.4">
+<p><b>isi_0001.4</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span ostyle="" title="function word (article)">The</span> <span id="isi_0001.4.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.4.t2 isi_0001.4.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.4.t2 isi_0001.4.1');" style="color:#007700;" ostyle="color:#007700;">killing</span> <span  title="unaligned: took" style="color:#FF0000;" ostyle="color:#FF0000;">took</span> <span  title="unaligned: place" style="color:#FF0000;" ostyle="color:#FF0000;">place</span> <span id="isi_0001.4.t5" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.4.t5 isi_0001.4.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.4.t5 isi_0001.4.1.1');" style="color:#007700;" ostyle="color:#007700;">yesterday</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(k /  <span id="isi_0001.4.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.4.1 isi_0001.4.t2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.4.1 isi_0001.4.t2');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/kill-v.html#kill01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="kill-01&#xA;    ARG0: killer&#xA;    ARG1: corpse&#xA;    ARG2: instrument">kill-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0001.4.1.1.r" style="color:#007700;" ostyle="color:#007700;">:time</span> (y /  <span id="isi_0001.4.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.4.1.1 isi_0001.4.t5');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.4.1.1 isi_0001.4.t5');" style="color:#007700;" ostyle="color:#007700;">yesterday</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0001.31">
+<p><b>isi_0001.31</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span ostyle="" title="function word (article)">a</span> <span  title="unaligned: billion" style="color:#FF0000;" ostyle="color:#FF0000;">billion</span> <span  title="unaligned: and" style="color:#FF0000;" ostyle="color:#FF0000;">and</span> <span  title="unaligned: half" style="color:#FF0000;" ostyle="color:#FF0000;">half</span> <span id="isi_0001.31.t5" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.31.t5 isi_0001.31.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.31.t5 isi_0001.31.1');" style="color:#007700;" ostyle="color:#007700;">atoms</span> 
+<p>
+   <table><tr><td width="75%">
+(a /  <span id="isi_0001.31.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.31.1 isi_0001.31.t5');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.31.1 isi_0001.31.t5');" style="color:#007700;" ostyle="color:#007700;">atom</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0001.31.1.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span>  <span id="isi_0001.31.1.1" style="color:#007700;" ostyle="color:#007700;">1500000000</span>)   </td></tr></table>
+
+<p>
+
+<a name="isi_0001.33">
+<p><b>isi_0001.33</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span id="isi_0001.33.t1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.33.t1 isi_0001.33.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.33.t1 isi_0001.33.1.1');" style="color:#007700;" ostyle="color:#007700;">between</span> <span  title="unaligned: four" style="color:#FF0000;" ostyle="color:#FF0000;">four</span> <span id="isi_0001.33.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.33.t3 isi_0001.33.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.33.t3 isi_0001.33.1.1');" style="color:#007700;" ostyle="color:#007700;">and</span> <span id="isi_0001.33.t4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.33.t4 isi_0001.33.1.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.33.t4 isi_0001.33.1.1.2');" style="color:#007700;" ostyle="color:#007700;">five</span> <span id="isi_0001.33.t5" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.33.t5 isi_0001.33.1.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.33.t5 isi_0001.33.1.1.2');" style="color:#007700;" ostyle="color:#007700;">thousand</span> <span id="isi_0001.33.t6" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.33.t6 isi_0001.33.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.33.t6 isi_0001.33.1');" style="color:#007700;" ostyle="color:#007700;">boys</span> 
+<p>
+   <table><tr><td width="75%">
+(b /  <span id="isi_0001.33.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.33.1 isi_0001.33.t6');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.33.1 isi_0001.33.t6');" style="color:#007700;" ostyle="color:#007700;">boy</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0001.33.1.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span> (b2 /  <span id="isi_0001.33.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.33.1.1 isi_0001.33.t1 isi_0001.33.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.33.1.1 isi_0001.33.t1 isi_0001.33.t3');" style="color:#007700;" ostyle="color:#007700;">between</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0001.33.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span>  <span id="isi_0001.33.1.1.1" style="color:#007700;" ostyle="color:#007700;">4000</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0001.33.1.1.2.r" style="color:#007700;" ostyle="color:#007700;">:op2</span>  <span id="isi_0001.33.1.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0001.33.1.1.2 isi_0001.33.t4 isi_0001.33.t5');" onmouseout="reset_style_for_ids('color:#007700;','isi_0001.33.1.1.2 isi_0001.33.t4 isi_0001.33.t5');" style="color:#007700;" ostyle="color:#007700;">5000</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.7">
+<p><b>isi_0002.7</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span id="isi_0002.7.t1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.t1 isi_0002.7.1.6');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.t1 isi_0002.7.1.6');" style="color:#007700;" ostyle="color:#007700;">Wednesday</span> <span ostyle="" title="function word (punct)">,</span> <span id="isi_0002.7.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.t3 isi_0002.7.1.1 isi_0002.7.1.1.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.t3 isi_0002.7.1.1 isi_0002.7.1.1.r');" style="color:#007700;" ostyle="color:#007700;">February</span> <span id="isi_0002.7.t4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.t4 isi_0002.7.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.t4 isi_0002.7.1.2');" style="color:#007700;" ostyle="color:#007700;">29</span> <span ostyle="" title="function word (punct)">,</span> <span id="isi_0002.7.t6" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.t6 isi_0002.7.1.3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.t6 isi_0002.7.1.3');" style="color:#007700;" ostyle="color:#007700;">2012</span> <span ostyle="" title="function word (punct)">,</span> <span ostyle="" title="function word (preposition)">at</span> <span  title="unaligned: 4" style="color:#FF0000;" ostyle="color:#FF0000;">4</span> <span ostyle="" title="function word (punct)">:</span> <span id="isi_0002.7.t11" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.t11 isi_0002.7.1.4');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.t11 isi_0002.7.1.4');" style="color:#007700;" ostyle="color:#007700;">30</span> <span  title="unaligned: pm" style="color:#FF0000;" ostyle="color:#FF0000;">pm</span> <span id="isi_0002.7.t13" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.t13 isi_0002.7.1.5');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.t13 isi_0002.7.1.5');" style="color:#007700;" ostyle="color:#007700;">PST</span> 
+<p>
+   <table><tr><td width="75%">
+(d /  <span id="isi_0002.7.1" onclick="popUpBottom('popup/date.html',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="date-entity&#xA;    :year 1776&#xA;    :month 7&#xA;    :day 4&#xA;    :weekday (t/ thursday)&#xA;    :time &quot;16:00&quot;">date-entity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.7.1.1.r" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.t3 isi_0002.7.1.1.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.t3 isi_0002.7.1.1.r');" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:month</span>  <span id="isi_0002.7.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.1.1 isi_0002.7.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.1.1 isi_0002.7.t3');" style="color:#007700;" ostyle="color:#007700;">2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.7.1.2.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:day</span>  <span id="isi_0002.7.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.1.2 isi_0002.7.t4');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.1.2 isi_0002.7.t4');" style="color:#007700;" ostyle="color:#007700;">29</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.7.1.3.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:year</span>  <span id="isi_0002.7.1.3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.1.3 isi_0002.7.t6');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.1.3 isi_0002.7.t6');" style="color:#007700;" ostyle="color:#007700;">2012</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.7.1.4.r" style="color:#007700;" ostyle="color:#007700;">:time</span>  <span id="isi_0002.7.1.4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.1.4 isi_0002.7.t11');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.1.4 isi_0002.7.t11');" style="color:#007700;" ostyle="color:#007700;">"16:30"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.7.1.5.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates (time)">:timezone</span>  <span id="isi_0002.7.1.5" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.1.5 isi_0002.7.t13');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.1.5 isi_0002.7.t13');" style="color:#007700;" ostyle="color:#007700;">"PST"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.7.1.6.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:weekday</span> (w /  <span id="isi_0002.7.1.6" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.7.1.6 isi_0002.7.t1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.7.1.6 isi_0002.7.t1');" style="color:#007700;" ostyle="color:#007700;">wednesday</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.8">
+<p><b>isi_0002.8</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span ostyle="" title="function word (preposition)">in</span> <span ostyle="" title="function word (article)">the</span> <span id="isi_0002.8.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.8.t3 isi_0002.8.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.8.t3 isi_0002.8.1');" style="color:#007700;" ostyle="color:#007700;">early</span> <span id="isi_0002.8.t4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.8.t4 isi_0002.8.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.8.t4 isi_0002.8.1.1.1');" style="color:#007700;" ostyle="color:#007700;">1950</span> <span  title="unaligned: s" style="color:#FF0000;" ostyle="color:#FF0000;">s</span> 
+<p>
+   <table><tr><td width="75%">
+(e /  <span id="isi_0002.8.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.8.1 isi_0002.8.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.8.1 isi_0002.8.t3');" style="color:#007700;" ostyle="color:#007700;">early</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.8.1.1.r" style="color:#007700;" ostyle="color:#007700;">:time</span> (d /  <span id="isi_0002.8.1.1" onclick="popUpBottom('popup/date.html',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="date-entity&#xA;    :year 1776&#xA;    :month 7&#xA;    :day 4&#xA;    :weekday (t/ thursday)&#xA;    :time &quot;16:00&quot;">date-entity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.8.1.1.1.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:decade</span>  <span id="isi_0002.8.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.8.1.1.1 isi_0002.8.t4');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.8.1.1.1 isi_0002.8.t4');" style="color:#007700;" ostyle="color:#007700;">1950</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.13">
+<p><b>isi_0002.13</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span  title="unaligned: 1" style="color:#FF0000;" ostyle="color:#FF0000;">1</span> <span ostyle="" title="function word (punct)">-</span> <span  title="unaligned: 800" style="color:#FF0000;" ostyle="color:#FF0000;">800</span> <span ostyle="" title="function word (punct)">-</span> <span  title="unaligned: 555" style="color:#FF0000;" ostyle="color:#FF0000;">555</span> <span ostyle="" title="function word (punct)">-</span> <span  title="unaligned: 1212" style="color:#FF0000;" ostyle="color:#FF0000;">1212</span> 
+<p>
+   <table><tr><td width="75%">
+(p /  <span id="isi_0002.13.1" style="color:#007700;" ostyle="color:#007700;">phone-number-entity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.13.1.1.r" style="color:#007700;" ostyle="color:#007700;">:value</span>  <span id="isi_0002.13.1.1" style="color:#007700;" ostyle="color:#007700;">18005551212</span>)   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.18">
+<p><b>isi_0002.18</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span id="isi_0002.18.t1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.t1 isi_0002.18.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.t1 isi_0002.18.1.1.1');" style="color:#007700;" ostyle="color:#007700;">Thomas</span> <span ostyle="" title="function word (auxiliary/modal)">is</span> <span  title="unaligned: one" style="color:#FF0000;" ostyle="color:#FF0000;">one</span> <span ostyle="" title="function word (preposition)">of</span> <span ostyle="" title="function word (article)">the</span> <span id="isi_0002.18.t6" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.t6 isi_0002.18.1.2.1.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.t6 isi_0002.18.1.2.1.1.2');" style="color:#007700;" ostyle="color:#007700;">few</span> <span id="isi_0002.18.t7" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.t7 isi_0002.18.1.2.1 isi_0002.18.1.2.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.t7 isi_0002.18.1.2.1 isi_0002.18.1.2.1.1.1');" style="color:#007700;" ostyle="color:#007700;">boys</span> <span ostyle="" title="function word (preposition)">in</span> <span id="isi_0002.18.t9" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.t9 isi_0002.18.1.2.1.1.1.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.t9 isi_0002.18.1.2.1.1.1.1.1.1');" style="color:#007700;" ostyle="color:#007700;">Kentucky</span> <span ostyle="" title="function word (relative-pronoun)">who</span> <span id="isi_0002.18.t11" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.t11 isi_0002.18.1.2.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.t11 isi_0002.18.1.2.1.2');" style="color:#007700;" ostyle="color:#007700;">speak</span> <span id="isi_0002.18.t12" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.t12 isi_0002.18.1.2.1.2.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.t12 isi_0002.18.1.2.1.2.1.1.1');" style="color:#007700;" ostyle="color:#007700;">Latin</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(p /  <span id="isi_0002.18.1" style="color:#007700;" ostyle="color:#007700;">person</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.1.r" style="color:#007700;" ostyle="color:#007700;">:name</span> (n /  <span id="isi_0002.18.1.1" style="color:#007700;" ostyle="color:#007700;">name</span> <span id="isi_0002.18.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span>  <span id="isi_0002.18.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.1.1.1 isi_0002.18.t1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.1.1.1 isi_0002.18.t1');" style="color:#007700;" ostyle="color:#007700;">"Thomas"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.2.r" style="color:#007700;" ostyle="color:#007700;">:ARG1-of</span> (i /  <span id="isi_0002.18.1.2" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/include-v.html#include91',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="include-91&#xA;    ARG1: subset (or member)&#xA;    ARG2: superset&#xA;    ARG3: relative size of subset compared to superset">include-91</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.2.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG2</span> (b /  <span id="isi_0002.18.1.2.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.1.2.1 isi_0002.18.t7');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.1.2.1 isi_0002.18.t7');" style="color:#007700;" ostyle="color:#007700;">boy</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.2.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG1-of</span> (i2 /  <span id="isi_0002.18.1.2.1.1" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/include-v.html#include91',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="include-91&#xA;    ARG1: subset (or member)&#xA;    ARG2: superset&#xA;    ARG3: relative size of subset compared to superset">include-91</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.2.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG2</span> (b2 /  <span id="isi_0002.18.1.2.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.1.2.1.1.1 isi_0002.18.t7');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.1.2.1.1.1 isi_0002.18.t7');" style="color:#007700;" ostyle="color:#007700;">boy</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.2.1.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:location</span> (s /  <span id="isi_0002.18.1.2.1.1.1.1" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="state (in a federal country)&#xA;    Examples: California, Bavaria">state</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.2.1.1.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:name</span> (n2 /  <span id="isi_0002.18.1.2.1.1.1.1.1" style="color:#007700;" ostyle="color:#007700;">name</span> <span id="isi_0002.18.1.2.1.1.1.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span>  <span id="isi_0002.18.1.2.1.1.1.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.1.2.1.1.1.1.1.1 isi_0002.18.t9');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.1.2.1.1.1.1.1.1 isi_0002.18.t9');" style="color:#007700;" ostyle="color:#007700;">"Kentucky"</span>)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.2.1.1.2.r" style="color:#007700;" ostyle="color:#007700;">:ARG3</span> (f /  <span id="isi_0002.18.1.2.1.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.1.2.1.1.2 isi_0002.18.t6');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.1.2.1.1.2 isi_0002.18.t6');" style="color:#007700;" ostyle="color:#007700;">few</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.2.1.2.r" style="color:#007700;" ostyle="color:#007700;">:ARG0-of</span> (s2 /  <span id="isi_0002.18.1.2.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.1.2.1.2 isi_0002.18.t11');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.1.2.1.2 isi_0002.18.t11');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/speak-v.html#speak01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="speak-01&#xA;    ARG0: talker&#xA;    ARG1: subject/language&#xA;    ARG2: hearer">speak-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.2.1.2.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG1</span> (l /  <span id="isi_0002.18.1.2.1.2.1" style="color:#007700;" ostyle="color:#007700;">language</span><br>
+&bbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.18.1.2.1.2.1.1.r" style="color:#007700;" ostyle="color:#007700;">:name</span> (n3 /  <span id="isi_0002.18.1.2.1.2.1.1" style="color:#007700;" ostyle="color:#007700;">name</span> <span id="isi_0002.18.1.2.1.2.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span>  <span id="isi_0002.18.1.2.1.2.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.18.1.2.1.2.1.1.1 isi_0002.18.t12');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.18.1.2.1.2.1.1.1 isi_0002.18.t12');" style="color:#007700;" ostyle="color:#007700;">"Latin"</span>))))))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.33">
+<p><b>isi_0002.33</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span id="isi_0002.33.t1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.t1 isi_0002.33.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.t1 isi_0002.33.1.1');" style="color:#007700;" ostyle="color:#007700;">She</span> <span id="isi_0002.33.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.t2 isi_0002.33.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.t2 isi_0002.33.1');" style="color:#007700;" ostyle="color:#007700;">heated</span> <span ostyle="" title="function word (article)">the</span> <span id="isi_0002.33.t4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.t4 isi_0002.33.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.t4 isi_0002.33.1.2');" style="color:#007700;" ostyle="color:#007700;">oven</span> <span id="isi_0002.33.t5" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.t5 isi_0002.33.1.3.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.t5 isi_0002.33.1.3.r');" style="color:#007700;" ostyle="color:#007700;">to</span> <span id="isi_0002.33.t6" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.t6 isi_0002.33.1.3.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.t6 isi_0002.33.1.3.1');" style="color:#007700;" ostyle="color:#007700;">250</span> <span  title="unaligned: degrees" style="color:#FF0000;" ostyle="color:#FF0000;">degrees</span> <span id="isi_0002.33.t8" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.t8 isi_0002.33.1.3.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.t8 isi_0002.33.1.3.2');" style="color:#007700;" ostyle="color:#007700;">Celsius</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(h /  <span id="isi_0002.33.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.1 isi_0002.33.t2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.1 isi_0002.33.t2');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/heat-v.html#heat01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="heat-01&#xA;    ARG0: agent, causer&#xA;    ARG1: entity heated&#xA;    ARG2: instrument">heat-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.33.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG0</span> (s /  <span id="isi_0002.33.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.1.1 isi_0002.33.t1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.1.1 isi_0002.33.t1');" style="color:#007700;" ostyle="color:#007700;">she</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.33.1.2.r" style="color:#007700;" ostyle="color:#007700;">:ARG1</span> (o /  <span id="isi_0002.33.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.1.2 isi_0002.33.t4');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.1.2 isi_0002.33.t4');" style="color:#007700;" ostyle="color:#007700;">oven</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.33.1.3.r" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.t5 isi_0002.33.1.3.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.t5 isi_0002.33.1.3.r');" style="color:#007700;" ostyle="color:#007700;">:destination</span> (t /  <span id="isi_0002.33.1.3" style="color:#007700;" ostyle="color:#007700;">temperature-quantity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.33.1.3.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span>  <span id="isi_0002.33.1.3.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.1.3.1 isi_0002.33.t6');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.1.3.1 isi_0002.33.t6');" style="color:#007700;" ostyle="color:#007700;">250</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.33.1.3.2.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="for certain quantities, e.g. Richter">:scale</span> (c /  <span id="isi_0002.33.1.3.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.33.1.3.2 isi_0002.33.t8');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.33.1.3.2 isi_0002.33.t8');" style="color:#007700;" ostyle="color:#007700;">celsius</span>)))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.73">
+<p><b>isi_0002.73</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span ostyle="" title="function word (article)">A</span> <span id="isi_0002.73.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.73.t2 isi_0002.73.1.3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.73.t2 isi_0002.73.1.3');" style="color:#007700;" ostyle="color:#007700;">special</span> <span id="isi_0002.73.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.73.t3 isi_0002.73.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.73.t3 isi_0002.73.1.1');" style="color:#007700;" ostyle="color:#007700;">gubernatorial</span> <span id="isi_0002.73.t4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.73.t4 isi_0002.73.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.73.t4 isi_0002.73.1');" style="color:#007700;" ostyle="color:#007700;">election</span> <span ostyle="" title="function word (auxiliary/modal)">will</span> <span  title="unaligned: take" style="color:#FF0000;" ostyle="color:#FF0000;">take</span> <span  title="unaligned: place" style="color:#FF0000;" ostyle="color:#FF0000;">place</span> <span id="isi_0002.73.t8" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.73.t8 isi_0002.73.1.2.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.73.t8 isi_0002.73.1.2.1.1');" style="color:#007700;" ostyle="color:#007700;">next</span> <span id="isi_0002.73.t9" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.73.t9 isi_0002.73.1.2.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.73.t9 isi_0002.73.1.2.1');" style="color:#007700;" ostyle="color:#007700;">Tuesday</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(e /  <span id="isi_0002.73.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.73.1 isi_0002.73.t4');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.73.1 isi_0002.73.t4');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/elect-v.html#elect01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="elect-01&#xA;    ARG0: voters&#xA;    ARG1: candidate&#xA;    ARG2: office or position">elect-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.73.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG2</span> (g /  <span id="isi_0002.73.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.73.1.1 isi_0002.73.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.73.1.1 isi_0002.73.t3');" style="color:#007700;" ostyle="color:#007700;">governor</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.73.1.2.r" style="color:#007700;" ostyle="color:#007700;">:time</span> (d /  <span id="isi_0002.73.1.2" onclick="popUpBottom('popup/date.html',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="date-entity&#xA;    :year 1776&#xA;    :month 7&#xA;    :day 4&#xA;    :weekday (t/ thursday)&#xA;    :time &quot;16:00&quot;">date-entity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.73.1.2.1.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:weekday</span> (t /  <span id="isi_0002.73.1.2.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.73.1.2.1 isi_0002.73.t9');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.73.1.2.1 isi_0002.73.t9');" style="color:#007700;" ostyle="color:#007700;">tuesday</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.73.1.2.1.1.r" style="color:#007700;" ostyle="color:#007700;">:mod</span> (n /  <span id="isi_0002.73.1.2.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.73.1.2.1.1 isi_0002.73.t8');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.73.1.2.1.1 isi_0002.73.t8');" style="color:#007700;" ostyle="color:#007700;">next</span>)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.73.1.3.r" style="color:#007700;" ostyle="color:#007700;">:mod</span> (s /  <span id="isi_0002.73.1.3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.73.1.3 isi_0002.73.t2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.73.1.3 isi_0002.73.t2');" style="color:#007700;" ostyle="color:#007700;">special</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.95">
+<p><b>isi_0002.95</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span ostyle="" title="function word (article)">The</span> <span id="isi_0002.95.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.t2 isi_0002.95.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.t2 isi_0002.95.1');" style="color:#007700;" ostyle="color:#007700;">performance</span> <span ostyle="" title="function word (auxiliary/modal)">will</span> <span  title="unaligned: take" style="color:#FF0000;" ostyle="color:#FF0000;">take</span> <span id="isi_0002.95.t5" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.t5 isi_0002.95.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.t5 isi_0002.95.1.1');" style="color:#007700;" ostyle="color:#007700;">between</span> <span id="isi_0002.95.t6" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.t6 isi_0002.95.1.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.t6 isi_0002.95.1.1.1.1');" style="color:#007700;" ostyle="color:#007700;">45</span> <span id="isi_0002.95.t7" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.t7 isi_0002.95.1.1.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.t7 isi_0002.95.1.1.1.2');" style="color:#007700;" ostyle="color:#007700;">minutes</span> <span id="isi_0002.95.t8" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.t8 isi_0002.95.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.t8 isi_0002.95.1.1');" style="color:#007700;" ostyle="color:#007700;">and</span> <span ostyle="" title="function word (article)">an</span> <span id="isi_0002.95.t10" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.t10 isi_0002.95.1.1.2.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.t10 isi_0002.95.1.1.2.2');" style="color:#007700;" ostyle="color:#007700;">hour</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(p /  <span id="isi_0002.95.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.1 isi_0002.95.t2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.1 isi_0002.95.t2');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/perform-v.html#perform01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="perform-01&#xA;    ARG0: performer&#xA;    ARG1: performance, thing performed&#xA;    ARG2: instrument">perform-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.95.1.1.r" style="color:#007700;" ostyle="color:#007700;">:duration</span> (b /  <span id="isi_0002.95.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.1.1 isi_0002.95.t5 isi_0002.95.t8');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.1.1 isi_0002.95.t5 isi_0002.95.t8');" style="color:#007700;" ostyle="color:#007700;">between</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.95.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span> (t /  <span id="isi_0002.95.1.1.1" style="color:#007700;" ostyle="color:#007700;">temporal-quantity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.95.1.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span>  <span id="isi_0002.95.1.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.1.1.1.1 isi_0002.95.t6');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.1.1.1.1 isi_0002.95.t6');" style="color:#007700;" ostyle="color:#007700;">45</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.95.1.1.1.2.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in quantities">:unit</span> (m /  <span id="isi_0002.95.1.1.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.1.1.1.2 isi_0002.95.t7');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.1.1.1.2 isi_0002.95.t7');" style="color:#007700;" ostyle="color:#007700;">minute</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.95.1.1.2.r" style="color:#007700;" ostyle="color:#007700;">:op2</span> (t2 /  <span id="isi_0002.95.1.1.2" style="color:#007700;" ostyle="color:#007700;">temporal-quantity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.95.1.1.2.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span>  <span id="isi_0002.95.1.1.2.1" style="color:#007700;" ostyle="color:#007700;">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.95.1.1.2.2.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in quantities">:unit</span> (h /  <span id="isi_0002.95.1.1.2.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.95.1.1.2.2 isi_0002.95.t10');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.95.1.1.2.2 isi_0002.95.t10');" style="color:#007700;" ostyle="color:#007700;">hour</span>))))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.101">
+<p><b>isi_0002.101</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span id="isi_0002.101.t1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.t1 isi_0002.101.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.101.t1 isi_0002.101.1.1');" style="color:#007700;" ostyle="color:#007700;">They</span> <span id="isi_0002.101.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.t2 isi_0002.101.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.101.t2 isi_0002.101.1');" style="color:#007700;" ostyle="color:#007700;">feared</span> <span id="isi_0002.101.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.t3 isi_0002.101.1.2 isi_0002.101.1.3.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.101.t3 isi_0002.101.1.2 isi_0002.101.1.3.1.1');" style="color:#007700;" ostyle="color:#007700;">him</span> <span id="isi_0002.101.t4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.t4 isi_0002.101.1.3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.101.t4 isi_0002.101.1.3');" style="color:#007700;" ostyle="color:#007700;">even</span> <span id="isi_0002.101.t5" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.t5 isi_0002.101.1.3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.101.t5 isi_0002.101.1.3');" style="color:#007700;" ostyle="color:#007700;">when</span> <span id="isi_0002.101.t6" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.t6 isi_0002.101.1.2 isi_0002.101.1.3.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.101.t6 isi_0002.101.1.2 isi_0002.101.1.3.1.1');" style="color:#007700;" ostyle="color:#007700;">he</span> <span ostyle="" title="function word (auxiliary/modal)">was</span> <span  title="unaligned: behind" style="color:#FF0000;" ostyle="color:#FF0000;">behind</span> <span  title="unaligned: bars" style="color:#FF0000;" ostyle="color:#FF0000;">bars</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(f /  <span id="isi_0002.101.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.1 isi_0002.101.t2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.101.1 isi_0002.101.t2');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/fear-v.html#fear01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="fear-01&#xA;    ARG0: entity afraid&#xA;    ARG1: afraid of what?">fear-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.101.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG0</span> (t /  <span id="isi_0002.101.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.1.1 isi_0002.101.t1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.101.1.1 isi_0002.101.t1');" style="color:#007700;" ostyle="color:#007700;">they</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.101.1.2.r" style="color:#007700;" ostyle="color:#007700;">:ARG1</span> (h /  <span id="isi_0002.101.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.1.2 isi_0002.101.1.3.1.1 isi_0002.101.t3 isi_0002.101.t6');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.101.1.2 isi_0002.101.1.3.1.1 isi_0002.101.t3 isi_0002.101.t6');" style="color:#007700;" ostyle="color:#007700;">he</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.101.1.3.r" style="color:#007700;" ostyle="color:#007700;">:concession</span> (e /  <span id="isi_0002.101.1.3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.1.3 isi_0002.101.t4 isi_0002.101.t5');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.101.1.3 isi_0002.101.t4 isi_0002.101.t5');" style="color:#007700;" ostyle="color:#007700;">even-when</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.101.1.3.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span> (i /  <span id="isi_0002.101.1.3.1" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/imprison-v.html#imprison01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="imprison-01&#xA;    ARG0: court, judge, jury&#xA;    ARG1: criminal&#xA;    ARG2: term&#xA;    ARG3: cause, misdeed">imprison-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.101.1.3.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG1</span>  <span id="isi_0002.101.1.3.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.101.1.2 isi_0002.101.1.3.1.1 isi_0002.101.t3 isi_0002.101.t6');" onmouseout="reset_style_for_ids('color:#000000;','isi_0002.101.1.2 isi_0002.101.1.3.1.1 isi_0002.101.t3 isi_0002.101.t6');" style="color:#000000;" ostyle="color:#000000;">h</span>)))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.104">
+<p><b>isi_0002.104</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span ostyle="" title="function word (existential)">There</span> <span ostyle="" title="function word (auxiliary/modal)">was</span> <span id="isi_0002.104.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.104.t3 isi_0002.104.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.104.t3 isi_0002.104.1.1');" style="color:#007700;" ostyle="color:#007700;">virtually</span> <span  title="unaligned: no" style="color:#FF0000;" ostyle="color:#FF0000;">no</span> <span id="isi_0002.104.t5" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.104.t5 isi_0002.104.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.104.t5 isi_0002.104.1');" style="color:#007700;" ostyle="color:#007700;">traffic</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(t /  <span id="isi_0002.104.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.104.1 isi_0002.104.t5');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.104.1 isi_0002.104.t5');" style="color:#007700;" ostyle="color:#007700;">traffic</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.104.1.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span> (v /  <span id="isi_0002.104.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.104.1.1 isi_0002.104.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.104.1.1 isi_0002.104.t3');" style="color:#007700;" ostyle="color:#007700;">virtual</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.104.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span> (n /  <span id="isi_0002.104.1.1.1" style="color:#007700;" ostyle="color:#007700;">none</span>)))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.111">
+<p><b>isi_0002.111</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span  title="unaligned: Yes" style="color:#FF0000;" ostyle="color:#FF0000;">Yes</span> <span ostyle="" title="function word (punct)">,</span> <span id="isi_0002.111.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.111.t3 isi_0002.111.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.111.t3 isi_0002.111.1.1');" style="color:#007700;" ostyle="color:#007700;">I</span> <span id="isi_0002.111.t4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.111.t4 isi_0002.111.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.111.t4 isi_0002.111.1');" style="color:#007700;" ostyle="color:#007700;">know</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(k /  <span id="isi_0002.111.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.111.1 isi_0002.111.t4');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.111.1 isi_0002.111.t4');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/know-v.html#know01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="know-01&#xA;    ARG0: knower&#xA;    ARG1: thing known or thought&#xA;    ARG2: attribute of arg1">know-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.111.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG0</span> (i /  <span id="isi_0002.111.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.111.1.1 isi_0002.111.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.111.1.1 isi_0002.111.t3');" style="color:#007700;" ostyle="color:#007700;">i</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.131">
+<p><b>isi_0002.131</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span id="isi_0002.131.t1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.131.t1 isi_0002.131.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.131.t1 isi_0002.131.1.1');" style="color:#007700;" ostyle="color:#007700;">I</span> <span id="isi_0002.131.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.131.t2 isi_0002.131.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.131.t2 isi_0002.131.1');" style="color:#007700;" ostyle="color:#007700;">backed</span> <span  title="unaligned: away" style="color:#FF0000;" ostyle="color:#FF0000;">away</span> <span id="isi_0002.131.t4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.131.t4 isi_0002.131.1.2.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.131.t4 isi_0002.131.1.2.r');" style="color:#007700;" ostyle="color:#007700;">from</span> <span ostyle="" title="function word (article)">the</span> <span id="isi_0002.131.t6" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.131.t6 isi_0002.131.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.131.t6 isi_0002.131.1.2');" style="color:#007700;" ostyle="color:#007700;">window</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(b /  <span id="isi_0002.131.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.131.1 isi_0002.131.t2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.131.1 isi_0002.131.t2');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/back-v.html#back02',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="back-02&#xA;    ARG0: causer of backwards motion&#xA;    ARG1: entity in motion">back-02</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.131.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG0</span> (i /  <span id="isi_0002.131.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.131.1.1 isi_0002.131.t1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.131.1.1 isi_0002.131.t1');" style="color:#007700;" ostyle="color:#007700;">i</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.131.1.2.r" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.131.t4 isi_0002.131.1.2.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.131.t4 isi_0002.131.1.2.r');" style="color:#007700;" ostyle="color:#007700;">:source</span> (w /  <span id="isi_0002.131.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.131.1.2 isi_0002.131.t6');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.131.1.2 isi_0002.131.t6');" style="color:#007700;" ostyle="color:#007700;">window</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.148">
+<p><b>isi_0002.148</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span ostyle="" title="function word (article)">The</span> <span id="isi_0002.148.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.t2 isi_0002.148.1.1 isi_0002.148.1.2.1 isi_0002.148.1.2.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.t2 isi_0002.148.1.1 isi_0002.148.1.2.1 isi_0002.148.1.2.2');" style="color:#007700;" ostyle="color:#007700;">size</span> <span id="isi_0002.148.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.t3 isi_0002.148.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.t3 isi_0002.148.1.2');" style="color:#007700;" ostyle="color:#007700;">of</span> <span id="isi_0002.148.t4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.t4 isi_0002.148.1.1.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.t4 isi_0002.148.1.1.1.1.1');" style="color:#007700;" ostyle="color:#007700;">Antarctica</span> <span ostyle="" title="function word (auxiliary/modal)">is</span> <span ostyle="" title="function word (preposition)">as</span> <span id="isi_0002.148.t7" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.t7 isi_0002.148.1.1 isi_0002.148.1.2.1 isi_0002.148.1.2.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.t7 isi_0002.148.1.1 isi_0002.148.1.2.1 isi_0002.148.1.2.2');" style="color:#007700;" ostyle="color:#007700;">large</span> <span ostyle="" title="function word (preposition)">as</span> <span ostyle="" title="function word (article)">the</span> <span id="isi_0002.148.t10" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.t10 isi_0002.148.1.2.1.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.t10 isi_0002.148.1.2.1.1.1.1');" style="color:#007700;" ostyle="color:#007700;">United</span> <span id="isi_0002.148.t11" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.t11 isi_0002.148.1.2.1.1.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.t11 isi_0002.148.1.2.1.1.1.2');" style="color:#007700;" ostyle="color:#007700;">States</span> <span  title="unaligned: and" style="color:#FF0000;" ostyle="color:#FF0000;">and</span> <span id="isi_0002.148.t13" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.t13 isi_0002.148.1.2.2.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.t13 isi_0002.148.1.2.2.1.1.1');" style="color:#007700;" ostyle="color:#007700;">Mexico</span> <span id="isi_0002.148.t14" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.t14 isi_0002.148.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.t14 isi_0002.148.1.2');" style="color:#007700;" ostyle="color:#007700;">together</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(e /  <span id="isi_0002.148.1" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/equal-v.html#equal01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="equal-01&#xA;    ARG1: focus of equation&#xA;    ARG2: other side of equation">equal-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.148.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG1</span> (s /  <span id="isi_0002.148.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.1.1 isi_0002.148.t2 isi_0002.148.t7');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.1.1 isi_0002.148.t2 isi_0002.148.t7');" style="color:#007700;" ostyle="color:#007700;">size</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.148.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:poss</span> (c /  <span id="isi_0002.148.1.1.1" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="continent incl. Africa, America, Antarctica, Asia, Australia, Europe&#xA;    North/Central/South America are world-region.">continent</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.148.1.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:name</span> (n /  <span id="isi_0002.148.1.1.1.1" style="color:#007700;" ostyle="color:#007700;">name</span> <span id="isi_0002.148.1.1.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span>  <span id="isi_0002.148.1.1.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.1.1.1.1.1 isi_0002.148.t4');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.1.1.1.1.1 isi_0002.148.t4');" style="color:#007700;" ostyle="color:#007700;">"Antarctica"</span>)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.148.1.2.r" style="color:#007700;" ostyle="color:#007700;">:ARG2</span> (s2 /  <span id="isi_0002.148.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.1.2 isi_0002.148.t14 isi_0002.148.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.1.2 isi_0002.148.t14 isi_0002.148.t3');" style="color:#007700;" ostyle="color:#007700;">sum-of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.148.1.2.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span> (s3 /  <span id="isi_0002.148.1.2.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.1.2.1 isi_0002.148.t2 isi_0002.148.t7');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.1.2.1 isi_0002.148.t2 isi_0002.148.t7');" style="color:#007700;" ostyle="color:#007700;">size</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.148.1.2.1.1.r" style="color:#007700;" ostyle="color:#007700;">:poss</span> (c2 /  <span id="isi_0002.148.1.2.1.1" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="country&#xA;    Examples: Saudi Arabia, England, European Union,&#xA;        Kosovo, Palestine, Soviet Union, Taiwan">country</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.148.1.2.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:name</span> (n2 /  <span id="isi_0002.148.1.2.1.1.1" style="color:#007700;" ostyle="color:#007700;">name</span> <span id="isi_0002.148.1.2.1.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span>  <span id="isi_0002.148.1.2.1.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.1.2.1.1.1.1 isi_0002.148.t10');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.1.2.1.1.1.1 isi_0002.148.t10');" style="color:#007700;" ostyle="color:#007700;">"United"</span> <span id="isi_0002.148.1.2.1.1.1.2.r" style="color:#007700;" ostyle="color:#007700;">:op2</span>  <span id="isi_0002.148.1.2.1.1.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.1.2.1.1.1.2 isi_0002.148.t11');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.1.2.1.1.1.2 isi_0002.148.t11');" style="color:#007700;" ostyle="color:#007700;">"States"</span>)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.148.1.2.2.r" style="color:#007700;" ostyle="color:#007700;">:op2</span> (s4 /  <span id="isi_0002.148.1.2.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.1.2.2 isi_0002.148.t2 isi_0002.148.t7');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.1.2.2 isi_0002.148.t2 isi_0002.148.t7');" style="color:#007700;" ostyle="color:#007700;">size</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.148.1.2.2.1.r" style="color:#007700;" ostyle="color:#007700;">:poss</span> (c3 /  <span id="isi_0002.148.1.2.2.1" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="country&#xA;    Examples: Saudi Arabia, England, European Union,&#xA;        Kosovo, Palestine, Soviet Union, Taiwan">country</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.148.1.2.2.1.1.r" style="color:#007700;" ostyle="color:#007700;">:name</span> (n3 /  <span id="isi_0002.148.1.2.2.1.1" style="color:#007700;" ostyle="color:#007700;">name</span> <span id="isi_0002.148.1.2.2.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span>  <span id="isi_0002.148.1.2.2.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.148.1.2.2.1.1.1 isi_0002.148.t13');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.148.1.2.2.1.1.1 isi_0002.148.t13');" style="color:#007700;" ostyle="color:#007700;">"Mexico"</span>)))))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.172">
+<p><b>isi_0002.172</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span  title="unaligned: Muharram" style="color:#FF0000;" ostyle="color:#FF0000;">Muharram</span> <span id="isi_0002.172.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.172.t2 isi_0002.172.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.172.t2 isi_0002.172.1.1');" style="color:#007700;" ostyle="color:#007700;">1434</span> <span id="isi_0002.172.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.172.t3 isi_0002.172.1.3 isi_0002.172.1.3.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.172.t3 isi_0002.172.1.3 isi_0002.172.1.3.r');" style="color:#007700;" ostyle="color:#007700;">AH</span> 
+<p>
+   <table><tr><td width="75%">
+(d /  <span id="isi_0002.172.1" onclick="popUpBottom('popup/date.html',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="date-entity&#xA;    :year 1776&#xA;    :month 7&#xA;    :day 4&#xA;    :weekday (t/ thursday)&#xA;    :time &quot;16:00&quot;">date-entity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.172.1.1.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:year</span>  <span id="isi_0002.172.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.172.1.1 isi_0002.172.t2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.172.1.1 isi_0002.172.t2');" style="color:#007700;" ostyle="color:#007700;">1434</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.172.1.2.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:month</span>  <span id="isi_0002.172.1.2" style="color:#007700;" ostyle="color:#007700;">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.172.1.3.r" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.172.t3 isi_0002.172.1.3.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.172.t3 isi_0002.172.1.3.r');" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:calendar</span> (i /  <span id="isi_0002.172.1.3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.172.1.3 isi_0002.172.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.172.1.3 isi_0002.172.t3');" style="color:#007700;" ostyle="color:#007700;">islam</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.173">
+<p><b>isi_0002.173</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span  title="unaligned: Adar" style="color:#FF0000;" ostyle="color:#FF0000;">Adar</span> <span  title="unaligned: II" style="color:#FF0000;" ostyle="color:#FF0000;">II</span> <span id="isi_0002.173.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.173.t3 isi_0002.173.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.173.t3 isi_0002.173.1.1');" style="color:#007700;" ostyle="color:#007700;">5771</span> 
+<p>
+   <table><tr><td width="75%">
+(d /  <span id="isi_0002.173.1" onclick="popUpBottom('popup/date.html',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="date-entity&#xA;    :year 1776&#xA;    :month 7&#xA;    :day 4&#xA;    :weekday (t/ thursday)&#xA;    :time &quot;16:00&quot;">date-entity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.173.1.1.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:year</span>  <span id="isi_0002.173.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.173.1.1 isi_0002.173.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.173.1.1 isi_0002.173.t3');" style="color:#007700;" ostyle="color:#007700;">5771</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.173.1.2.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:month</span>  <span id="isi_0002.173.1.2" style="color:#007700;" ostyle="color:#007700;">13</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.173.1.3.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates">:calendar</span> (h /  <span id="isi_0002.173.1.3" style="color:#007700;" ostyle="color:#007700;">hebrew</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.176">
+<p><b>isi_0002.176</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span ostyle="" title="function word (article)">an</span> <span id="isi_0002.176.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.176.t2 isi_0002.176.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.176.t2 isi_0002.176.1');" style="color:#007700;" ostyle="color:#007700;">earthquake</span> <span ostyle="" title="function word (preposition)">of</span> <span  title="unaligned: intensity" style="color:#FF0000;" ostyle="color:#FF0000;">intensity</span> <span id="isi_0002.176.t5" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.176.t5 isi_0002.176.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.176.t5 isi_0002.176.1.1.1');" style="color:#007700;" ostyle="color:#007700;">XII</span> <span ostyle="" title="function word (preposition)">on</span> <span ostyle="" title="function word (article)">the</span> <span id="isi_0002.176.t8" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.176.t8 isi_0002.176.1.1.2.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.176.t8 isi_0002.176.1.1.2.1');" style="color:#007700;" ostyle="color:#007700;">Modified</span> <span id="isi_0002.176.t9" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.176.t9 isi_0002.176.1.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.176.t9 isi_0002.176.1.1.2');" style="color:#007700;" ostyle="color:#007700;">Mercalli</span> <span id="isi_0002.176.t10" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.176.t10 isi_0002.176.1.1.2.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.176.t10 isi_0002.176.1.1.2.r');" style="color:#007700;" ostyle="color:#007700;">scale</span> 
+<p>
+   <table><tr><td width="75%">
+(e /  <span id="isi_0002.176.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.176.1 isi_0002.176.t2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.176.1 isi_0002.176.t2');" style="color:#007700;" ostyle="color:#007700;">earthquake</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.176.1.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span> (s /  <span id="isi_0002.176.1.1" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="seismic-quantity&#xA;    :quant 7.9&#xA;    :scale (r / richter)">seismic-quantity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.176.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span>  <span id="isi_0002.176.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.176.1.1.1 isi_0002.176.t5');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.176.1.1.1 isi_0002.176.t5');" style="color:#007700;" ostyle="color:#007700;">12</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.176.1.1.2.r" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.176.t10 isi_0002.176.1.1.2.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.176.t10 isi_0002.176.1.1.2.r');" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="for certain quantities, e.g. Richter">:scale</span> (m /  <span id="isi_0002.176.1.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.176.1.1.2 isi_0002.176.t9');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.176.1.1.2 isi_0002.176.t9');" style="color:#007700;" ostyle="color:#007700;">mercalli</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.176.1.1.2.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG1-of</span> (m2 /  <span id="isi_0002.176.1.1.2.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.176.1.1.2.1 isi_0002.176.t8');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.176.1.1.2.1 isi_0002.176.t8');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/modify-v.html#modify01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="modify-01&#xA;    ARG0: causer of transformation&#xA;    ARG1: thing changing&#xA;    ARG2: end state&#xA;    ARG3: start state">modify-01</span>))))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.178">
+<p><b>isi_0002.178</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span id="isi_0002.178.t1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.178.t1 isi_0002.178.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.178.t1 isi_0002.178.1.1');" style="color:#007700;" ostyle="color:#007700;">eight</span> <span id="isi_0002.178.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.178.t2 isi_0002.178.1.1.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.178.t2 isi_0002.178.1.1.r');" style="color:#007700;" ostyle="color:#007700;">o'clock</span> <span ostyle="" title="function word (preposition)">in</span> <span ostyle="" title="function word (article)">the</span> <span  title="unaligned: morning" style="color:#FF0000;" ostyle="color:#FF0000;">morning</span> <span id="isi_0002.178.t6" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.178.t6 isi_0002.178.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.178.t6 isi_0002.178.1.2');" style="color:#007700;" ostyle="color:#007700;">local</span> <span id="isi_0002.178.t7" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.178.t7 isi_0002.178.1.1.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.178.t7 isi_0002.178.1.1.r');" style="color:#007700;" ostyle="color:#007700;">time</span> 
+<p>
+   <table><tr><td width="75%">
+(d /  <span id="isi_0002.178.1" onclick="popUpBottom('popup/date.html',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="date-entity&#xA;    :year 1776&#xA;    :month 7&#xA;    :day 4&#xA;    :weekday (t/ thursday)&#xA;    :time &quot;16:00&quot;">date-entity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.178.1.1.r" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.178.t2 isi_0002.178.t7 isi_0002.178.1.1.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.178.t2 isi_0002.178.t7 isi_0002.178.1.1.r');" style="color:#007700;" ostyle="color:#007700;">:time</span>  <span id="isi_0002.178.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.178.1.1 isi_0002.178.t1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.178.1.1 isi_0002.178.t1');" style="color:#007700;" ostyle="color:#007700;">"8:00"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.178.1.2.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in dates (time)">:timezone</span> (l /  <span id="isi_0002.178.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.178.1.2 isi_0002.178.t6');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.178.1.2 isi_0002.178.t6');" style="color:#007700;" ostyle="color:#007700;">local</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.188">
+<p><b>isi_0002.188</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span id="isi_0002.188.t1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.t1 isi_0002.188.1.1.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.t1 isi_0002.188.1.1.1.1');" style="color:#007700;" ostyle="color:#007700;">Patrick</span> <span id="isi_0002.188.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.t2 isi_0002.188.1.1.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.t2 isi_0002.188.1.1.1.2');" style="color:#007700;" ostyle="color:#007700;">Makau</span> <span id="isi_0002.188.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.t3 isi_0002.188.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.t3 isi_0002.188.1');" style="color:#007700;" ostyle="color:#007700;">finished</span> <span ostyle="" title="function word (article)">the</span> <span id="isi_0002.188.t5" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.t5 isi_0002.188.1.2.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.t5 isi_0002.188.1.2.2');" style="color:#007700;" ostyle="color:#007700;">marathon</span> <span ostyle="" title="function word (preposition)">in</span> <span id="isi_0002.188.t7" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.t7 isi_0002.188.1.2.3.1.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.t7 isi_0002.188.1.2.3.1.1');" style="color:#007700;" ostyle="color:#007700;">2</span> <span id="isi_0002.188.t8" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.t8 isi_0002.188.1.2.3.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.t8 isi_0002.188.1.2.3.1.2');" style="color:#007700;" ostyle="color:#007700;">hours</span> <span ostyle="" title="function word (punct)">,</span> <span id="isi_0002.188.t10" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.t10 isi_0002.188.1.2.3.2.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.t10 isi_0002.188.1.2.3.2.1');" style="color:#007700;" ostyle="color:#007700;">3</span> <span id="isi_0002.188.t11" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.t11 isi_0002.188.1.2.3.2.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.t11 isi_0002.188.1.2.3.2.2');" style="color:#007700;" ostyle="color:#007700;">minutes</span> <span  title="unaligned: and" style="color:#FF0000;" ostyle="color:#FF0000;">and</span> <span id="isi_0002.188.t13" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.t13 isi_0002.188.1.2.3.3.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.t13 isi_0002.188.1.2.3.3.1');" style="color:#007700;" ostyle="color:#007700;">38</span> <span id="isi_0002.188.t14" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.t14 isi_0002.188.1.2.3.3.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.t14 isi_0002.188.1.2.3.3.2');" style="color:#007700;" ostyle="color:#007700;">seconds</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(f /  <span id="isi_0002.188.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1 isi_0002.188.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1 isi_0002.188.t3');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/finish-v.html#finish01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="finish-01&#xA;    ARG0: Intentional agent&#xA;    ARG1: Thing finishing&#xA;    ARG2: Explicit instrument, thing finished with">finish-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG0</span> (p /  <span id="isi_0002.188.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.1 isi_0002.188.1.2.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1.1 isi_0002.188.1.2.1');" style="color:#007700;" ostyle="color:#007700;">person</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:name</span> (n /  <span id="isi_0002.188.1.1.1" style="color:#007700;" ostyle="color:#007700;">name</span> <span id="isi_0002.188.1.1.1.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span>  <span id="isi_0002.188.1.1.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.1.1.1 isi_0002.188.t1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1.1.1.1 isi_0002.188.t1');" style="color:#007700;" ostyle="color:#007700;">"Patrick"</span> <span id="isi_0002.188.1.1.1.2.r" style="color:#007700;" ostyle="color:#007700;">:op2</span>  <span id="isi_0002.188.1.1.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.1.1.2 isi_0002.188.t2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1.1.1.2 isi_0002.188.t2');" style="color:#007700;" ostyle="color:#007700;">"Makau"</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.r" style="color:#007700;" ostyle="color:#007700;">:ARG1</span> (r /  <span id="isi_0002.188.1.2" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/run-v.html#run02',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="run-02&#xA;    ARG0: runner&#xA;    ARG1: course, race, distance&#xA;    ARG2: opponent">run-02</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG0</span>  <span id="isi_0002.188.1.2.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.1 isi_0002.188.1.2.1');" onmouseout="reset_style_for_ids('color:#000000;','isi_0002.188.1.1 isi_0002.188.1.2.1');" style="color:#000000;" ostyle="color:#000000;">p</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.2.r" style="color:#007700;" ostyle="color:#007700;">:ARG1</span> (m /  <span id="isi_0002.188.1.2.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.2.2 isi_0002.188.t5');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1.2.2 isi_0002.188.t5');" style="color:#007700;" ostyle="color:#007700;">marathon</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.3.r" style="color:#007700;" ostyle="color:#007700;">:duration</span> (s2 /  <span id="isi_0002.188.1.2.3" style="color:#007700;" ostyle="color:#007700;">sum-of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.3.1.r" style="color:#007700;" ostyle="color:#007700;">:op1</span> (t2 /  <span id="isi_0002.188.1.2.3.1" style="color:#007700;" ostyle="color:#007700;">temporal-quantity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.3.1.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span>  <span id="isi_0002.188.1.2.3.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.2.3.1.1 isi_0002.188.t7');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1.2.3.1.1 isi_0002.188.t7');" style="color:#007700;" ostyle="color:#007700;">2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.3.1.2.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in quantities">:unit</span> (h /  <span id="isi_0002.188.1.2.3.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.2.3.1.2 isi_0002.188.t8');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1.2.3.1.2 isi_0002.188.t8');" style="color:#007700;" ostyle="color:#007700;">hour</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.3.2.r" style="color:#007700;" ostyle="color:#007700;">:op2</span> (t3 /  <span id="isi_0002.188.1.2.3.2" style="color:#007700;" ostyle="color:#007700;">temporal-quantity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.3.2.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span>  <span id="isi_0002.188.1.2.3.2.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.2.3.2.1 isi_0002.188.t10');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1.2.3.2.1 isi_0002.188.t10');" style="color:#007700;" ostyle="color:#007700;">3</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.3.2.2.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in quantities">:unit</span> (m2 /  <span id="isi_0002.188.1.2.3.2.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.2.3.2.2 isi_0002.188.t11');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1.2.3.2.2 isi_0002.188.t11');" style="color:#007700;" ostyle="color:#007700;">minute</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.3.3.r" style="color:#007700;" ostyle="color:#007700;">:op3</span> (t4 /  <span id="isi_0002.188.1.2.3.3" style="color:#007700;" ostyle="color:#007700;">temporal-quantity</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.3.3.1.r" style="color:#007700;" ostyle="color:#007700;">:quant</span>  <span id="isi_0002.188.1.2.3.3.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.2.3.3.1 isi_0002.188.t13');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1.2.3.3.1 isi_0002.188.t13');" style="color:#007700;" ostyle="color:#007700;">38</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.188.1.2.3.3.2.r" style="color:#007700;border-bottom:1px dotted;" ostyle="color:#007700;border-bottom:1px dotted;" title="in quantities">:unit</span> (s3 /  <span id="isi_0002.188.1.2.3.3.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.188.1.2.3.3.2 isi_0002.188.t14');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.188.1.2.3.3.2 isi_0002.188.t14');" style="color:#007700;" ostyle="color:#007700;">second</span>)))))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.204">
+<p><b>isi_0002.204</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span ostyle="" title="function word (punct)">&quot;</span> <span  title="unaligned: We" style="color:#FF0000;" ostyle="color:#FF0000;">We</span> <span id="isi_0002.204.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.204.t3 isi_0002.204.1.2.1.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.204.t3 isi_0002.204.1.2.1.r');" style="color:#007700;" ostyle="color:#007700;">are</span> <span id="isi_0002.204.t4" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.204.t4 isi_0002.204.1.1 isi_0002.204.1.2.1 isi_0002.204.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.204.t4 isi_0002.204.1.1 isi_0002.204.1.2.1 isi_0002.204.1.2');" style="color:#007700;" ostyle="color:#007700;">roses</span> <span ostyle="" title="function word (punct)">,</span> <span ostyle="" title="function word (punct)">&quot;</span> <span id="isi_0002.204.t7" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.204.t7 isi_0002.204.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.204.t7 isi_0002.204.1');" style="color:#007700;" ostyle="color:#007700;">said</span> <span ostyle="" title="function word (article)">the</span> <span id="isi_0002.204.t9" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.204.t9 isi_0002.204.1.1 isi_0002.204.1.2.1 isi_0002.204.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.204.t9 isi_0002.204.1.1 isi_0002.204.1.2.1 isi_0002.204.1.2');" style="color:#007700;" ostyle="color:#007700;">roses</span> <span ostyle="" title="function word (punct)">.</span> 
+<p>
+   <table><tr><td width="75%">
+(s /  <span id="isi_0002.204.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.204.1 isi_0002.204.t7');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.204.1 isi_0002.204.t7');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/say-v.html#say01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="say-01&#xA;    ARG0: Sayer&#xA;    ARG1: Utterance&#xA;    ARG2: Hearer&#xA;    ARG3: Attributive">say-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.204.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG0</span> (r /  <span id="isi_0002.204.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.204.1.1 isi_0002.204.1.2.1 isi_0002.204.t4 isi_0002.204.t9');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.204.1.1 isi_0002.204.1.2.1 isi_0002.204.t4 isi_0002.204.t9');" style="color:#007700;" ostyle="color:#007700;">rose</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.204.1.2.r" style="color:#007700;" ostyle="color:#007700;">:ARG1</span> (r2 /  <span id="isi_0002.204.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.204.1.2 isi_0002.204.t4 isi_0002.204.t9');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.204.1.2 isi_0002.204.t4 isi_0002.204.t9');" style="color:#007700;" ostyle="color:#007700;">rose</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.204.1.2.1.r" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.204.t3 isi_0002.204.1.2.1.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.204.t3 isi_0002.204.1.2.1.r');" style="color:#007700;" ostyle="color:#007700;">:domain</span>  <span id="isi_0002.204.1.2.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.204.1.1 isi_0002.204.1.2.1 isi_0002.204.t4 isi_0002.204.t9');" onmouseout="reset_style_for_ids('color:#000000;','isi_0002.204.1.1 isi_0002.204.1.2.1 isi_0002.204.t4 isi_0002.204.t9');" style="color:#000000;" ostyle="color:#000000;">r</span>))   </td></tr></table>
+
+<p>
+
+<a name="isi_0002.206">
+<p><b>isi_0002.206</b> &nbsp; <span ostyle="" title="function word (punct)"></span> <span ostyle="" title="function word (article)">The</span> <span id="isi_0002.206.t2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.206.t2 isi_0002.206.1.1 isi_0002.206.1.2.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.206.t2 isi_0002.206.1.1 isi_0002.206.1.2.1');" style="color:#007700;" ostyle="color:#007700;">boy</span> <span id="isi_0002.206.t3" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.206.t3 isi_0002.206.1');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.206.t3 isi_0002.206.1');" style="color:#007700;" ostyle="color:#007700;">said</span> <span ostyle="" title="function word (punct)">,</span> <span ostyle="" title="function word (punct)">&quot;</span> <span  title="unaligned: I" style="color:#FF0000;" ostyle="color:#FF0000;">I</span> <span id="isi_0002.206.t7" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.206.t7 isi_0002.206.1.2.1.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.206.t7 isi_0002.206.1.2.1.r');" style="color:#007700;" ostyle="color:#007700;">am</span> <span id="isi_0002.206.t8" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.206.t8 isi_0002.206.1.2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.206.t8 isi_0002.206.1.2');" style="color:#007700;" ostyle="color:#007700;">hungry</span> <span ostyle="" title="function word (punct)">.&quot;</span> 
+<p>
+   <table><tr><td width="75%">
+(s /  <span id="isi_0002.206.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.206.1 isi_0002.206.t3');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.206.1 isi_0002.206.t3');" onclick="popUpBottom('http://www.isi.edu/amr/amr/ontonotes-4.0-frames/say-v.html#say01',600,500);" style="color:#007700;text-decoration:underline;" ostyle="color:#007700;text-decoration:underline;" title="say-01&#xA;    ARG0: Sayer&#xA;    ARG1: Utterance&#xA;    ARG2: Hearer&#xA;    ARG3: Attributive">say-01</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.206.1.1.r" style="color:#007700;" ostyle="color:#007700;">:ARG0</span> (b /  <span id="isi_0002.206.1.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.206.1.1 isi_0002.206.1.2.1 isi_0002.206.t2');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.206.1.1 isi_0002.206.1.2.1 isi_0002.206.t2');" style="color:#007700;" ostyle="color:#007700;">boy</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.206.1.2.r" style="color:#007700;" ostyle="color:#007700;">:ARG1</span> (h /  <span id="isi_0002.206.1.2" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.206.1.2 isi_0002.206.t8');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.206.1.2 isi_0002.206.t8');" style="color:#007700;" ostyle="color:#007700;">hungry</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="isi_0002.206.1.2.1.r" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.206.t7 isi_0002.206.1.2.1.r');" onmouseout="reset_style_for_ids('color:#007700;','isi_0002.206.t7 isi_0002.206.1.2.1.r');" style="color:#007700;" ostyle="color:#007700;">:domain</span>  <span id="isi_0002.206.1.2.1" onmouseover="set_style_for_ids('color:#0000FF;font-weight:bold;','isi_0002.206.1.1 isi_0002.206.1.2.1 isi_0002.206.t2');" onmouseout="reset_style_for_ids('color:#000000;','isi_0002.206.1.1 isi_0002.206.1.2.1 isi_0002.206.t2');" style="color:#000000;" ostyle="color:#000000;">b</span>))   </td></tr></table>
+
+<p>
+<a name="summary">
+<p><hr><p>
+<b>Summary:</b>
+<ul>
+  <li> 22 out of 253 sentences contains at least one coverage warning.
+  <li> AMR coverage warnings
+<ul>
+  <li> Warning: Is <span style="color:#FF0000;">1</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.13"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.13</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">1212</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.13"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.13</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">4</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.7"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.7</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">555</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.13"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.13</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">800</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.13"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.13</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">Adar</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.173"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.173</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">I</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.206"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.206</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">II</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.173"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.173</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">Muharram</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.172"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.172</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">We</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.204"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.204</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">Yes</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.111"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.111</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">and</span> covered by AMR?</span> &nbsp;(3): &nbsp; <a href="guidelines-checker-example.html#isi_0001.31"><span style="color:#AAAAAA;text-decoration:underline;">isi_0001.31</span></a>, &nbsp; <a href="guidelines-checker-example.html#isi_0002.148"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.148</span></a>, &nbsp; <a href="guidelines-checker-example.html#isi_0002.188"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.188</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">away</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.131"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.131</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">bars</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.101"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.101</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">behind</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.101"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.101</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">billion</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0001.31"><span style="color:#AAAAAA;text-decoration:underline;">isi_0001.31</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">degrees</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.33"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.33</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">four</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0001.33"><span style="color:#AAAAAA;text-decoration:underline;">isi_0001.33</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">half</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0001.31"><span style="color:#AAAAAA;text-decoration:underline;">isi_0001.31</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">intensity</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.176"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.176</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">morning</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.178"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.178</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">no</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.104"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.104</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">one</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.18"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.18</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">place</span> covered by AMR?</span> &nbsp;(2): &nbsp; <a href="guidelines-checker-example.html#isi_0001.4"><span style="color:#AAAAAA;text-decoration:underline;">isi_0001.4</span></a>, &nbsp; <a href="guidelines-checker-example.html#isi_0002.73"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.73</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">pm</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.7"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.7</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">s</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0002.8"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.8</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">take</span> covered by AMR?</span> &nbsp;(2): &nbsp; <a href="guidelines-checker-example.html#isi_0002.73"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.73</span></a>, &nbsp; <a href="guidelines-checker-example.html#isi_0002.95"><span style="color:#AAAAAA;text-decoration:underline;">isi_0002.95</span></a>
+  <li> Warning: Is <span style="color:#FF0000;">took</span> covered by AMR?</span> &nbsp;(1): &nbsp; <a href="guidelines-checker-example.html#isi_0001.4"><span style="color:#AAAAAA;text-decoration:underline;">isi_0001.4</span></a>
+       </ul>
+   </body>
+</html>

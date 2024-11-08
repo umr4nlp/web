@@ -1,0 +1,950 @@
+﻿
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="max-age=3600" />
+    <title>AMR dict</title>
+    <script type="text/javascript">
+    <!--
+    function toggle(id) {
+       if ((s = document.getElementById(id)) != null) {
+          if (s.style.display == 'none') {
+             s.style.display = 'inline';
+          } else {
+             s.style.display = 'none';
+          }
+       }
+    }
+
+    function toggle_group(group_id, url, new_search_help_id) {
+       if (((s = document.getElementById('new_search_on_next_click_p')) == null) || (s.value == 0)) {          
+          i = 1;         
+          id = group_id + '_' + i;
+          while ((s = document.getElementById(id)) != null) {
+             if (s.style.display == 'none') {
+                s.style.display = 'inline';
+             } else {
+                s.style.display = 'none';
+             }
+             i = i + 1;
+             id = group_id + '_' + i;
+          }
+       }
+
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          new_search_value = s.value;
+          s.value = 0;
+          if ((new_search_help_id != 0) && ((s2 = document.getElementById(new_search_help_id)) != null)) {
+             s2.style.display = 'none';
+          }
+          if ((new_search_value == 1) && (url != 0)) {
+             popUpBottom(url,750,400);
+          }
+       }
+    }
+
+    function set_group_display(group_id, value) {
+       i = 1;         
+       id = group_id + '_' + i;
+       while ((s = document.getElementById(id)) != null) {
+          s.style.display = value;
+          i = i + 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function popUpBottom(URL,width,height) {
+       day = new Date();
+       id = day.getTime();
+       eval("myWindow = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=" + width + ",height=" + height + "');");
+    }
+
+    function popUpWarning(warning) {
+       newwindow=window.open('','Warning','height=160,width=400,resizable=1,scrollbars=1,toolbar=0,statusbar=0,menubar=0');
+       var tmp = newwindow.document;
+       tmp.write('<html>\n');
+       tmp.write('  <head><title>AMR Editor Warning</title></head>\n');
+       tmp.write('  <body' + ' style="background-color:#FFFFEE;">\n');
+       tmp.write('    <h3>Warning</h3>\n');
+       tmp.write('    ' + warning + '\n');
+       tmp.write('    <p>\n');
+       tmp.write('    <input type="submit" title="Close this window." value="OK" onclick="self.close();">\n');
+       tmp.write('  </body>\n');
+       tmp.write('</html>\n');
+       tmp.close();
+    }
+
+    function new_search_on_next_click(new_search_help_id) {
+       if ((s = document.getElementById(new_search_help_id)) != null) {
+          s.style.display = 'inline';
+       }
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          s.value = 1;
+       }
+    }
+
+    function set(id, value) {
+       if ((s = document.getElementById(id)) != null) {
+	  s.value = value;
+       }
+    }
+
+    function set_group_pairwise(snt_id, odd_value, even_value) {
+       gi = 0;
+       group_id = snt_id + '_' + gi;
+       i = 1;
+       id = group_id + '_' + i;
+       while (((s = document.getElementById(id)) != null) || (gi == 0)) {
+          while ((s = document.getElementById(id)) != null) {
+	     s.style.display = odd_value;
+             i = i + 1;
+	     id = group_id + '_' + i;
+	     if ((s = document.getElementById(id)) != null) {
+	        s.style.display = even_value;
+	     }
+             i = i + 1;
+	     id = group_id + '_' + i;
+          }
+          gi = gi + 1;
+          group_id = snt_id + '_' + gi;
+          i = 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function clear(id) {
+       if (s = document.getElementById(id)) {
+          s.value = '';
+       }
+    }
+
+    function goto_page_loc(hash, id, y) {
+       var s ;
+       var page_dynamically_created_p = 0;
+       if (page_dynamically_created_p) {
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+             s.focus();
+             if (document.body.scrollTop > 0) {
+               document.body.scrollTop += y;
+             } else {
+               // document.body.scrollTop = document.body.scrollHeight;
+               // s.focus();
+             }
+          } 
+       } else {
+          window.location.hash = hash;
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+          }
+       }
+    }
+
+    function redirect(url) {
+       window.location = url;
+    }
+
+    
+    function set_display(id, value) {
+       if ((s = document.getElementById(id)) != null) {
+          s.style.display = value;
+       }
+    }
+
+    function redraw_context(i) {
+       if ((s = document.getElementById('fe_' + i)) != null) { s.style.display = 'inline'; s.style.color = 'black'; }
+       if ((s = document.getElementById('ps_' + i)) != null) { s.style.display = 'inline'; s.style.color = '#666666'; }
+       if ((s = document.getElementById('ex_' + i)) != null) { s.style.display = 'inline'; s.style.color = 'purple'; }
+    }
+
+    function simple_print_date(date) {
+       var monthNames=new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+       var month;
+       if (typeof (month = date.getMonth()) !== 'undefined') {
+          return monthNames[month] + ' ' + date.getDate() + ', ' + date.getFullYear();
+       } else {
+	  return "";
+       }
+    }
+
+    function update_date_add_mod_info() {
+       var fromSecondsTime = document.getElementById('ref_time_from').value;
+       var toSecondsTime = document.getElementById('ref_time_to').value;
+
+       // var sl = document.getElementById('log');
+       // sl.innerHTML = fromSecondsTime + '-' + toSecondsTime;
+
+       var n_topics_added = 0;
+       var n_topics_modified = 0;
+       var n_changes = 0;
+
+       var n_date_topic_index = 1;
+       while ((s = document.getElementById('DATED_TOPIC_' + n_date_topic_index)) != null) {
+	  var time_added = s.getAttribute('time_added');
+	  var times_modified = s.getAttribute('times_modified');
+	  var title = s.getAttribute('core_title');
+	  if (time_added && (fromSecondsTime <= time_added) && (time_added <= toSecondsTime)) {
+	     s.style.color = 'red';
+	     title += '\n(topic added ' + simple_print_date(new Date(time_added * 1000)) + ')';
+	     n_topics_added++;
+	     // sl.innerHTML += ' T: ' + title;
+	  } else if (times_modified) {
+	     var time_modified_list = times_modified.split(/\s+/);
+	     var matching_time_modified_list = new Array();
+	     for (var i=0; i<time_modified_list.length; i++) {
+		var time_modified = time_modified_list[i];
+		if ((fromSecondsTime <= time_modified) && (time_modified <= toSecondsTime)) {
+		   matching_time_modified_list.push(time_modified);
+		}
+	     }
+	     if (matching_time_modified_list.length >= 1) {
+		s.style.color = 'green';
+	        title += '\n(topic modified ' + simple_print_date(new Date(matching_time_modified_list[0] * 1000));
+		for (var i=1; i<matching_time_modified_list.length; i++) {
+	           title += '; ' + simple_print_date(new Date(matching_time_modified_list[i] * 1000));
+		}
+		title += ')';
+	        n_topics_modified++;
+	     } else {
+		s.style.color = '#0000DD';
+	     }
+	  } else {
+	     s.style.color = '#0000DD';
+	  }
+	  s.setAttribute('title', title);
+	  n_date_topic_index++;
+       }
+
+       var n_date_body_index = 1;
+       while ((s = document.getElementById('DATED_BODY_' + n_date_body_index)) != null) {
+	  var time_added = s.getAttribute('time_added');
+	  var times_modified = s.getAttribute('times_modified');
+	  // sl.innerHTML += ' I: ' + n_date_body_index + ' A: ' + time_added + ' M: ' + times_modified;
+	  if (time_added && (fromSecondsTime <= time_added) && (time_added <= toSecondsTime)) {
+	     s.style.color = 'red';
+	     s.style.display = 'inline';
+	     s.innerHTML = ' &nbsp; (added ' + simple_print_date(new Date(time_added * 1000)) + ')';
+	     n_changes++;
+	     // sl.innerHTML += ' T: ' + time_added;
+	  } else if (times_modified) {
+	     var time_modified_list = times_modified.split(/\s+/);
+	     var matching_time_modified_list = new Array();
+	     for (var i=0; i<time_modified_list.length; i++) {
+		var time_modified = time_modified_list[i];
+		if ((fromSecondsTime <= time_modified) && (time_modified <= toSecondsTime)) {
+		   matching_time_modified_list.push(time_modified);
+		}
+	     }
+	     if (matching_time_modified_list.length >= 1) {
+		s.style.color = 'green';
+	        s.innerHTML = ' &nbsp; (modified ' + simple_print_date(new Date(matching_time_modified_list[0] * 1000));
+	        // sl.innerHTML += ' T: ' + matching_time_modified_list[0];
+		for (var i=1; i<matching_time_modified_list.length; i++) {
+	           s.innerHTML += '; ' + simple_print_date(new Date(matching_time_modified_list[i] * 1000));
+	           // sl.innerHTML += ' T: ' + matching_time_modified_list[i];
+		}
+		s.innerHTML += ')';
+	        n_changes += matching_time_modified_list.length;
+		s.style.display = 'inline';
+	     } else {
+		s.style.display = 'none';
+		// sl.innerHTML += ' NONE ';
+	     }
+	  } else {
+	     s.style.display = 'none';
+	     // sl.innerHTML += ' NONE ';
+	  }
+	  n_date_body_index++;
+       }
+
+       // sl.innerHTML += ' change ' + n_topics_added + ' ' + n_topics_modified + ' ' + n_changes;
+       if ((ss = document.getElementById('change_summary')) != null) {
+	  var text = 'Additions/modifications in this time period: &nbsp; ';
+	  var keywords;
+	  if (n_changes) {
+	     var s; // plural s
+	     var texts = new Array();
+	     if (n_topics_added) {
+	        if (n_topics_added == 1) {
+	           s = '';
+	        } else {
+	           s = 's';
+	        }
+	        texts.push(n_topics_added + ' topic' + s + ' added');
+	     }
+	     if (n_topics_modified) {
+	        if (n_topics_modified == 1) {
+	           s = '';
+	        } else {
+	           s = 's';
+	        }
+	        texts.push(n_topics_modified + ' topic' + s + ' modified');
+	     }
+	     if (n_changes == 1) {
+	        s = '';
+	     } else {
+	        s = 's';
+	     }
+	     texts.push('with a total of ' + n_changes + ' change note' + s);
+	     text += texts.join(", ");
+	  } else {
+	     text += 'none';
+	  }
+	  ss.innerHTML = text;
+       }
+    }
+
+    function update_from_n_days_ago () {
+       var s;
+       if ((s = document.getElementById('from_n_days_ago')) != null) {
+	  s.value = s.value.replace(/[^0-9]/g, "") || 0;
+	  s.value = s.value.replace(/^0+([0-9])/, '$1');
+	  var from_n_days_ago = s.value;
+          var fromDate = new Date();
+	  fromDate.setHours(0);
+	  fromDate.setMinutes(0);
+	  fromDate.setSeconds(0);
+	  fromDate.setDate(fromDate.getDate()-from_n_days_ago);
+	  if ((s2 = document.getElementById('from_date')) != null) {
+	     s2.innerHTML = simple_print_date(fromDate);
+	  }
+	  fromSecondsTime = Math.floor(fromDate.getTime() / 1000);
+	  if ((s3 = document.getElementById('ref_time_from')) != null) {
+	     s3.value = fromSecondsTime;
+	  }
+       }
+    }
+
+    function update_to_n_days_ago () {
+       var s;
+       if ((s = document.getElementById('to_n_days_ago')) != null) {
+	  s.value = s.value.replace(/[^0-9]/g, "") || 0;
+	  s.value = s.value.replace(/^0+([0-9])/, '$1');
+	  var to_n_days_ago = s.value;
+          var toDate = new Date();
+	  toDate.setHours(23);
+	  toDate.setMinutes(59);
+	  toDate.setSeconds(59);
+	  toDate.setDate(toDate.getDate()-to_n_days_ago);
+	  if ((s2 = document.getElementById('to_date')) != null) {
+	     s2.innerHTML = simple_print_date(toDate);
+	  }
+	  toSecondsTime = Math.floor(toDate.getTime() / 1000);
+	  if ((s3 = document.getElementById('ref_time_to')) != null) {
+	     s3.value = toSecondsTime;
+	  }
+       }
+    }
+
+    function key_up(e) {
+
+       var keycode = -1;
+       if (window.event) {
+	  keycode = window.event.keyCode;
+       } else if (e) {
+	  keycode = e.which;
+       }
+
+       var s;
+       if ((s = document.getElementById('from_n_days_ago')) == document.activeElement) {
+          if (keycode == 13) {
+	     s.blur();
+	  } else {
+	     update_from_n_days_ago();
+	     update_date_add_mod_info();
+          }
+       } else if ((s = document.getElementById('to_n_days_ago')) == document.activeElement) {
+	  if (keycode == 13) {
+	     s.blur();
+	  } else {
+	     update_to_n_days_ago();
+	     update_date_add_mod_info();
+	  }
+       }
+    }
+
+    function key_press(e) {
+
+       var keycode = -1;
+       if (window.event) {
+	  keycode = window.event.keyCode;
+       } else if (e) {
+	  keycode = e.which;
+       }
+
+       var s;
+       if ((s = document.getElementById('from_n_days_ago')) == document.activeElement) {
+	  // special case -> key_up
+       } else if ((s = document.getElementById('to_n_days_ago')) == document.activeElement) {
+	  // special case -> key_up
+       } else {
+
+          // sd = document.getElementById('log'); sd.innerHTML = 'key-press: ' + keycode;
+ 
+          var date = new Date();
+          var current_time = date.getTime();
+          var time_diff = current_time - last_time;
+
+          // reset jump_string after 1000 milliseconds
+          if (time_diff > 1000) {
+	     jump_string = '#';
+          }
+          // sd = document.getElementById('log'); sd.innerHTML = 'key-press: ' + keycode + ' jump_string: ' + jump_string + '  time_diff: ' + time_diff;
+          last_time = current_time;
+
+          if (keycode == 13) {
+	     // carriage return (enter)
+	     jump_string = '#';
+	     window.location = jump_string;
+          } else if (keycode == 2) {
+             // CTRL-B
+             set_group_display('t','none');
+          } else if ((keycode == 32) && (jump_string == '#')) {
+	     // space bar, no special action, let browser scroll
+          } else if ((keycode >= 32) && (keycode <= 126)) {
+	     var chr = String.fromCharCode(keycode) + '';
+	     jump_string += chr;
+             window.location = jump_string;
+	     // sd = document.getElementById('log'); sd.innerHTML = 'jump-string: ' + jump_string;
+          } else if (keycode == 13) {
+	     // enter
+	     // sd = document.getElementById('log'); sd.innerHTML = 'key-press: ' + keycode + ' (enter)';
+	     jump_string = '#';
+          } else {
+	     sd = document.getElementById('log'); sd.innerHTML = 'key-press: ' + keycode + ' (unrecognized shortcut key)';
+          }
+       }
+    }
+
+    function show_list(page_id, page_target, page_title, page_filter) {
+       var newWindow=window.open('',page_target);
+       newWindow.focus();
+       var tmp = newWindow.document;
+       tmp.write('<html>\n  <head><title>list</title></head>\n');
+       tmp.write('  <body style="background-color:#FFFFEE;" onload="document.getElementById(\'show-list\').submit();">\n');
+       tmp.write('    <form name="show-list" id="show-list" enctype="multipart/form-data" action="http://www.isi.edu/cgi-bin/div3/mt/amr-editor/show-list.cgi" method="post">\n');
+       tmp.write('      <input type="hidden" id="page-id" name="page-id" value="' + page_id     + '">\n');
+       tmp.write('      <input type="hidden" id="filter"  name="filter"  value="' + page_filter + '">\n');
+       tmp.write('      <input type="hidden" id="title"   name="title"   value="' + page_title  + '">\n');
+       tmp.write('    </form>\n');
+       tmp.write('  </body>\n');
+       tmp.write('</html>\n');
+       tmp.close();
+    }
+
+    function show_lvc_list() {
+       show_list('amr-auto-correction-rules.txt', 'LVC_LIST', 'List of common mappings from light verb construction to AMR concept', 'ELIMINATE-SUPPORT-VERB');
+    }
+
+    function initialize() {
+       document.onkeypress = key_press;
+       document.onkeyup = key_up;
+       if (document.layers) {
+	  document.captureEvents(Event.KEYPRESS);
+       }
+       update_from_n_days_ago();
+       update_to_n_days_ago();
+       update_date_add_mod_info();
+    }
+
+    var jump_string = '#';
+    var last_time = 0;
+
+
+    -->
+    </script>
+  </head>
+  <body bgcolor="#FFFFEE" onload="initialize();">
+<table width="100%" border="0" cellpadding="3" cellspacing="0"><tr bgcolor="#BBCCFF"><td>&nbsp; <font size="+1"><b>AMR Annotation Dictionary &nbsp; &ndash; &nbsp; Systems Biology Appendix</b></font> &nbsp; &nbsp; <span style="color:#777777;">last updated on Fri Sep 23, 2016 at 19:49:57</span></td></tr></table>
+<br />
+<font size="+2" color="black"><b>Alphabetical Index</b></font><ul style="margin-top:0px;">
+<li> <b>Quick access</b>: Type the first letter(s) of a topic to jump to it (just type, not into any particular text box). &nbsp; Press the <i>enter</i> key to return to this top of the page.
+<li> <b>List of topics:</b> &nbsp; 
+<nobr><a id="DATED_TOPIC_1" time_added="1422259200" times_modified="1422259200" style="color:#0000DD;" href="amr-dict-biomed.html#abbreviations" title="Abbreviations&#xA; &nbsp; &nbsp; -/- &nbsp; Both copies of a gene have a mutation that renders the expressed protein inoperable.&#xA; &nbsp; &nbsp; 3'-end &nbsp; (&quot;three prime end&quot;) trailing end of DNA or RNA&#xA; &nbsp; &nbsp; 5'-end &nbsp; (&quot;five prime end&quot;) leading end of DNA or RNA&#xA; &nbsp; &nbsp; CR &nbsp; complete response (to treatment)&#xA; &nbsp; &nbsp; DNA &nbsp; (n / nucleic-acid :wiki &quot;DNA&quot; :name (n2 / name :op1 &quot;DNA&quot;))&#xA; &nbsp; &nbsp; EMT &nbsp; (e / event :wiki &quot;Epithelial&minus;mesenchymal_transition&quot; :name (n / name :op1 &quot;epithelial-mesenchymal&quot; :op2 &quot;transition&quot;))&#xA; &nbsp; &nbsp; IR &nbsp; ionizing radiation&#xA; &nbsp; &nbsp; KD&#xA; &nbsp; &nbsp; MI&#xA; &nbsp; &nbsp; p  &nbsp; p-value when determining the statistical significance of a hypothesis&#xA; &nbsp; &nbsp; PD &nbsp; progressive disease&#xA; &nbsp; &nbsp; PR &nbsp; partial response (to treatment)&#xA; &nbsp; &nbsp; RNA &nbsp; (n / nucleic-acid :wiki &quot;RNA&quot; :name (n2 / name :op1 &quot;RNA&quot;))&#xA; &nbsp; &nbsp; s.d. &nbsp; stable disease&#xA; &nbsp; &nbsp; UTR &nbsp; untranslated region&#xA; &nbsp; &nbsp; WT &nbsp; wild-type" core_title="Abbreviations&#xA; &nbsp; &nbsp; -/- &nbsp; Both copies of a gene have a mutation that renders the expressed protein inoperable.&#xA; &nbsp; &nbsp; 3'-end &nbsp; (&quot;three prime end&quot;) trailing end of DNA or RNA&#xA; &nbsp; &nbsp; 5'-end &nbsp; (&quot;five prime end&quot;) leading end of DNA or RNA&#xA; &nbsp; &nbsp; CR &nbsp; complete response (to treatment)&#xA; &nbsp; &nbsp; DNA &nbsp; (n / nucleic-acid :wiki &quot;DNA&quot; :name (n2 / name :op1 &quot;DNA&quot;))&#xA; &nbsp; &nbsp; EMT &nbsp; (e / event :wiki &quot;Epithelial&minus;mesenchymal_transition&quot; :name (n / name :op1 &quot;epithelial-mesenchymal&quot; :op2 &quot;transition&quot;))&#xA; &nbsp; &nbsp; IR &nbsp; ionizing radiation&#xA; &nbsp; &nbsp; KD&#xA; &nbsp; &nbsp; MI&#xA; &nbsp; &nbsp; p  &nbsp; p-value when determining the statistical significance of a hypothesis&#xA; &nbsp; &nbsp; PD &nbsp; progressive disease&#xA; &nbsp; &nbsp; PR &nbsp; partial response (to treatment)&#xA; &nbsp; &nbsp; RNA &nbsp; (n / nucleic-acid :wiki &quot;RNA&quot; :name (n2 / name :op1 &quot;RNA&quot;))&#xA; &nbsp; &nbsp; s.d. &nbsp; stable disease&#xA; &nbsp; &nbsp; UTR &nbsp; untranslated region&#xA; &nbsp; &nbsp; WT &nbsp; wild-type">Abbreviations</a> &nbsp; </nobr>
+<nobr><a id="DATED_TOPIC_2" time_added="1416902400" times_modified="1416902400" style="color:#0000DD;" href="amr-dict-biomed.html#amino-acid" title="amino-acid&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; example&#xA; &nbsp; &nbsp; related topic protein" core_title="amino-acid&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; example&#xA; &nbsp; &nbsp; related topic protein">amino-acid</a> &nbsp; </nobr>
+<nobr><a style="color:#0000DD;" href="amr-dict-biomed.html#amr annotation dictionary" title="AMR Annotation Dictionary" core_title="AMR Annotation Dictionary">AMR Annotation Dictionary</a> &nbsp; </nobr>
+<nobr><a id="DATED_TOPIC_3" time_added="1415174400" times_modified="1415174400" style="color:#0000DD;" href="amr-dict-biomed.html#domain" title="domain&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; examples&#xA; &nbsp; &nbsp; related topic protein" core_title="domain&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; examples&#xA; &nbsp; &nbsp; related topic protein">domain</a> &nbsp; </nobr>
+<nobr><a id="DATED_TOPIC_4" time_added="1415174400" times_modified="1415174400" style="color:#0000DD;" href="amr-dict-biomed.html#downregulation/upregulation" title="downregulation/upregulation&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; frame downregulate/upregulate" core_title="downregulation/upregulation&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; frame downregulate/upregulate">downregulation/upregulation</a> &nbsp; </nobr>
+<nobr><a id="DATED_TOPIC_5" time_added="1417593600" times_modified="1417593600" style="color:#0000DD;" href="amr-dict-biomed.html#effector" title="effector&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; annotation" core_title="effector&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; annotation">effector</a> &nbsp; </nobr>
+<nobr><a id="DATED_TOPIC_6" time_added="1415174400" times_modified="1415174400" style="color:#0000DD;" href="amr-dict-biomed.html#enzyme" title="enzyme&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; entity type&#xA; &nbsp; &nbsp; examples" core_title="enzyme&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; entity type&#xA; &nbsp; &nbsp; examples">enzyme</a> &nbsp; </nobr>
+<nobr><a id="DATED_TOPIC_7" time_added="1415174400" times_modified="1415174400" style="color:#0000DD;" href="amr-dict-biomed.html#phosphorylation" title="phosphorylation&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; frame for phosphorylate-01&#xA; &nbsp; &nbsp; examples" core_title="phosphorylation&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; frame for phosphorylate-01&#xA; &nbsp; &nbsp; examples">phosphorylation</a> &nbsp; </nobr>
+<nobr><a id="DATED_TOPIC_8" time_added="1415174400" times_modified="1415174400" style="color:#0000DD;" href="amr-dict-biomed.html#protein" title="protein&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; components of a protein&#xA; &nbsp; &nbsp; types of proteins" core_title="protein&#xA; &nbsp; &nbsp; definition&#xA; &nbsp; &nbsp; components of a protein&#xA; &nbsp; &nbsp; types of proteins">protein</a> &nbsp; </nobr>
+<nobr><a style="color:#0000DD;" href="amr-dict-biomed.html#upregulation" title="upregulation (sub-topic of downregulation/upregulation)" core_title="upregulation (sub-topic of downregulation/upregulation)">upregulation</a> &nbsp; </nobr>
+<nobr><a id="DATED_TOPIC_9" time_added="1416902400" times_modified="1416902400" style="color:#0000DD;" href="amr-dict-biomed.html#when" title="when&#xA; &nbsp; &nbsp; :time&#xA; &nbsp; &nbsp; :condition&#xA; &nbsp; &nbsp; see general AMR Dict for more examples" core_title="when&#xA; &nbsp; &nbsp; :time&#xA; &nbsp; &nbsp; :condition&#xA; &nbsp; &nbsp; see general AMR Dict for more examples">when</a> &nbsp; </nobr>
+ &nbsp; &nbsp; <nobr>‎<font color="#999999">(10 topics + 1 sub-topics)</font></nobr></ul>
+<a name="`">
+<a name="a">
+<a name="ab">
+<a name="abb">
+<a name="abbr">
+<a name="abbre">
+<a name="abbrev">
+<a name="abbrevi">
+<a name="abbrevia">
+<a name="abbreviat">
+<a name="abbreviati">
+<a name="abbreviatio">
+<a name="abbreviation">
+<a name="abbreviations">
+<font size="+2" color="#0000BB"><b>Abbreviations</b></font>
+<span id="DATED_BODY_1" time_added="1422259200" times_modified="1422259200" style="color:black;display:none;"> &nbsp; (ID)</span><ul style="margin-top:0px;">
+   <li> <font size="+1" color="#0000DD"><b>-/-</b> &nbsp; Both copies of a gene have a mutation that renders the expressed protein inoperable.</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>3'-end</b> &nbsp; ("three prime end") trailing end of DNA or RNA</font>
+  &nbsp; <font color="#0000DD">(<a target="_WIKI" href="https://en.wikipedia.org/wiki/Directionality_(molecular_biology)">more in Wikipedia</a>)</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>5'-end</b> &nbsp; ("five prime end") leading end of DNA or RNA</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>CR</b> &nbsp; complete response (to treatment)</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>DNA</b> &nbsp; (n / nucleic-acid :wiki "<a target="_WIKI" href="https://en.wikipedia.org/wiki/DNA">DNA</a>" :name (n2 / name :op1 "DNA"))</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>EMT</b> &nbsp; (e / event :wiki "<a target="_WIKI" href="https://en.wikipedia.org/wiki/Epithelial%E2%80%93mesenchymal_transition">Epithelial&minus;mesenchymal_transition</a>" :name (n / name :op1 "epithelial-mesenchymal" :op2 "transition"))</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>IR</b> &nbsp; ionizing radiation</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>KD</b></font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_1">knockdown
+ &nbsp; [<a  target="_WIKI" href="https://en.wikipedia.org/wiki/Gene_knockdown">more in Wikipedia</a>]   <li> <div id="fe_1">dissociation constant K<sub>d</sub>
+ &nbsp; [<a  target="_WIKI" href="https://en.wikipedia.org/wiki/Dissociation_constant">more in Wikipedia</a>]   <li> <div id="fe_1">kinase-deficient, kinase-inactivated
+       </ul>
+   <li> <font size="+1" color="#0000DD"><a href="https://github.com/cytoscape/webservice-psicquic-client/blob/master/src/main/resources/psimi_terms.txt" target="_EXT" style="text-decoration:none;"><font style="color:#0000DD;text-decoration:underline;"><b>MI</b></font> <img src="../images/externallink.png" border="0"></a></font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_1">molecular interaction (code)
+   <li> <div id="fe_1">Example: MI:0118 = "mutation"
+   <li> <div id="fe_1">Example: MI:0326 = "protein"
+   <li> <div id="fe_1">Example: MI:0328 = "small molecule"
+   <li> <div id="fe_1">Example: MI:0573 = "mutation disrupting interaction"
+   <li> <div id="fe_1">Example: MI:1133 = "mutation decreasing interaction strength"
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>p < 0.05</b> &nbsp; p-value when determining the statistical significance of a hypothesis</font>
+  &nbsp; <font color="#0000DD">(<a  target="_WIKI" href="https://en.wikipedia.org/wiki/p-value">more in Wikipedia</a>)</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>PD</b> &nbsp; progressive disease</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>PR</b> &nbsp; partial response (to treatment)</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>RNA</b> &nbsp; (n / nucleic-acid :wiki "<a target="_WIKI" href="https://en.wikipedia.org/wiki/RNA">RNA</a>" :name (n2 / name :op1 "RNA"))</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>s.d.</b> &nbsp; stable disease</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>UTR</b> &nbsp; untranslated region</font>
+       <ul style="margin-top:0px;">
+       </ul>
+   <li> <font size="+1" color="#0000DD"><b>WT</b> &nbsp; wild-type</font>
+       <ul style="margin-top:0px;">
+       </ul>
+</ul>
+<p></p>
+<a name="am">
+<a name="ami">
+<a name="amin">
+<a name="amino">
+<a name="amino-">
+<a name="amino-a">
+<a name="amino-ac">
+<a name="amino-aci">
+<a name="amino-acid">
+<a name="aminoa">
+<a name="aminoac">
+<a name="aminoaci">
+<a name="aminoacid">
+<font size="+2" color="#0000BB"><b>amino-acid</b></font>
+<span id="DATED_BODY_2" time_added="1416902400" times_modified="1416902400" style="color:black;display:none;"> &nbsp; (ID)</span><ul style="margin-top:0px;">
+   <li> <font size="+1" color="#0000DD">definition</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_1">An amino-acid is an organic molecule.
+   <li> <div id="fe_1">Amino acids can be chained together and folded to form proteins. Proteins contain 23 types of amino acids, such as serine. &nbsp <a href="https://en.wikipedia.org/wiki/Amino_acid#Table_of_standard_amino_acid_abbreviations_and_properties" target="_AMINO_ACID_TABLE" title="Click for table of amino acids with abbreviations">Table <img src="../images/externallink.png" border="0"></a>.
+   <li> <div id="fe_1">Technically, when they two amino acids are chained together, they lose an -H and an -OH respectively (combined to water), leaving two amino acid <i>residues</i>.
+       </ul>
+   <li> <font size="+1" color="#0000DD">example</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_1">ERK phosphorylates B-Raf on the S151 site.
+ &nbsp; &nbsp; <nobr><span id="ps_1" style="font-family:Courier;color:#666666;">(phosphorylate-01 :ARG1 (amino-acid :mod 151 "serine" :part-of (enzyme "B-Raf")) :ARG2 (enzyme "ERK"))</span></nobr>&nbsp; &nbsp; <span id="ex_1" title="Click here for a full example" onclick="javascript:toggle('t_1');redraw_context('1');" ondblclick="redraw_context('1');" style="color:#005500;text-decoration:underline;">Example</span></div><div id="t_1" style="display:none;"><br><table><tr><td>&nbsp; &nbsp; &nbsp; &nbsp; </td><td><table border="1" cellpadding="3"><tr><td style="color:#005500;" width="700"><b>Example:</b> ERK phosphorylates B-Raf on the S151 site. [isi_0011.1]<br><span style="font-family:Courier;">(p / phosphorylate-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1 (a / amino-acid <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mod 151 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wiki "<a href="http://en.wikipedia.org/wiki/Serine" target="_BLANK" title="http://en.wikipedia.org/wiki/Serine">Serine</a>" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n2 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "serine") <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:part-of (e2 / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wiki "<a href="http://en.wikipedia.org/wiki/BRAF_(gene)" target="_BLANK" title="http://en.wikipedia.org/wiki/BRAF_(gene)">BRAF_(gene)</a>" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n3 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "B-Raf"))) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2 (e / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wiki "<a href="http://en.wikipedia.org/wiki/Extracellular_signal-regulated_kinases" target="_BLANK" title="http://en.wikipedia.org/wiki/Extracellular_signal-regulated_kinases">Extracellular_signal-regulated_kinases</a>" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "ERK")))</span></td></tr></table></td></tr></table></div>
+       </ul>
+   <li> <font size="+1" color="#CC0000">related topic <b><a href="amr-dict-biomed.html#protein"><font color="#CC0000">protein</font></a></b> </font>
+       <ul style="margin-top:0px;">
+       </ul>
+</ul>
+<p></p>
+<a name="amr">
+<a name="amr ">
+<a name="amr a">
+<a name="amr an">
+<a name="amr ann">
+<a name="amr anno">
+<a name="amr annot">
+<a name="amr annota">
+<a name="amr annotat">
+<a name="amr annotati">
+<a name="amr annotatio">
+<a name="amr annotation">
+<a name="amr annotation ">
+<a name="amr annotation d">
+<a name="amr annotation di">
+<a name="amr annotation dic">
+<a name="amr annotation dict">
+<a name="amr annotation dicti">
+<a name="amr annotation dictio">
+<a name="amr annotation diction">
+<a name="amr annotation dictiona">
+<a name="amr annotation dictionar">
+<a name="amr annotation dictionary">
+<a href="amr-dict.html" target="_POPUP" title="Click here for further information about AMR Annotation Dictionary (on separate page)." style="text-decoration:none;"><font size="+2" style="#color:0000BB;text-decoration:underline;"><b>AMR Annotation Dictionary</b></font> <img src="../images/externallink.png" border="0"></a>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_2">primary AMR Annotation Dictionary
+       </ul>
+<p></p>
+<a name="b">
+<a name="c">
+<a name="d">
+<a name="do">
+<a name="dom">
+<a name="doma">
+<a name="domai">
+<a name="domain">
+<a href="https://en.wikipedia.org/wiki/Protein_domain" target="_POPUP" title="Click here for further information about domain (on separate page)." style="text-decoration:none;"><font size="+2" style="#color:0000BB;text-decoration:underline;"><b>domain</b></font> <img src="../images/externallink.png" border="0"></a>
+<span id="DATED_BODY_3" time_added="1415174400" times_modified="1415174400" style="color:black;display:none;"> &nbsp; (ID)</span><ul style="margin-top:0px;">
+   <li> <font size="+1" color="#0000DD">definition</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_2">a larger protein-segment
+   <li> <div id="fe_2">:part-of a protein
+   <li> <div id="fe_2">often with specific function(s)
+   <li> <div id="fe_2">often relatively independent of other parts of the protein
+       </ul>
+   <li> <font size="+1" color="#0000DD">examples</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_2">G-domain
+       </ul>
+   <li> <font size="+1" color="#CC0000">related topic <b><a href="amr-dict-biomed.html#protein"><font color="#CC0000">protein</font></a></b> </font>
+       <ul style="margin-top:0px;">
+       </ul>
+</ul>
+<p></p>
+<a name="dow">
+<a name="down">
+<a name="downr">
+<a name="downre">
+<a name="downreg">
+<a name="downregu">
+<a name="downregul">
+<a name="downregula">
+<a name="downregulat">
+<a name="downregulati">
+<a name="downregulatio">
+<a name="downregulation">
+<a name="downregulation/">
+<a name="downregulation/u">
+<a name="downregulation/up">
+<a name="downregulation/upr">
+<a name="downregulation/upre">
+<a name="downregulation/upreg">
+<a name="downregulation/upregu">
+<a name="downregulation/upregul">
+<a name="downregulation/upregula">
+<a name="downregulation/upregulat">
+<a name="downregulation/upregulati">
+<a name="downregulation/upregulatio">
+<a name="downregulation/upregulation">
+<a name="downregulationu">
+<a name="downregulationup">
+<a name="downregulationupr">
+<a name="downregulationupre">
+<a name="downregulationupreg">
+<a name="downregulationupregu">
+<a name="downregulationupregul">
+<a name="downregulationupregula">
+<a name="downregulationupregulat">
+<a name="downregulationupregulati">
+<a name="downregulationupregulatio">
+<a name="downregulationupregulation">
+   <a name="upregulation">
+<a href="https://en.wikipedia.org/wiki/Downregulation_and_upregulation" target="_POPUP" title="Click here for further information about downregulation/upregulation (on separate page)." style="text-decoration:none;"><font size="+2" style="#color:0000BB;text-decoration:underline;"><b>downregulation/upregulation</b></font> <img src="../images/externallink.png" border="0"></a>
+<span id="DATED_BODY_4" time_added="1415174400" times_modified="1415174400" style="color:black;display:none;"> &nbsp; (ID)</span><ul style="margin-top:0px;">
+   <li> <font size="+1" color="#0000DD">definition</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_2">Downregulation (or downmodulation) is a process where some instances of a protein (or other molecule) are deactivated or dismantled. If the downregulated molecule is an enzyme, the activity ("signaling") from that type of enzyme is reduced.
+   <li> <div id="fe_2">Conversely, <b>upregulation</b> (or upmodulation) is a process where some instances of a protein (or other molecule) are activated or built up. If the upregulated molecule is an enzyme, the activity ("signaling") from that type of enzyme is increased.
+       </ul>
+   <li> <font size="+1" color="#0000DD">frame downregulate/upregulate</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_2">Both the agent and the target of downregulation/upregulation can be enzymes.
+       </ul>
+</ul>
+<p></p>
+<a name="e">
+<a name="ef">
+<a name="eff">
+<a name="effe">
+<a name="effec">
+<a name="effect">
+<a name="effecto">
+<a name="effector">
+<font size="+2" color="#0000BB"><b>effector</b></font>
+<span id="DATED_BODY_5" time_added="1417593600" times_modified="1417593600" style="color:black;display:none;"> &nbsp; (ID)</span><ul style="margin-top:0px;">
+   <li> <font size="+1" color="#0000DD">definition</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_2">a molecule that is not directly involved in a chemical reaction, but weakly binds to an enzyme (or other protein), changing it to make it more (or less) able to perform its normal function. Therefore, effectors can be used to speed up (or slow down) certain reactions.
+       </ul>
+   <li> <font size="+1" color="#0000DD">annotation</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_2">Do <b>not</b> map to affect-01 or other, since it's a more specific technical term.
+       </ul>
+</ul>
+<p></p>
+<a name="en">
+<a name="enz">
+<a name="enzy">
+<a name="enzym">
+<a name="enzyme">
+<a href="https://en.wikipedia.org/wiki/Enzyme" target="_POPUP" title="Click here for further information about enzyme (on separate page)." style="text-decoration:none;"><font size="+2" style="#color:0000BB;text-decoration:underline;"><b>enzyme</b></font> <img src="../images/externallink.png" border="0"></a>
+<span id="DATED_BODY_6" time_added="1415174400" times_modified="1415174400" style="color:black;display:none;"> &nbsp; (ID)</span><ul style="margin-top:0px;">
+   <li> <font size="+1" color="#0000DD">definition</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_2">large organic molecule (typically a protein) or macro-molecular-complex (containing a protein)
+   <li> <div id="fe_2">acts as an :instrument of biochemical processes, more specifically as a catalyst
+   <li> <div id="fe_2">often has activated and deactivated forms (e.g. activated by phosphorylation)
+       </ul>
+   <li> <font size="+1" color="#0000DD">entity type</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_2">Annotate an enzyme as an enzyme even if the text describes it as a "protein" (which is more general). But if the text uses something more specific than an enzyme, such as kinase, use that more specific type.
+       </ul>
+   <li> <font size="+1" color="#0000DD">examples</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_2">ERK phosphorylates B-Raf on the S151 site.
+ &nbsp; &nbsp; <nobr><span id="ps_2" style="font-family:Courier;color:#666666;">(phosphorylate-01 :ARG1 (amino-acid :mod 151 "serine" :part-of (enzyme "B-Raf")) :ARG2 (enzyme "ERK"))</span></nobr>&nbsp; &nbsp; <span id="ex_2" title="Click here for a full example" onclick="javascript:toggle('t_2');redraw_context('2');" ondblclick="redraw_context('2');" style="color:#005500;text-decoration:underline;">Example</span></div><div id="t_2" style="display:none;"><br><table><tr><td>&nbsp; &nbsp; &nbsp; &nbsp; </td><td><table border="1" cellpadding="3"><tr><td style="color:#005500;" width="700"><b>Example:</b> ERK phosphorylates B-Raf on the S151 site. [isi_0011.1]<br><span style="font-family:Courier;">(p / phosphorylate-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1 (a / amino-acid <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mod 151 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wiki "<a href="http://en.wikipedia.org/wiki/Serine" target="_BLANK" title="http://en.wikipedia.org/wiki/Serine">Serine</a>" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n2 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "serine") <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:part-of (e2 / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wiki "<a href="http://en.wikipedia.org/wiki/BRAF_(gene)" target="_BLANK" title="http://en.wikipedia.org/wiki/BRAF_(gene)">BRAF_(gene)</a>" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n3 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "B-Raf"))) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2 (e / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wiki "<a href="http://en.wikipedia.org/wiki/Extracellular_signal-regulated_kinases" target="_BLANK" title="http://en.wikipedia.org/wiki/Extracellular_signal-regulated_kinases">Extracellular_signal-regulated_kinases</a>" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "ERK")))</span></td></tr></table></td></tr></table></div>
+   <li> <div id="fe_3">Raf proteins
+ &nbsp; &nbsp; <nobr><span id="ps_3" style="font-family:Courier;color:#666666;">(enzyme :name (name :op1 "Raf"))</span></nobr>&nbsp; &nbsp; <span id="ex_3" title="Click here for a full example" onclick="javascript:toggle('t_3');redraw_context('3');" ondblclick="redraw_context('3');" style="color:#005500;text-decoration:underline;">Example</span></div><div id="t_3" style="display:none;"><br><table><tr><td>&nbsp; &nbsp; &nbsp; &nbsp; </td><td><table border="1" cellpadding="3"><tr><td style="color:#005500;" width="700"><b>Example:</b> Strikingly, the Raf proteins themselves are also substrates of activated ERK. [bio.mskcc_0001.6]<br><span style="font-family:Courier;">(c / catalyze-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0 (e / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "ERK") <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1-of (a / activate-01)) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1 (p / protein-family <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n2 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "Raf")) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1-of (s / strike-04))</span></td></tr></table></td></tr></table></div>
+       </ul>
+</ul>
+<p></p>
+<a name="f">
+<a name="g">
+<a name="h">
+<a name="i">
+<a name="j">
+<a name="k">
+<a name="l">
+<a name="m">
+<a name="n">
+<a name="o">
+<a name="p">
+<a name="ph">
+<a name="pho">
+<a name="phos">
+<a name="phosp">
+<a name="phosph">
+<a name="phospho">
+<a name="phosphor">
+<a name="phosphory">
+<a name="phosphoryl">
+<a name="phosphoryla">
+<a name="phosphorylat">
+<a name="phosphorylati">
+<a name="phosphorylatio">
+<a name="phosphorylation">
+<a href="https://en.wikipedia.org/wiki/Phosphorylation" target="_POPUP" title="Click here for further information about phosphorylation (on separate page)." style="text-decoration:none;"><font size="+2" style="#color:0000BB;text-decoration:underline;"><b>phosphorylation</b></font> <img src="../images/externallink.png" border="0"></a>
+<span id="DATED_BODY_7" time_added="1415174400" times_modified="1415174400" style="color:black;display:none;"> &nbsp; (ID)</span><ul style="margin-top:0px;">
+   <li> <font size="+1" color="#0000DD">definition</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_4">process that modifies an organic molecule by adding a phosphate
+   <li> <div id="fe_4">often applied to a protein, more specifically to certain amino acids that are part of a protein
+   <li> <div id="fe_4">often activates or deactivates enzymes and other proteins<br>Example:  If amino acid Serine-473 ("S473") in the protein AKT is phosphorylated, AKT is, in general, functionally active as a kinase. If not, it is an inactive kinase.
+   <li> <div id="fe_4">Reverse process: dephosphorylation
+   <li> <div id="fe_4">hyperphosphorylation: protein with multiple phosphorylation sites is fully saturated
+   <li> <div id="fe_4">Common source of phosphate added in phosphorylation: ATP (= adenosine <b><u>tri</u>phosphate</b>) which donates one of its phosphates and becomes ADP (= adenosine <b><u>di</u>phosphate</b>)
+   <li> <div id="fe_4">Typical agent: enzyme
+       </ul>
+   <li> <font size="+1" color="#0000DD"><a href="http://www.isi.edu/amr/amr/ontonotes-4.0-frames/phosphorylate-v.html#phosphorylate01" target="_EXT" style="text-decoration:none;"><font style="color:#0000DD;text-decoration:underline;">frame for phosphorylate-01</font> <img src="../images/externallink.png" border="0"></a></font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_4">:ARG0 agent of phosphorylation (e.g. person, process)
+   <li> <div id="fe_4">:ARG1 thing phosphorylated; typically a protein or other organic molecule
+   <li> <div id="fe_4">:ARG2 instrument (typically an enzyme)
+   <li> <div id="fe_4">:ARG3 product of phosphorylation; typically a protein or other organic molecule
+       </ul>
+   <li> <font size="+1" color="#0000DD">examples</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_4">ERK phosphorylates B-Raf on the S151 site.
+ &nbsp; &nbsp; <nobr><span id="ps_4" style="font-family:Courier;color:#666666;">(phosphorylate-01 :ARG1 S151 :ARG2 ERK)</span></nobr>&nbsp; &nbsp; <span id="ex_4" title="Click here for a full example" onclick="javascript:toggle('t_4');redraw_context('4');" ondblclick="redraw_context('4');" style="color:#005500;text-decoration:underline;">Example</span></div><div id="t_4" style="display:none;"><br><table><tr><td>&nbsp; &nbsp; &nbsp; &nbsp; </td><td><table border="1" cellpadding="3"><tr><td style="color:#005500;" width="700"><b>Example:</b> ERK phosphorylates B-Raf on the S151 site. [isi_0011.1]<br><span style="font-family:Courier;">(p / phosphorylate-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1 (a / amino-acid <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mod 151 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wiki "<a href="http://en.wikipedia.org/wiki/Serine" target="_BLANK" title="http://en.wikipedia.org/wiki/Serine">Serine</a>" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n2 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "serine") <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:part-of (e2 / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wiki "<a href="http://en.wikipedia.org/wiki/BRAF_(gene)" target="_BLANK" title="http://en.wikipedia.org/wiki/BRAF_(gene)">BRAF_(gene)</a>" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n3 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "B-Raf"))) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2 (e / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wiki "<a href="http://en.wikipedia.org/wiki/Extracellular_signal-regulated_kinases" target="_BLANK" title="http://en.wikipedia.org/wiki/Extracellular_signal-regulated_kinases">Extracellular_signal-regulated_kinases</a>" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "ERK")))</span></td></tr></table></td></tr></table></div>
+   <li> <div id="fe_5">phosphorylated ATM
+ &nbsp; [Use :ARG3 for product of phosphorylation.] &nbsp; &nbsp; <nobr><span id="ps_5" style="font-family:Courier;color:#666666;">(ATM :ARG3-of phosphorylate-01)</span></nobr>&nbsp; &nbsp; <span id="ex_5" title="Click here for a full example" onclick="javascript:toggle('t_5');redraw_context('5');" ondblclick="redraw_context('5');" style="color:#005500;text-decoration:underline;">Example</span></div><div id="t_5" style="display:none;"><br><table><tr><td>&nbsp; &nbsp; &nbsp; &nbsp; </td><td><table border="1" cellpadding="3"><tr><td style="color:#005500;" width="700"><b>Example:</b> phosphorylated ATM [isi_0011.2]<br><span style="font-family:Courier;">(e / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wiki "<a href="http://en.wikipedia.org/wiki/Ataxia_telangiectasia_mutated" target="_BLANK" title="http://en.wikipedia.org/wiki/Ataxia_telangiectasia_mutated">Ataxia_telangiectasia_mutated</a>" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "ATM") <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG3-of (p / phosphorylate-01))</span></td></tr></table></td></tr></table></div>
+       </ul>
+</ul>
+<p></p>
+<a name="pr">
+<a name="pro">
+<a name="prot">
+<a name="prote">
+<a name="protei">
+<a name="protein">
+<a href="https://en.wikipedia.org/wiki/Protein" target="_POPUP" title="Click here for further information about protein (on separate page)." style="text-decoration:none;"><font size="+2" style="#color:0000BB;text-decoration:underline;"><b>protein</b></font> <img src="../images/externallink.png" border="0"></a>
+<span id="DATED_BODY_8" time_added="1415174400" times_modified="1415174400" style="color:black;display:none;"> &nbsp; (ID)</span><ul style="margin-top:0px;">
+   <li> <font size="+1" color="#0000DD">definition</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_6">large organic molecule
+   <li> <div id="fe_6">major building block of living things
+   <li> <div id="fe_6">can be agents of biochemical processes (enzymes)
+   <li> <div id="fe_6">Proteins are encoded by genes. The physical expression of genes into proteins consists of two steps: (1) enzymes <i>transcribe</i> genes into messenger RNAs (mRNAs) and then (2) ribosomes <i>translate</i> these messenger RNAs into proteins.
+       </ul>
+   <li> <font size="+1" color="#0000DD">components of a protein</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_6">A protein is a chain of many amino acid residues (An amino acid <i>residue</i> is an amino acid minus a -OH and a -H group, which are discarded as water when two amino acids are bound together as links in a protein chain in a process called polymerization).
+   <li> <div id="fe_6">A term such as "S151" refers to a specific amino acid ("S" = serine; <a href="https://en.wikipedia.org/wiki/Amino_acid#Table_of_standard_amino_acid_abbreviations_and_properties" target="_AMINO_ACID_TABLE" title="Click for table of amino acids with abbreviations">table <img src="../images/externallink.png" border="0"></a>) at a specific position ("151") in the chain of amino acid residues that make up a protein. A prefix "p" (as in "pS151") indicates that the amino acid is <a href="amr-dict-biomed.html#phosphorylation">phosphorylated</a>.
+   <li> <div id="fe_6">A protein-segment is a sub-chain of one or more amino acids.
+   <li> <div id="fe_6">Some protein-segments are referred to as a <a href="amr-dict-biomed.html#domain"><b>domain</b></a> or <b>motif</b> or <b>(binding) site</b>.
+       </ul>
+   <li> <font size="+1" color="#0000DD">types of proteins</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_6"><a href="amr-dict-biomed.html#enzyme"><font color="#0000DD">enzyme</font></a>
+ &nbsp; [We annotate proteins that are also enzymes as an enzyme.]       </ul>
+</ul>
+<p></p>
+<a name="q">
+<a name="r">
+<a name="s">
+<a name="t">
+<a name="u">
+<a name="v">
+<a name="w">
+<a name="wh">
+<a name="whe">
+<a name="when">
+<font size="+2" color="#0000BB"><b>when</b></font>
+<span id="DATED_BODY_9" time_added="1416902400" times_modified="1416902400" style="color:black;display:none;"> &nbsp; (ID)</span><ul style="margin-top:0px;">
+   <li> <font size="+1" color="#0000DD">:time</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_6"><b>When</b> she arrived, he was still asleep.
+ &nbsp; &nbsp; <nobr><span id="ps_6" style="font-family:Courier;color:#666666;">(sleep-01 :ARG0 he :mod still :time (arrive-01 :ARG1 she))</span></nobr>&nbsp; &nbsp; <span id="ex_6" title="Click here for a full example" onclick="javascript:toggle('t_6');redraw_context('6');" ondblclick="redraw_context('6');" style="color:#005500;text-decoration:underline;">Example</span></div><div id="t_6" style="display:none;"><br><table><tr><td>&nbsp; &nbsp; &nbsp; &nbsp; </td><td><table border="1" cellpadding="3"><tr><td style="color:#005500;" width="700"><b>Example:</b> When she arrived, he was still asleep. [isi_0002.612]<br><span style="font-family:Courier;">(s / sleep-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0 (h / he) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mod (s2 / still) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:time (a / arrive-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1 (s3 / she)))</span></td></tr></table></td></tr></table></div>
+       </ul>
+   <li> <font size="+1" color="#0000DD">:condition</font>
+       <ul style="margin-top:0px;">
+   <li> <div id="fe_7"><b>When</b> all else fails, I use superglue.
+ &nbsp; &nbsp; <nobr><span id="ps_7" style="font-family:Courier;color:#666666;">(use-01 :ARG0 i :ARG1 superglue <b>:condition</b> (fail-01 :ARG1 (all :mod else)))</span></nobr>&nbsp; &nbsp; <span id="ex_7" title="Click here for a full example" onclick="javascript:toggle('t_7');redraw_context('7');" ondblclick="redraw_context('7');" style="color:#005500;text-decoration:underline;">Example</span></div><div id="t_7" style="display:none;"><br><table><tr><td>&nbsp; &nbsp; &nbsp; &nbsp; </td><td><table border="1" cellpadding="3"><tr><td style="color:#005500;" width="700"><b>Example:</b> When all else fails, I use superglue. [isi_0002.613]<br><span style="font-family:Courier;">(u / use-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0 (i / i) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1 (s / superglue) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:condition (f / fail-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1 (a / all <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mod (e / else))))</span></td></tr></table></td></tr></table></div>
+   <li> <div id="fe_8"><b>When</b> PP2A was inhibited, certain B-Raf mutants accumulated.
+ &nbsp; &nbsp; <nobr><span id="ps_8" style="font-family:Courier;color:#666666;">(accumulate :ARG1 enzyme :condition (inhibit-01 :ARG1 PP2A))</span></nobr>&nbsp; &nbsp; <span id="ex_8" title="Click here for a full example" onclick="javascript:toggle('t_8');redraw_context('8');" ondblclick="redraw_context('8');" style="color:#005500;text-decoration:underline;">Example</span></div><div id="t_8" style="display:none;"><br><table><tr><td>&nbsp; &nbsp; &nbsp; &nbsp; </td><td><table border="1" cellpadding="3"><tr><td style="color:#005500;" width="700"><b>Example:</b> As indicated in Fig. 7A, when PP2A was inhibited with okadaic acid treatment, slower-migrating forms of the V600E, G466A, and D594G B-Raf proteins were found to accumulate. [bio.mskcc_0001.44]<br><span style="font-family:Courier;">(f / find-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1 (a / accumulate-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1 (a2 / and <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 (e2 / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "B-Raf") <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2-of (m / mutate-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:value "V600E")) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op2 (e3 / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n4 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "B-Raf") <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2-of (m4 / mutate-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:value "G466A")) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op3 (e4 / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n5 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "B-Raf") <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2-of (m5 / mutate-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:value "D594G")) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0-of (m2 / migrate-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1-of (s / slow-05 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:degree (m3 / more)))) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:condition (i / inhibit-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1 (e / enzyme <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n3 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "PP2A")) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:instrument (t / treat-04 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2 (s2 / small-molecule <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name (n2 / name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1 "okadaic" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op2 "acid"))))) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1-of (i2 / indicate-01 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0 (f2 / figure <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mod "7A")))</span></td></tr></table></td></tr></table></div>
+       </ul>
+   <li> <font size="+1" color="#0000DD"><a href="amr-dict.html#when" target="_EXT" style="text-decoration:none;"><font style="color:#0000DD;text-decoration:underline;">see general AMR Dict for more examples</font> <img src="../images/externallink.png" border="0"></a></font>
+       <ul style="margin-top:0px;">
+       </ul>
+</ul>
+<p></p>
+<a name="x">
+<a name="y">
+<a name="z">
+<style type="text/css">.right_align { text-align: right; }</style>
+<hr><p>
+<a href="javascript:set_group_display('t','inline');">Show all full examples</a> &nbsp; &mdash; &nbsp; <a href="javascript:set_group_display('t','none');">Hide all full examples</a>
+<br>
+The dictionary above shows additions and modifications from <input type="text" id="from_n_days_ago" value="30" class="right_align" size="2"> days ago = <b><span id="from_date">Aug 24, 2016</span></b> &nbsp; to <input type="text" id="to_n_days_ago" value="0" align="right" class="right_align" size="2"> days ago = <b><span id="to_date">Sep 23, 2016</span></b>.<br>
+ &nbsp; &nbsp; &nbsp; &bull; &nbsp; <span id="change_summary">Additions/modifications in this time period: &nbsp; initializing ...</span>
+<br>
+Please email Ulf with any corrections and suggestions.
+<input type="hidden" id="ref_time_from" value="1472022000">
+<input type="hidden" id="ref_time_to" value="1474700399">
+   </body>
+</html>
