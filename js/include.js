@@ -13,7 +13,7 @@ async function createSharedElements() {
 }
 
 async function createNavbar() {
-    await fetch('include/navigation.html')
+    await fetch('/include/navigation.html')
         .then(response => response.text())
             .then(data => {
                 var navbar = document.createElement('div');
@@ -27,7 +27,7 @@ async function createNavbar() {
 }
 
 async function createHeader() {
-    await fetch('include/title.html')
+    await fetch('/include/title.html')
         .then(response => response.text())
             .then(data => {
                 var title = document.createElement('div');
@@ -41,7 +41,7 @@ async function createHeader() {
 }
 
 async function createFooter() {
-    await fetch('include/footer.html')
+    await fetch('/include/footer.html')
         .then(response => response.text())
             .then(data => {
                 var navbar = document.createElement('footer');
