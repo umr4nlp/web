@@ -1,0 +1,277 @@
+﻿
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="max-age=3600" />
+    <title>time-before-after</title>
+   <link rel="shortcut icon" href="../../images/AMR-favicon.ico">
+    <script type="text/javascript">
+    <!--
+    function toggle(id) {
+       if ((s = document.getElementById(id)) != null) {
+          if (s.style.display == 'none') {
+             s.style.display = 'inline';
+          } else {
+             s.style.display = 'none';
+          }
+       }
+    }
+
+    function toggle_group(group_id, url, new_search_help_id) {
+       if (((s = document.getElementById('new_search_on_next_click_p')) == null) || (s.value == 0)) {          
+          i = 1;         
+          id = group_id + '_' + i;
+          while ((s = document.getElementById(id)) != null) {
+             if (s.style.display == 'none') {
+                s.style.display = 'inline';
+             } else {
+                s.style.display = 'none';
+             }
+             i = i + 1;
+             id = group_id + '_' + i;
+          }
+       }
+
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          new_search_value = s.value;
+          s.value = 0;
+          if ((new_search_help_id != 0) && ((s2 = document.getElementById(new_search_help_id)) != null)) {
+             s2.style.display = 'none';
+          }
+          if ((new_search_value == 1) && (url != 0)) {
+             popUpBottom(url,750,400);
+          }
+       }
+    }
+
+    function set_group_display(group_id, value) {
+       i = 1;         
+       id = group_id + '_' + i;
+       while ((s = document.getElementById(id)) != null) {
+          s.style.display = value;
+          i = i + 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function popUpBottom(URL,width,height) {
+       day = new Date();
+       id = day.getTime();
+       eval("myWindow = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=" + width + ",height=" + height + "');");
+    }
+
+    function popUpWarning(warning) {
+       newwindow=window.open('','Warning','height=160,width=400,resizable=1,scrollbars=1,toolbar=0,statusbar=0,menubar=0');
+       var tmp = newwindow.document;
+       tmp.write('<html>\n');
+       tmp.write('  <head><title>AMR Editor Warning</title></head>\n');
+       tmp.write('  <body' + ' style="background-color:#FFFFEE;">\n');
+       tmp.write('    <h3>Warning</h3>\n');
+       tmp.write('    ' + warning + '\n');
+       tmp.write('    <p>\n');
+       tmp.write('    <input type="submit" title="Close this window." value="OK" onclick="self.close();">\n');
+       tmp.write('  </body>\n');
+       tmp.write('</html>\n');
+       tmp.close();
+    }
+
+    function new_search_on_next_click(new_search_help_id) {
+       if ((s = document.getElementById(new_search_help_id)) != null) {
+          s.style.display = 'inline';
+       }
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          s.value = 1;
+       }
+    }
+
+    function set(id, value) {
+       if ((s = document.getElementById(id)) != null) {
+	  s.value = value;
+       }
+    }
+
+    function set_group_pairwise(snt_id, odd_value, even_value) {
+       gi = 0;
+       group_id = snt_id + '_' + gi;
+       i = 1;
+       id = group_id + '_' + i;
+       while (((s = document.getElementById(id)) != null) || (gi == 0)) {
+          while ((s = document.getElementById(id)) != null) {
+	     s.style.display = odd_value;
+             i = i + 1;
+	     id = group_id + '_' + i;
+	     if ((s = document.getElementById(id)) != null) {
+	        s.style.display = even_value;
+	     }
+             i = i + 1;
+	     id = group_id + '_' + i;
+          }
+          gi = gi + 1;
+          group_id = snt_id + '_' + gi;
+          i = 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function clear(id) {
+       if (s = document.getElementById(id)) {
+          s.value = '';
+       }
+    }
+
+    function goto_page_loc(hash, id, y) {
+       var s ;
+       var page_dynamically_created_p = 0;
+       if (page_dynamically_created_p) {
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+             s.focus();
+             if (document.body.scrollTop > 0) {
+               document.body.scrollTop += y;
+             } else {
+               // document.body.scrollTop = document.body.scrollHeight;
+               // s.focus();
+             }
+          } 
+       } else {
+          window.location.hash = hash;
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+          }
+       }
+    }
+
+    function redirect(url) {
+       window.location = url;
+    }
+
+    function initialize() {
+    }
+
+    
+    -->
+    </script>
+  </head>
+  <body bgcolor="#FFFFEE">
+<table width="100%" border="0" cellpadding="3" cellspacing="0"><tr bgcolor="#BBCCFF"><td>&nbsp; <font size="+1"><b>:time before and after</b> &nbsp; (AMR annotation guidance)</font></td></tr></table>
+<br />
+
+We express many temporal expressions with <font color="red">before</font> and <font color="red">after</font>:
+<ul>
+   <li> The nation defaulted <font color="red">after</font> the war.
+   <li> I will leave <font color="blue">in</font> 20 minutes. &nbsp; (= 20 minutes <font color="red">after</font> now)
+   <li> He retired more than five years <font color="blue">ago</font> . &nbsp; (= 5 years <font color="red">before</font> now)
+   <li> We have visited Paris twice <font color="blue">in</font> the <font color="blue">last</font> three years. &nbsp; (= during the 3 years <font color="red">before</font> now)
+   <li> Inflation is expected to rise during the <font color="blue">next</font> 2 years. &nbsp; (= during the 2 years <font color="red">after</font> now)
+</ul>
+
+<b>Argument structure:</b>
+<ul>
+   <li> <font color="red">after</font> / <font color="red">before</font>
+      <ul> 
+	 <li> <font color="blue">:op1</font> &lt;reference point&gt; &nbsp; (after/b<nobr>e</nobr>fore when?)
+	 <li> <font color="blue">:quant</font> &lt;temporal-quantity&gt; &nbsp; (how much after/b<nobr>e</nobr>fore?)
+	 <li> <font color="blue">:duration</font> &lt;temporal-quantity&gt; &nbsp; (for how long?)
+      </ul>
+</ul>
+
+<p>
+<b>Example:</b>&nbsp; The nation defaulted <font color="red">after</font> the war.<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(d&nbsp;/&nbsp;default-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(n&nbsp;/&nbsp;nation)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:time&nbsp;(a&nbsp;/&nbsp;<font color="red">after</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:op1</font>&nbsp;(w&nbsp;/&nbsp;war)))<br>
+</span>
+<p>
+<p>
+<b>Example:</b>&nbsp; He retired more than five years <font color="blue">ago</font> .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(r&nbsp;/&nbsp;retire-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(h&nbsp;/&nbsp;he)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:time&nbsp;(b&nbsp;/&nbsp;<font color="red">before</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:op1</font>&nbsp;(n&nbsp;/&nbsp;now)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:quant</font>&nbsp;(m&nbsp;/&nbsp;more-than<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:op1</font>&nbsp;(t&nbsp;/&nbsp;temporal-quantity&nbsp;<font color="blue">:quant</font>&nbsp;5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unit&nbsp;(y&nbsp;/&nbsp;year)))))<br>
+</span>
+<p>
+<p>
+<b>Example:</b>&nbsp; I will leave <font color="blue">in</font> 20 minutes.<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(l&nbsp;/&nbsp;leave-11<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(i&nbsp;/&nbsp;i)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:time&nbsp;(a&nbsp;/&nbsp;<font color="red">after</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:op1</font>&nbsp;(n&nbsp;/&nbsp;now)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:quant</font>&nbsp;(t&nbsp;/&nbsp;temporal-quantity&nbsp;<font color="blue">:quant</font>&nbsp;20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unit&nbsp;(m&nbsp;/&nbsp;minute))))<br>
+</span>
+<p>
+<p>
+<b>Example:</b>&nbsp; The police interviewed more than 100 witnesses <font color="blue">in</font> the 2 months <font color="red">after</font> the murder.<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(i&nbsp;/&nbsp;interview-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(p&nbsp;/&nbsp;police)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(p2&nbsp;/&nbsp;person<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0-of&nbsp;(w&nbsp;/&nbsp;witness-01)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:quant</font>&nbsp;(m3&nbsp;/&nbsp;more-than&nbsp;<font color="blue">:op1</font>&nbsp;100))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:time&nbsp;(a&nbsp;/&nbsp;<font color="red">after</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:op1</font>&nbsp;(m&nbsp;/&nbsp;murder-01)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:duration</font>&nbsp;(t&nbsp;/&nbsp;temporal-quantity&nbsp;<font color="blue">:quant</font>&nbsp;2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unit&nbsp;(m2&nbsp;/&nbsp;month))))<br>
+</span>
+<p>
+<p>
+<b>Example:</b>&nbsp; The police identified the murderer 2 months <font color="red">after</font> the murder.<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(i&nbsp;/&nbsp;identify-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(p&nbsp;/&nbsp;police)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(p2&nbsp;/&nbsp;person<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0-of&nbsp;(m&nbsp;/&nbsp;murder-01))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:time&nbsp;(a&nbsp;/&nbsp;<font color="red">after</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:op1</font>&nbsp;m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:quant</font>&nbsp;(t&nbsp;/&nbsp;temporal-quantity&nbsp;<font color="blue">:quant</font>&nbsp;2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unit&nbsp;(m2&nbsp;/&nbsp;month))))<br>
+</span>
+<p>
+<p>
+<b>Example:</b>&nbsp; "They will get married two weeks from tomorrow."<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(m&nbsp;/&nbsp;marry-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(t&nbsp;/&nbsp;they)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:time&nbsp;(a&nbsp;/&nbsp;<font color="red">after</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:op1</font>&nbsp;(t2&nbsp;/&nbsp;tomorrow)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:quant</font>&nbsp;(t3&nbsp;/&nbsp;temporal-quantity&nbsp;<font color="blue">:quant</font>&nbsp;2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unit&nbsp;(w&nbsp;/&nbsp;week))))<br>
+</span>
+<p>
+<p>
+<b>Example:</b>&nbsp; We have visited Paris twice <font color="blue">in</font> the <font color="blue">last</font> three years.<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(v&nbsp;/&nbsp;visit-01&nbsp;:frequency&nbsp;2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(w&nbsp;/&nbsp;we)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(c&nbsp;/&nbsp;city&nbsp;:wiki&nbsp;"Paris"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name&nbsp;(n&nbsp;/&nbsp;name&nbsp;<font color="blue">:op1</font>&nbsp;"Paris"))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:time&nbsp;(b&nbsp;/&nbsp;<font color="red">before</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:op1</font>&nbsp;(n2&nbsp;/&nbsp;now)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:duration</font>&nbsp;(t&nbsp;/&nbsp;temporal-quantity&nbsp;<font color="blue">:quant</font>&nbsp;3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unit&nbsp;(y&nbsp;/&nbsp;year))))<br>
+</span>
+<p>
+<p>
+<b>Example:</b>&nbsp; Inflation is expected to rise during the <font color="blue">next</font> 2 years.<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(e&nbsp;/&nbsp;expect-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(r&nbsp;/&nbsp;rise-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(i&nbsp;/&nbsp;inflation)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:time&nbsp;(a&nbsp;/&nbsp;<font color="red">after</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:op1</font>&nbsp;(n&nbsp;/&nbsp;now)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">:quant</font>&nbsp;(t&nbsp;/&nbsp;temporal-quantity&nbsp;<font color="blue">:quant</font>&nbsp;2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unit&nbsp;(y&nbsp;/&nbsp;year)))))<br>
+</span>
+<p>
+ 
+<p>
+<a onclick="window.close();"><span style="color:#999999;text-decoration:underline">close this window</span></a>
+  </body>
+</html>

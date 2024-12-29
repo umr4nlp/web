@@ -1,0 +1,327 @@
+﻿
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="max-age=3600" />
+    <title>quantity-types</title>
+   <link rel="shortcut icon" href="../../images/AMR-favicon.ico">
+    <script type="text/javascript">
+    <!--
+    function toggle(id) {
+       if ((s = document.getElementById(id)) != null) {
+          if (s.style.display == 'none') {
+             s.style.display = 'inline';
+          } else {
+             s.style.display = 'none';
+          }
+       }
+    }
+
+    function toggle_group(group_id, url, new_search_help_id) {
+       if (((s = document.getElementById('new_search_on_next_click_p')) == null) || (s.value == 0)) {          
+          i = 1;         
+          id = group_id + '_' + i;
+          while ((s = document.getElementById(id)) != null) {
+             if (s.style.display == 'none') {
+                s.style.display = 'inline';
+             } else {
+                s.style.display = 'none';
+             }
+             i = i + 1;
+             id = group_id + '_' + i;
+          }
+       }
+
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          new_search_value = s.value;
+          s.value = 0;
+          if ((new_search_help_id != 0) && ((s2 = document.getElementById(new_search_help_id)) != null)) {
+             s2.style.display = 'none';
+          }
+          if ((new_search_value == 1) && (url != 0)) {
+             popUpBottom(url,750,400);
+          }
+       }
+    }
+
+    function set_group_display(group_id, value) {
+       i = 1;         
+       id = group_id + '_' + i;
+       while ((s = document.getElementById(id)) != null) {
+          s.style.display = value;
+          i = i + 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function popUpBottom(URL,width,height) {
+       day = new Date();
+       id = day.getTime();
+       eval("myWindow = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=" + width + ",height=" + height + "');");
+    }
+
+    function popUpWarning(warning) {
+       newwindow=window.open('','Warning','height=160,width=400,resizable=1,scrollbars=1,toolbar=0,statusbar=0,menubar=0');
+       var tmp = newwindow.document;
+       tmp.write('<html>\n');
+       tmp.write('  <head><title>AMR Editor Warning</title></head>\n');
+       tmp.write('  <body' + ' style="background-color:#FFFFEE;">\n');
+       tmp.write('    <h3>Warning</h3>\n');
+       tmp.write('    ' + warning + '\n');
+       tmp.write('    <p>\n');
+       tmp.write('    <input type="submit" title="Close this window." value="OK" onclick="self.close();">\n');
+       tmp.write('  </body>\n');
+       tmp.write('</html>\n');
+       tmp.close();
+    }
+
+    function new_search_on_next_click(new_search_help_id) {
+       if ((s = document.getElementById(new_search_help_id)) != null) {
+          s.style.display = 'inline';
+       }
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          s.value = 1;
+       }
+    }
+
+    function set(id, value) {
+       if ((s = document.getElementById(id)) != null) {
+	  s.value = value;
+       }
+    }
+
+    function set_group_pairwise(snt_id, odd_value, even_value) {
+       gi = 0;
+       group_id = snt_id + '_' + gi;
+       i = 1;
+       id = group_id + '_' + i;
+       while (((s = document.getElementById(id)) != null) || (gi == 0)) {
+          while ((s = document.getElementById(id)) != null) {
+	     s.style.display = odd_value;
+             i = i + 1;
+	     id = group_id + '_' + i;
+	     if ((s = document.getElementById(id)) != null) {
+	        s.style.display = even_value;
+	     }
+             i = i + 1;
+	     id = group_id + '_' + i;
+          }
+          gi = gi + 1;
+          group_id = snt_id + '_' + gi;
+          i = 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function clear(id) {
+       if (s = document.getElementById(id)) {
+          s.value = '';
+       }
+    }
+
+    function goto_page_loc(hash, id, y) {
+       var s ;
+       var page_dynamically_created_p = 0;
+       if (page_dynamically_created_p) {
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+             s.focus();
+             if (document.body.scrollTop > 0) {
+               document.body.scrollTop += y;
+             } else {
+               // document.body.scrollTop = document.body.scrollHeight;
+               // s.focus();
+             }
+          } 
+       } else {
+          window.location.hash = hash;
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+          }
+       }
+    }
+
+    function redirect(url) {
+       window.location = url;
+    }
+
+    function initialize() {
+    }
+
+    
+    -->
+    </script>
+  </head>
+  <body bgcolor="#FFFFEE">
+<table width="100%" border="0" cellpadding="3" cellspacing="0"><tr bgcolor="#BBCCFF"><td>&nbsp; <font size="+1"><b>Quantity types</b> &nbsp; (AMR annotation guidance)</font></td></tr></table>
+<br />
+
+<p>
+<b>Example:</b>&nbsp; "3,794,100 square miles"<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a&nbsp;/&nbsp;area-quantity&nbsp;:quant&nbsp;3794100<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unit&nbsp;(s2&nbsp;/&nbsp;square-mile))<br>
+</span>
+<p>
+
+<h3>List of quantities and common units</h3>
+
+<table border="1" cellpadding="1" cellspacing="0">
+  <tr bgcolor="#BBCCFF">
+    <td align="center"><b>Quantity</b></td>
+    <td align="center"><b>Common units and scales</b></td>
+  </tr>
+  <tr>
+    <td>&nbsp;monetary-quantity</td>
+    <td>&nbsp;<b>:unit</b> dollar, euro, pound, yen, yuan</td>
+  </tr>
+  <tr>
+    <td>&nbsp;distance-quantity</td>
+    <td>&nbsp;<b>:unit</b> meter, kilometer, inch, foot, yard, mile, light-year, kilo-base-pair</td>
+  </tr>
+  <tr>
+    <td>&nbsp;area-quantity</td>
+    <td>&nbsp;<b>:unit</b> square-meter, square-kilometer, square-foot, acre, square-mile</td>
+  </tr>
+  <tr>
+    <td>&nbsp;volume-quantity</td>
+    <td>&nbsp;<b>:unit</b> liter, cubic-meter, fluid-ounce, pint, gallon, cubic-mile</td>
+  </tr>
+  <tr>
+    <td>&nbsp;temporal-quantity</td>
+    <td>&nbsp;<b>:unit</b> second, minute, hour, day, week, month, year, decade, century&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;frequency-quantity</td>
+    <td>&nbsp;<b>:unit</b> hertz</td>
+  </tr>
+  <tr>
+    <td>&nbsp;speed-quantity</td>
+    <td>&nbsp;<b>:unit</b> meter-per-second, mile-per-hour</td>
+  </tr>
+  <tr>
+    <td>&nbsp;acceleration-quantity</td>
+    <td>&nbsp;<b>:unit</b> meter-per-second-squared</td>
+  </tr>
+  <tr>
+    <td>&nbsp;mass-quantity</td>
+    <td>&nbsp;<b>:unit</b> kilogram, ounce, pound, ton, atomic-mass-unit, kilodalton</td>
+  </tr>
+  <tr>
+    <td>&nbsp;force-quantity</td>
+    <td>&nbsp;<b>:unit</b> newton</td>
+  </tr>
+  <tr>
+    <td>&nbsp;pressure-quantity</td>
+    <td>&nbsp;<b>:unit</b> pascal, bar, psi, atmosphere, torr</td>
+  </tr>
+  <tr>
+    <td>&nbsp;energy-quantity</td>
+    <td>&nbsp;<b>:unit</b> joule, calorie, kilowatt-hour, btu, electron-volt</td>
+  </tr>
+  <tr>
+    <td>&nbsp;power-quantity</td>
+    <td>&nbsp;<b>:unit</b> watt, horsepower</td>
+  </tr>
+  <tr>
+    <td>&nbsp;charge-quantity</td>
+    <td>&nbsp;<b>:unit</b> coulomb</td>
+  </tr>
+  <tr>
+    <td>&nbsp;potential-quantity</td>
+    <td>&nbsp;<b>:unit</b> volt</td>
+  </tr>
+  <tr>
+    <td>&nbsp;resistance-quantity</td>
+    <td>&nbsp;<b>:unit</b> ohm</td>
+  </tr>
+  <tr>
+    <td>&nbsp;inductance-quantity</td>
+    <td>&nbsp;<b>:unit</b> henry</td>
+  </tr>
+  <tr>
+    <td>&nbsp;magnetic-field-quantity</td>
+    <td>&nbsp;<b>:unit</b> tesla, gauss</td>
+  </tr>
+  <tr>
+    <td>&nbsp;magnetic-flux-quantity</td>
+    <td>&nbsp;<b>:unit</b> maxwell, weber</td>
+  </tr>
+  <tr>
+    <td>&nbsp;radiation-quantity</td>
+    <td>&nbsp;<b>:unit</b> becquerel, curie, sievert, rem, gray, rad</td>
+  </tr>
+  <tr>
+    <td>&nbsp;fuel-consumption-quantity&nbsp;</td>
+    <td>&nbsp;<b>:unit</b> liter-per-100-kilometer, mile-per-gallon</td>
+  </tr>
+  <tr>
+    <td>&nbsp;numerical-quantity</td>
+    <td>&nbsp;<b>:unit</b> point, mole</td>
+  </tr>
+  <tr>
+    <td>&nbsp;information-quantity</td>
+    <td>&nbsp;<b>:unit</b> bit, byte, kilobyte, megabyte, terabyte, petabyte, exabyte, zettabyte, yottabyte, nibble</td>
+  </tr>
+  <tr>
+    <td>&nbsp;concentration-quantity</td>
+    <td>&nbsp;<b>:unit</b> molar (1M = 1 molar = 1 mole/liter), micromolar (μM), kilogram-per-cubic-meter, parts-per-million &nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;catalytic-activity-quantity</td>
+    <td>&nbsp;<b>:unit</b> katal (kat), microkatal, nanokatal, enzyme-unit (U) &nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;acidity-quantity</td>
+    <td>&nbsp;<b><font color="red">:scale</font></b> ph</td>
+  </tr>
+  <tr>
+    <td>&nbsp;seismic-quantity</td>
+    <td>&nbsp;<b><font color="red">:scale</font></b> richter</td>
+  </tr>
+  <tr>
+    <td>&nbsp;temperature-quantity</td>
+    <td>&nbsp;<b><font color="red">:scale</font></b> celsius, kelvin, fahrenheit</td>
+  </tr>
+</table>
+
+<p>
+<hr>
+
+<h3><span style="text-decoration:underline;">Not</span> quantities: percentages, scores, dates</h3>
+
+<p>
+<b>Example:</b>&nbsp; "25%"<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(p&nbsp;/&nbsp;<font color="red">percentage-entity</font>&nbsp;:value&nbsp;25)<br>
+</span>
+<p>
+
+<p>
+<b>Example:</b>&nbsp; "In the 1974 soccer World Cup final, Germany beat the Netherlands 2-1."<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b&nbsp;/&nbsp;beat-03<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(c&nbsp;/&nbsp;country&nbsp;:wiki&nbsp;"Germany"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name&nbsp;(n&nbsp;/&nbsp;name&nbsp;:op1&nbsp;"Germany"))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(c2&nbsp;/&nbsp;country&nbsp;:wiki&nbsp;"Netherlands"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name&nbsp;(n2&nbsp;/&nbsp;name&nbsp;:op1&nbsp;"Netherlands"))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2&nbsp;(f&nbsp;/&nbsp;final<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:subevent-of&nbsp;(g&nbsp;/&nbsp;game&nbsp;:wiki&nbsp;"FIFA_World_Cup"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name&nbsp;(n3&nbsp;/&nbsp;name&nbsp;:op1&nbsp;"World"&nbsp;:op2&nbsp;"Cup")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mod&nbsp;(s&nbsp;/&nbsp;soccer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:time&nbsp;(d&nbsp;/&nbsp;<font color="red">date-entity</font>&nbsp;:year&nbsp;1974)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:quant&nbsp;(s2&nbsp;/&nbsp;<font color="red">score-entity</font>&nbsp;:op1&nbsp;2&nbsp;:op2&nbsp;1))<br>
+</span>
+<p>
+
+<p>
+<b>Example:</b>&nbsp; "February 29, 2012"<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(d&nbsp;/&nbsp;<font color="red">date-entity</font>&nbsp;:year&nbsp;2012&nbsp;:month&nbsp;2&nbsp;:day&nbsp;29)<br>
+</span>
+<p>
+
+<p>
+<a onclick="window.close();"><span style="color:#999999;text-decoration:underline">close this window</span></a>
+  </body>
+</html>

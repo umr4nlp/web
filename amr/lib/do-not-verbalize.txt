@@ -1,0 +1,88 @@
+DO-NOT-VERBALIZE captor TO person :ARG0-of capture-01
+DO-NOT-VERBALIZE carrier TO ship :ARG0-of carry-01
+DO-NOT-VERBALIZE chairman TO person :ARG0-of chair-01
+DO-NOT-VERBALIZE commander TO person :ARG0-of command-02 (for commander as a military rank)
+DO-NOT-VERBALIZE container TO product :ARG0-of contain-01
+DO-NOT-VERBALIZE contractor TO person :ARG0-of contract-02
+DO-NOT-VERBALIZE correspondent TO person :ARG0-of correspond-01
+DO-NOT-VERBALIZE director TO person :ARG0-of direct-01
+DO-NOT-VERBALIZE editor TO person :ARG0-of edit-01
+DO-NOT-VERBALIZE father TO person :ARG0-of father-01
+DO-NOT-VERBALIZE governor TO person :ARG0-of govern-01
+DO-NOT-VERBALIZE helicopter TO aircraft :ARG1-of helicopter-01
+DO-NOT-VERBALIZE information TO thing :ARG2-of inform-01
+DO-NOT-VERBALIZE mother TO person :ARG0-of mother-01
+DO-NOT-VERBALIZE president TO person :ARG0-of preside-01
+DO-NOT-VERBALIZE professor TO person :ARG0-of profess-01
+DO-NOT-VERBALIZE terrorist TO person :ARG0-of terrorize-01
+DO-NOT-VERBALIZE treasurer TO person :ARG0-of treasure-01
+
+DO-NOT-VERBALIZE burglary TO burglarize-01
+DO-NOT-VERBALIZE concept TO conceive-01
+DO-NOT-VERBALIZE conference TO confer-01
+DO-NOT-VERBALIZE confidence TO confide-01
+DO-NOT-VERBALIZE delegation TO delegate-01
+DO-NOT-VERBALIZE dinner TO dine-01
+DO-NOT-VERBALIZE freedom TO free-01
+DO-NOT-VERBALIZE harmony TO harmonize-01
+DO-NOT-VERBALIZE hospital TO hospitalize-01
+DO-NOT-VERBALIZE propaganda TO propagandize-01
+DO-NOT-VERBALIZE revolution TO revolt-01
+DO-NOT-VERBALIZE revolutionary TO revolt-01
+DO-NOT-VERBALIZE stability TO stabilize-01
+DO-NOT-VERBALIZE surveillance TO survey-01
+DO-NOT-VERBALIZE symbol TO symbolize-01
+DO-NOT-VERBALIZE terrorism TO terrorize-01
+
+DO-NOT-VERBALIZE active TO act-02
+DO-NOT-VERBALIZE deaf TO deafen-01
+DO-NOT-VERBALIZE deep TO deepen-01
+DO-NOT-VERBALIZE effective TO effect-01
+DO-NOT-VERBALIZE favorable TO favor-01
+DO-NOT-VERBALIZE financial TO finance-01
+DO-NOT-VERBALIZE financial TO finance-02
+DO-NOT-VERBALIZE glad TO gladden-01
+DO-NOT-VERBALIZE hard TO harden-01
+DO-NOT-VERBALIZE important TO import-01
+DO-NOT-VERBALIZE legal TO legalize-01
+DO-NOT-VERBALIZE liquid TO liquefy-01
+DO-NOT-VERBALIZE modern TO modernize-01
+DO-NOT-VERBALIZE popular TO popularize-01
+DO-NOT-VERBALIZE ripe TO ripen-01
+DO-NOT-VERBALIZE sad TO sadden-01
+DO-NOT-VERBALIZE scandalous TO scandalize-01
+DO-NOT-VERBALIZE simple TO simplify-01
+DO-NOT-VERBALIZE soft TO soften-01
+DO-NOT-VERBALIZE specific TO specify-01
+DO-NOT-VERBALIZE speedy TO speed-01
+DO-NOT-VERBALIZE stable TO stabilize-01
+DO-NOT-VERBALIZE suspicious TO suspect-01
+DO-NOT-VERBALIZE useful TO use-01
+DO-NOT-VERBALIZE white TO whiten-01
+DO-NOT-VERBALIZE wide TO widen-01
+
+DO-NOT-VERBALIZE actively TO act-02
+DO-NOT-VERBALIZE effectively TO effect-01
+DO-NOT-VERBALIZE namely TO name-01
+DO-NOT-VERBALIZE specifically TO specify-01
+
+DO-NOT-MAP capitalist TO capital
+DO-NOT-MAP especially TO especial
+DO-NOT-MAP friendly TO friend
+DO-NOT-MAP hardly TO hard
+DO-NOT-MAP imperialist TO imperial
+DO-NOT-MAP imperialistic TO imperial
+DO-NOT-MAP indifferent TO differ-02
+DO-NOT-MAP international TO internation
+DO-NOT-MAP military TO militia
+DO-NOT-MAP natural TO nature
+DO-NOT-MAP official TO officer
+DO-NOT-MAP overseas TO oversea
+DO-NOT-MAP politics TO politic
+DO-NOT-MAP provisional TO provision
+DO-NOT-MAP socialist TO social
+DO-NOT-MAP timely TO time
+DO-NOT-MAP uneasy TO easy-05
+DO-NOT-MAP unfreeze TO freeze-02
+DO-NOT-MAP various TO variety
+DO-NOT-MAP worthy TO worth

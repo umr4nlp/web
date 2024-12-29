@@ -1,0 +1,315 @@
+﻿
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="max-age=3600" />
+    <title>concession</title>
+   <link rel="shortcut icon" href="../../images/AMR-favicon.ico">
+    <script type="text/javascript">
+    <!--
+    function toggle(id) {
+       if ((s = document.getElementById(id)) != null) {
+          if (s.style.display == 'none') {
+             s.style.display = 'inline';
+          } else {
+             s.style.display = 'none';
+          }
+       }
+    }
+
+    function toggle_group(group_id, url, new_search_help_id) {
+       if (((s = document.getElementById('new_search_on_next_click_p')) == null) || (s.value == 0)) {          
+          i = 1;         
+          id = group_id + '_' + i;
+          while ((s = document.getElementById(id)) != null) {
+             if (s.style.display == 'none') {
+                s.style.display = 'inline';
+             } else {
+                s.style.display = 'none';
+             }
+             i = i + 1;
+             id = group_id + '_' + i;
+          }
+       }
+
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          new_search_value = s.value;
+          s.value = 0;
+          if ((new_search_help_id != 0) && ((s2 = document.getElementById(new_search_help_id)) != null)) {
+             s2.style.display = 'none';
+          }
+          if ((new_search_value == 1) && (url != 0)) {
+             popUpBottom(url,750,400);
+          }
+       }
+    }
+
+    function set_group_display(group_id, value) {
+       i = 1;         
+       id = group_id + '_' + i;
+       while ((s = document.getElementById(id)) != null) {
+          s.style.display = value;
+          i = i + 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function popUpBottom(URL,width,height) {
+       day = new Date();
+       id = day.getTime();
+       eval("myWindow = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=" + width + ",height=" + height + "');");
+    }
+
+    function popUpWarning(warning) {
+       newwindow=window.open('','Warning','height=160,width=400,resizable=1,scrollbars=1,toolbar=0,statusbar=0,menubar=0');
+       var tmp = newwindow.document;
+       tmp.write('<html>\n');
+       tmp.write('  <head><title>AMR Editor Warning</title></head>\n');
+       tmp.write('  <body' + ' style="background-color:#FFFFEE;">\n');
+       tmp.write('    <h3>Warning</h3>\n');
+       tmp.write('    ' + warning + '\n');
+       tmp.write('    <p>\n');
+       tmp.write('    <input type="submit" title="Close this window." value="OK" onclick="self.close();">\n');
+       tmp.write('  </body>\n');
+       tmp.write('</html>\n');
+       tmp.close();
+    }
+
+    function new_search_on_next_click(new_search_help_id) {
+       if ((s = document.getElementById(new_search_help_id)) != null) {
+          s.style.display = 'inline';
+       }
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          s.value = 1;
+       }
+    }
+
+    function set(id, value) {
+       if ((s = document.getElementById(id)) != null) {
+	  s.value = value;
+       }
+    }
+
+    function set_group_pairwise(snt_id, odd_value, even_value) {
+       gi = 0;
+       group_id = snt_id + '_' + gi;
+       i = 1;
+       id = group_id + '_' + i;
+       while (((s = document.getElementById(id)) != null) || (gi == 0)) {
+          while ((s = document.getElementById(id)) != null) {
+	     s.style.display = odd_value;
+             i = i + 1;
+	     id = group_id + '_' + i;
+	     if ((s = document.getElementById(id)) != null) {
+	        s.style.display = even_value;
+	     }
+             i = i + 1;
+	     id = group_id + '_' + i;
+          }
+          gi = gi + 1;
+          group_id = snt_id + '_' + gi;
+          i = 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function clear(id) {
+       if (s = document.getElementById(id)) {
+          s.value = '';
+       }
+    }
+
+    function goto_page_loc(hash, id, y) {
+       var s ;
+       var page_dynamically_created_p = 0;
+       if (page_dynamically_created_p) {
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+             s.focus();
+             if (document.body.scrollTop > 0) {
+               document.body.scrollTop += y;
+             } else {
+               // document.body.scrollTop = document.body.scrollHeight;
+               // s.focus();
+             }
+          } 
+       } else {
+          window.location.hash = hash;
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+          }
+       }
+    }
+
+    function redirect(url) {
+       window.location = url;
+    }
+
+    function initialize() {
+    }
+
+    
+    -->
+    </script>
+  </head>
+  <body bgcolor="#FFFFEE">
+<table width="100%" border="0" cellpadding="3" cellspacing="0"><tr bgcolor="#BBCCFF"><td>&nbsp; <font size="+1"><b>:concession</b> &nbsp; (AMR annotation guidance)</font></td></tr></table>
+<br />
+
+Jump to section on &nbsp; 
+    <a href="concession.html#reification">reification with <nobr>h</nobr>ave-concession-91</a> &nbsp; &middot; &nbsp;
+    <a href="concession.html#contrast">comparison with <nobr>c</nobr>ontrast-01</a> &nbsp; &middot; &nbsp;
+    <a href="concession.html#even"><nobr>e</nobr>ven if/<nobr>e</nobr>ven as/<nobr>e</nobr>ven when</a>
+<p>
+<hr>
+<p>
+In <font style="font-family:Courier;">(m / </font><i>main-event</i><font style="font-family:Courier;"> <font color="red">:concession</font> (c / </font><i>concession-event</i><font style="font-family:Courier;">))</font>,
+the <i>concession-event</i> creates an expectation which is at least
+partially invalidated by the <i>main-event</i>. The expectation can be
+implied or subjective.
+<p>
+In English, a <i>concession-event</i> is typically signalled by the 
+subordinating conjunctions <font color="blue">al<font color="blue">though</font></font>, <font color="blue">even <font color="blue">though</font></font>, <font color="blue">though</font>, and <font color="blue">albeit</font>, 
+or the prepositions <font color="blue">despite</font>, <font color="blue"><font color="blue">despite</font> of</font> and <font color="blue">in spite of</font>.
+<p>
+It can also be signalled on the <i>main-event</i> side by adverbs
+such as <font color="blue">however</font> and <font color="blue">nevertheless</font>, or even by the conjunction <font color="blue">but</font>, 
+particularly when <font color="blue">but</font> is used in conjunction with <font color="blue">anyway</font>.
+
+<p>
+<b>Example:</b>&nbsp; The game continued <font color="blue">al<font color="blue">though</font></font> it rained .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(c&nbsp;/&nbsp;continue-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(g&nbsp;/&nbsp;game)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:concession</font>&nbsp;(r&nbsp;/&nbsp;rain-01))<br>
+</span>
+<p>
+
+<p>
+<b>Example:</b>&nbsp; The game continued <font color="blue"><font color="blue">despite</font> of</font> the rain .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(c&nbsp;/&nbsp;continue-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(g&nbsp;/&nbsp;game)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:concession</font>&nbsp;(r&nbsp;/&nbsp;rain-01))<br>
+</span>
+<p>
+
+<p>
+<b>Example:</b>&nbsp; It started to rain, <font color="blue">but</font> the game continued <font color="blue">anyway</font> .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(s&nbsp;/&nbsp;start-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(r&nbsp;/&nbsp;rain-01)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:concession-of</font>&nbsp;(c&nbsp;/&nbsp;continue-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(g&nbsp;/&nbsp;game)))<br>
+</span>
+<p>
+
+<ul>
+   <li> It started to rain; <font color="blue">but</font> the game continued .
+   <li> It started to rain; <font color="blue">but</font> the game continued <font color="blue">anyway</font> .
+   <li> It started to rain; <font color="blue">however</font>, the game continued .
+   <li> It started to rain; <font color="blue">nevertheless</font>, the game continued .
+</ul>
+
+<p>
+<b>Example:</b>&nbsp; Workers described `` clouds of blue dust '' that hung over parts of the factory , <font color="blue">even <font color="blue">though</font></font> exhaust fans ventilated the area .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(d&nbsp;/&nbsp;describe-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(p&nbsp;/&nbsp;person<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0-of&nbsp;(w&nbsp;/&nbsp;work-01))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(c3&nbsp;/&nbsp;cloud<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:consist-of&nbsp;(d3&nbsp;/&nbsp;dust<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mod&nbsp;(b2&nbsp;/&nbsp;blue))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1-of&nbsp;(h&nbsp;/&nbsp;hang-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:location&nbsp;(o&nbsp;/&nbsp;over<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1&nbsp;(t&nbsp;/&nbsp;thing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:part-of&nbsp;(f&nbsp;/&nbsp;factory)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:concession</font>&nbsp;(v&nbsp;/&nbsp;ventilate-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(f2&nbsp;/&nbsp;fan<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mod&nbsp;(e&nbsp;/&nbsp;exhaust))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(a&nbsp;/&nbsp;area)))))<br>
+</span>
+<p>
+
+<hr>
+<a name="reification">
+<h2>Reification: <a href="../../amr/ontonotes-4.0-frames/have-concession-v.html" target="_ONFRAMES"><font color="red">have-concession-91</font></a></h2>
+
+The reification of <font color="red">:concession</font> is <a href="../../amr/ontonotes-4.0-frames/have-concession-v.html" target="_ONFRAMES"><font color="red">have-concession-91</font></a>.
+<p>
+If a word such as <font color="blue">nevertheless</font> signals that there is a concession,
+<font color="blue">but</font> that concession is outside the sentence, use the reification
+<a href="../../amr/ontonotes-4.0-frames/have-concession-v.html" target="_ONFRAMES"><font color="red">have-concession-91</font></a>:
+
+<p>
+<b>Example:</b>&nbsp; <font color="blue">Nevertheless</font>, the game continued .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(c&nbsp;/&nbsp;continue-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(g&nbsp;/&nbsp;game)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1-of&nbsp;(h&nbsp;/&nbsp;<font color="red">have-concession-91</font>))<br>
+</span>
+<p>
+
+<hr>
+<a name="contrast">
+<h2>Choosing between <font color="red">:concession</font> and <a href="../../amr/ontonotes-4.0-frames/contrast-v.html" target="_ONFRAMES"><font color="red">contrast-01</font></a></h2>
+
+Unlike <a href="../../amr/ontonotes-4.0-frames/contrast-v.html" target="_ONFRAMES"><font color="red">contrast-01</font></a>, which symmetrically contrasts two things
+(John is rich, <font color="blue">but</font> Mary is poor. = Mary is poor, <font color="blue">but</font> John is rich.),
+<font color="red">:concession</font> is directional, i.e. the <i>concession-event</i> creates
+an expectation and the <i>main-event</i> invalidates it. The 
+<i>concession-event</i> and the <i>main-event</i>
+cannot be switched without changing the meaning.
+<p>
+If you are not sure whether to use <font color="red">:concession</font> or <a href="../../amr/ontonotes-4.0-frames/contrast-v.html" target="_ONFRAMES"><font color="red">contrast-01</font></a>, see
+whether you can rephrase the sentence using <font color="blue">al<font color="blue">though</font></font>, which signals
+<font color="red">:concession</font>; otherwise use <a href="../../amr/ontonotes-4.0-frames/contrast-v.html" target="_ONFRAMES"><font color="red">contrast-01</font></a>.
+
+See also page on <a href="contrast.html"><nobr>c</nobr>ontrast-01</a>.
+
+<hr>
+<a name="even">
+<h2>Special cases: <font color="blue">even if</font> &mdash; <font color="blue">even as</font> &mdash; <font color="blue">even when</font></h2>
+
+As constructions with the conjunctions <font color="blue">even if</font>, <font color="blue">even as</font> and <font color="blue">even when</font> have
+meanings that add a hypothetical or temporal aspect, those conjunctions are
+included in the AMR, much as <i>after</i> etc.  are included in temporal AMRs.
+
+<p>
+<b>Example:</b>&nbsp; The game will continue <font color="blue">even if</font> it rains .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(c&nbsp;/&nbsp;continue-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(g&nbsp;/&nbsp;game)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:concession</font>&nbsp;(e&nbsp;/&nbsp;<font color="red">even-if</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1&nbsp;(r&nbsp;/&nbsp;rain-01)))<br>
+</span>
+<p>
+
+<p>
+<b>Example:</b>&nbsp; They feared him <font color="blue">even when</font> he was behind bars .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(f&nbsp;/&nbsp;fear-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(t&nbsp;/&nbsp;they)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(h&nbsp;/&nbsp;he)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:concession</font>&nbsp;(e&nbsp;/&nbsp;<font color="red">even-when</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1&nbsp;(i&nbsp;/&nbsp;imprison-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;h)))<br>
+</span>
+<p>
+
+<p>
+<b>Example:</b>&nbsp; Supply will rise further <font color="blue">even as</font> demand tapers off .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(r&nbsp;/&nbsp;rise-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(s&nbsp;/&nbsp;supply-01)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:degree&nbsp;(f&nbsp;/&nbsp;further)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:concession</font>&nbsp;(e&nbsp;/&nbsp;<font color="red">even-as</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:op1&nbsp;(t&nbsp;/&nbsp;taper-off-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(d&nbsp;/&nbsp;demand-01))))<br>
+</span>
+<p>
+
+<p>
+<a onclick="window.close();"><span style="color:#999999;text-decoration:underline">close this window</span></a>
+  </body>
+</html>

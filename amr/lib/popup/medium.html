@@ -1,0 +1,202 @@
+﻿
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="max-age=3600" />
+    <title>medium</title>
+   <link rel="shortcut icon" href="../../images/AMR-favicon.ico">
+    <script type="text/javascript">
+    <!--
+    function toggle(id) {
+       if ((s = document.getElementById(id)) != null) {
+          if (s.style.display == 'none') {
+             s.style.display = 'inline';
+          } else {
+             s.style.display = 'none';
+          }
+       }
+    }
+
+    function toggle_group(group_id, url, new_search_help_id) {
+       if (((s = document.getElementById('new_search_on_next_click_p')) == null) || (s.value == 0)) {          
+          i = 1;         
+          id = group_id + '_' + i;
+          while ((s = document.getElementById(id)) != null) {
+             if (s.style.display == 'none') {
+                s.style.display = 'inline';
+             } else {
+                s.style.display = 'none';
+             }
+             i = i + 1;
+             id = group_id + '_' + i;
+          }
+       }
+
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          new_search_value = s.value;
+          s.value = 0;
+          if ((new_search_help_id != 0) && ((s2 = document.getElementById(new_search_help_id)) != null)) {
+             s2.style.display = 'none';
+          }
+          if ((new_search_value == 1) && (url != 0)) {
+             popUpBottom(url,750,400);
+          }
+       }
+    }
+
+    function set_group_display(group_id, value) {
+       i = 1;         
+       id = group_id + '_' + i;
+       while ((s = document.getElementById(id)) != null) {
+          s.style.display = value;
+          i = i + 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function popUpBottom(URL,width,height) {
+       day = new Date();
+       id = day.getTime();
+       eval("myWindow = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=" + width + ",height=" + height + "');");
+    }
+
+    function popUpWarning(warning) {
+       newwindow=window.open('','Warning','height=160,width=400,resizable=1,scrollbars=1,toolbar=0,statusbar=0,menubar=0');
+       var tmp = newwindow.document;
+       tmp.write('<html>\n');
+       tmp.write('  <head><title>AMR Editor Warning</title></head>\n');
+       tmp.write('  <body' + ' style="background-color:#FFFFEE;">\n');
+       tmp.write('    <h3>Warning</h3>\n');
+       tmp.write('    ' + warning + '\n');
+       tmp.write('    <p>\n');
+       tmp.write('    <input type="submit" title="Close this window." value="OK" onclick="self.close();">\n');
+       tmp.write('  </body>\n');
+       tmp.write('</html>\n');
+       tmp.close();
+    }
+
+    function new_search_on_next_click(new_search_help_id) {
+       if ((s = document.getElementById(new_search_help_id)) != null) {
+          s.style.display = 'inline';
+       }
+       if ((s = document.getElementById('new_search_on_next_click_p')) != null) {
+          s.value = 1;
+       }
+    }
+
+    function set(id, value) {
+       if ((s = document.getElementById(id)) != null) {
+	  s.value = value;
+       }
+    }
+
+    function set_group_pairwise(snt_id, odd_value, even_value) {
+       gi = 0;
+       group_id = snt_id + '_' + gi;
+       i = 1;
+       id = group_id + '_' + i;
+       while (((s = document.getElementById(id)) != null) || (gi == 0)) {
+          while ((s = document.getElementById(id)) != null) {
+	     s.style.display = odd_value;
+             i = i + 1;
+	     id = group_id + '_' + i;
+	     if ((s = document.getElementById(id)) != null) {
+	        s.style.display = even_value;
+	     }
+             i = i + 1;
+	     id = group_id + '_' + i;
+          }
+          gi = gi + 1;
+          group_id = snt_id + '_' + gi;
+          i = 1;
+          id = group_id + '_' + i;
+       }
+    }
+
+    function clear(id) {
+       if (s = document.getElementById(id)) {
+          s.value = '';
+       }
+    }
+
+    function goto_page_loc(hash, id, y) {
+       var s ;
+       var page_dynamically_created_p = 0;
+       if (page_dynamically_created_p) {
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+             s.focus();
+             if (document.body.scrollTop > 0) {
+               document.body.scrollTop += y;
+             } else {
+               // document.body.scrollTop = document.body.scrollHeight;
+               // s.focus();
+             }
+          } 
+       } else {
+          window.location.hash = hash;
+          if ((s = document.getElementById(id)) != null) {
+             s.checked = "true";
+          }
+       }
+    }
+
+    function redirect(url) {
+       window.location = url;
+    }
+
+    function initialize() {
+    }
+
+    
+    -->
+    </script>
+  </head>
+  <body bgcolor="#FFFFEE">
+<table width="100%" border="0" cellpadding="3" cellspacing="0"><tr bgcolor="#BBCCFF"><td>&nbsp; <font size="+1"><b>:medium</b> &nbsp; (AMR annotation guidance)</font></td></tr></table>
+<br />
+
+Examples of typical <font color="red">:medium</font> entities include radio, television, newspaper, <font color="blue">web</font>, Facebook, <font color="blue">Twitter</font>, languages.
+
+<p>
+<b>Example:</b>&nbsp; The mayor announced his resignation on <font color="blue">Twitter</font> .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a&nbsp;/&nbsp;announce-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(p2&nbsp;/&nbsp;person<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0-of&nbsp;(h&nbsp;/&nbsp;have-org-role-91<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2&nbsp;(m&nbsp;/&nbsp;mayor)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(r&nbsp;/&nbsp;resign-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;p2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;m)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:medium</font>&nbsp;(p&nbsp;/&nbsp;publication&nbsp;:wiki&nbsp;"<font color="blue">Twitter</font>"&nbsp;:name&nbsp;(n&nbsp;/&nbsp;name&nbsp;:op1&nbsp;"<font color="blue">Twitter</font>")))<br>
+</span>
+<p>
+
+<p>
+<b>Example:</b>&nbsp; The new book has been heavily advertised on the <font color="blue">web</font> .<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a&nbsp;/&nbsp;advertise-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1&nbsp;(b&nbsp;/&nbsp;book<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG1-of&nbsp;(n&nbsp;/&nbsp;new-01))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:medium</font>&nbsp;(w&nbsp;/&nbsp;<font color="blue">web</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:manner&nbsp;(h&nbsp;/&nbsp;heavy))<br>
+</span>
+<p>
+
+<p>
+<b>Example:</b>&nbsp; She talked to him in <font color="blue">French</font>.<br>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(t&nbsp;/&nbsp;talk-01<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG0&nbsp;(s&nbsp;/&nbsp;she)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ARG2&nbsp;(h&nbsp;/&nbsp;he)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">:medium</font>&nbsp;(l&nbsp;/&nbsp;language&nbsp;:wiki&nbsp;"French_language"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:name&nbsp;(n&nbsp;/&nbsp;name&nbsp;:op1&nbsp;"<font color="blue">French</font>")))<br>
+</span>
+<p>
+
+<!-- Reification: <a href="../../amr/ontonotes-4.0-frames/have-manner-v.html" target="_ONFRAMES">have-manner-91</a> -->
+
+<p>
+<a onclick="window.close();"><span style="color:#999999;text-decoration:underline">close this window</span></a>
+  </body>
+</html>
