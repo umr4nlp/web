@@ -587,3 +587,124 @@ ul.venue li {
 .person_institution {
     font-size: 17.5px;
 }
+
+/* Activities Section Styling */
+#activities_body {
+    margin-top: 20px;
+}
+
+.activity_year {
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+.year_label {
+    font-size: 1.375rem; /* Equivalent to 22px */
+    font-weight: bold;
+    color: #444;
+    border-left: 5px solid #007bff;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.event_item {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.event_item strong {
+    font-size: 1.125rem; /* Equivalent to 18px */
+    color: #333;
+}
+
+.event_item p {
+    margin: 5px 0;
+    font-size: 0.875rem; /* Equivalent to 14px */
+    color: #666;
+}
+
+.event_item a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #007bff;
+    margin-left: 5px;
+}
+
+.event_item a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .year_label {
+        font-size: 1.25rem; /* Adjust font size for medium screens */
+    }
+
+    .event_item {
+        padding: 12px; /* Reduced padding for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .year_label {
+        font-size: 1.125rem; /* Adjust font size for small screens */
+    }
+
+    .event_item {
+        padding: 10px; /* Reduced padding for small screens */
+        margin-bottom: 10px; /* Adjust margin for small screens */
+    }
+
+    .event_item strong {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+
+    .event_item p {
+        font-size: 0.75rem; /* Adjust font size for smaller screens */
+    }
+
+    .event_item a {
+        font-size: 0.875rem; /* Adjust link size for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .year_label {
+        font-size: 1rem; /* Adjust font size for extra small screens */
+    }
+
+    .event_item {
+        padding: 8px; /* Reduced padding for extra small screens */
+        margin-bottom: 8px; /* Adjust margin for extra small screens */
+    }
+
+    .event_item strong {
+        font-size: 0.875rem; /* Adjust font size for extra small screens */
+    }
+
+    .event_item p {
+        font-size: 0.75rem; /* Adjust font size for extra small screens */
+    }
+
+    .event_item a {
+        font-size: 0.875rem; /* Adjust link size for extra small screens */
+    }
+}
+
+/* Responsive Button Section */
+@media (max-width: 576px) {
+    #pub_button {
+        width: 100%; /* Full width for mobile screens */
+    }
+
+    .card-body {
+        padding: 15px; /* Padding adjustment for smaller devices */
+    }
+}
