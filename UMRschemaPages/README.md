@@ -21,3 +21,5 @@ The images folder contains SVGs that are included in those pages:
 - nonverbalPredLattices.svg
 - numberLattice.svg
 - personLattice.svg
+
+These pages are also all currently deployed at https://jbonn.github.io/, if it's helpful to see them.
