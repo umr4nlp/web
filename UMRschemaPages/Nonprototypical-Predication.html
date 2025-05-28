@@ -164,13 +164,15 @@
 
         <span class="exsent">Mijiri-tin	<strong>ɨara-yara</strong> 'Miguel <strong>does have a canoe</strong>.'  (lit. 'Miguel is a canoe-owner.')
           <span class="popup">*Note: English would typically still use the lexeme-specific have-03 roleset for this. But if no such roleset existed, and if English were using the finer-grained possession rolesets, this annotation would reflect the 'teacher' being in focus and the 'dog' being (probably) new information. 
+Mijiri-tin	ɨara-yara
+Miguel-CER	canoe-owner
 (h / have-91
-    :ARG1 (p / person
-    	  :name (n / name :op1 "Mijiri")
-	      :refer-number Singular)
-    :ARG2 (a / ɨarayara)  'canoe'
-    :aspect state
-    :modal-strength full-affirmative)</span></span>
+:ARG1 (p / person
+  :name (n / name :op1 "Mijiri")
+      :refer-number Singular)
+:ARG2 (a / ɨarayara)  'canoe'
+:aspect state
+:modal-strength full-affirmative)</span></span>
       </td>
     </tr>
     <tr>
@@ -273,7 +275,7 @@
         
         <span class="highlight"><code><strong>:mod</strong></code></span>
       </td>
-      <td class="definition">Predication of properties. Pay close attention and make sure to annotate the overall <em>main point</em> of the proposition. Sometimes,predication of properties is packaged in such a way that it looks like object predication. This occurs sometimes when a copular construction is used with a noun phrase as the direct object, but the noun is not the main idea being conveyed-- it's just a carrier (already known information) for the property, which is presented as a modifier (e.g., an adjective). For example, consider the difference between <em>"We studied Shakespeare, Napoleon, and Muhammed. These are Great Men according to Carlyle's Great Men Theory."</em>, <em>"both of my grandfathers were great men"</em>, and <em>"these men are great".</em> The first example is object predication because "Great Men" is a Named Entity, a category in and of itself. In the second, we understand that my grandfathers are men, and the main point of the sentence is that they were great even though this property is embedded inside a redundant NP-- so have-mod-91 is a better option. The general idea is that a speaker might say <em>"These men are great"</em> or <em>"These are great men"</em> to convey the same main idea, and we want the annotations to be the same because UMR is supposed to be highlighting semantics over syntax.
+      <td class="definition">Predication of properties. Pay close attention and make sure to annotate the overall <em>main point</em> of the proposition. Sometimes, predication of properties is packaged in such a way that it looks like object predication. This occurs sometimes when a copular construction is used with a noun phrase as the direct object, but the noun is not the main idea being conveyed-- it's just a carrier (already known information) for the property, which is presented as a modifier (e.g., an adjective). For example, consider the difference between <em>"We studied Shakespeare, Napoleon, and Muhammed. These are Great Men according to Carlyle's Great Men Theory."</em>, <em>"both of my grandfathers were great men"</em>, and <em>"these men are great".</em> The first example is object predication because "Great Men" is a Named Entity, a category in and of itself. In the second, we understand that my grandfathers are men, and the main point of the sentence is that they were great even though this property is embedded inside a redundant NP-- so have-mod-91 is a better option. The general idea is that a speaker might say <em>"These men are great"</em> or <em>"These are great men"</em> to convey the same main idea, and we want the annotations to be the same because UMR is supposed to be highlighting semantics over syntax.
         <span class="exsent">My cat Carrot <strong>is overweight</strong>.
           <span class="popup"><strong>(h / have-mod-91</strong>
     :ARG1 (c / cat
