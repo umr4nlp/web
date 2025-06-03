@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Discourse Relations</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      font-size: 0.9em;
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1em;
+      line-height: 1.6;
+    }
+    .box {
+      background-color: #e6f2ff;
+      padding: 0.5em;
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2em;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5em;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    td:nth-child(4), td:nth-child(5),
+    th:nth-child(4), th:nth-child(5){
+      white-space: normal;
+      width: auto;
+    }
+    .highlight {
+      background-color: #e6f2ff;
+      border-radius: 4px;
+      padding: 0.1em 0.3em;
+      display: inline-block;
+      position: relative;
+      font-family: monospace;
+      font-size: inherit;
+      line-height: 1.2;
+    }
+    .popup {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      padding: 0.5em;
+      background: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      width: max-content;
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-style: normal;
+    }
+    .highlight:hover .popup ,
+    .exsent:hover .popup {
+      display: block;
+    }
+    .indent {
+      display: block;
+      margin-left: 1em;
+      font-family: monospace;
+      font-size: inherit;
+    }
+    .exsent {
+      display: block;
+      margin-left: 1em;
+      font-family: inherit;
+      font-size: inherit;
+      font-style: italic;
+      position: relative;
+      line-height: 1.5;
+    }
+    .definition {
+      white-space: normal;
+      width: auto;
+      line-height: 1.2;
+    }
+    .nowrap {
+      white-space: nowrap;
+    }
+    .smallcaps {
+      font-variant: small-caps;
+    }
+  </style>
+</head>
+<body>
+  
+<h1>Discourse Relations</h1>
+<p>(Current as of June 2025.)</p>
+
+<a href="images/discourseRelationsLattice.svg" target="_blank" title="Open full-size image">
+  <img src="images/discourseRelationsLattice.svg" alt="Aspect Lattice" width="100%">
+</a>
+
+<table>
+    <thead>
+        <tr>
+        <th>Discourse Relation</th>
+        <th>Definition</th>
+        </tr>
+    </thead>
+  
+    <tr>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(o / or</strong><br>
+          <span class="indent"><strong>:op1</strong><br></span>
+          <span class="indent"><strong>:op2</strong><br></span>
+          <span class="indent"><strong>etc.)</strong></code></span></span>
+      </td>
+      <td class="definition">Construes two (or more) events or entities as being alternatives of each other in some way.
+        <span class="exsent">I will <strong>go for a walk or play some soccer</strong>.
+          <span class="popup"><strong>(o / or</strong>
+    :op1 (w / walk-01
+       	:ARG0 (p / person
+            :refer-person 1st
+            :refer-number Singular)
+      	:aspect process
+      	:modal-strength full-affirmative)
+    :op2 (p2 / play-01
+        :ARG0 p
+        :ARG1 (s / soccer)
+        :aspect process
+        :modal-strength full-affirmative))</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+          <span class="highlight"><code><strong>(e / exclusive-disj</strong><br>
+            <span class="indent"><strong>:op1</strong><br></span>
+            <span class="indent"><strong>:op2</strong><br></span>
+            <span class="indent"><strong>etc.)</strong></code></span></span></span>
+      </td>
+      <td class="definition">Indicates that the construed alternatives are presented as mutually exclusive options.
+        <span class="exsent">You can have <strong>coffee or tea</strong> [but not both].
+          <span class="popup">(h / have-03
+    :ARG0 (p / person
+        :refer-person 2nd
+        :refer-number singular)
+    :ARG1 <strong>(e / exclusive-disj
+        :op1 (c / coffee)
+        :op2 (t / tea))</strong>
+    :aspect state
+    :modal-strength partial-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="highlight"><code><strong>:apprehensive</strong></code></span><br><br>
+                <span class="highlight"><code><strong>:apprehensive-of</strong></code></span><br><br>
+                <span class="highlight"><code><strong>(h / have-apprehensive-91</strong><br>
+                <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                <span class="indent"><strong>:ARG2</strong> apprehension)</strong></span></code></span></span></span>
+      </td>
+      <td class="definition">Two events are mutually exclusive alternatives, but more specifically, one event is carried out with the intention of preventing the other event from happening.
+        <span class="exsent">Grab a stick <strong>lest he attack you</strong>!
+          <span class="popup">(g / grab-01
+    :mode imperativis
+    :ARG0 (p / person
+        :refer-person 2nd
+        :refer-number singular)
+    :ARG1 (s / stick
+        :refer-number singular)
+    <strong>:apprehensive (a / attack-01
+        :ARG0 (p2 / person
+            :refer-person 3rd
+            :refer-number singular)
+        :ARG1 p
+        :aspect performance
+        :modal-strength full-affirmative)</strong>
+    :aspect performance
+    :modal-strength partial-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="highlight"><code><strong>(i / inclusive-disj</strong><br>
+              <span class="indent"><strong>:op1</strong><br></span>
+              <span class="indent"><strong>:op2</strong><br></span>
+              <span class="indent"><strong>etc.)</strong></code></span></span></span>
+      </td>
+      <td class="definition">Indicates that either any of the construed alternatives can be chosen individually or in combination.
+        <span class="exsent">If we go down to a 'crazy place' to <strong>bash pandanus, husk and eat corn, or plant bananas</strong>, we don't sleep with women.
+          <span class="popup">mnu'bo		hatai-supi'ba-ve	kire'bo	kro-de-supi'ba-ve	egemo	bre-supi'ba-ve		degi	kiko-pi'	rmi-supamo	a-ki'		a'-vo-g-une
+pandanus	bash-PURP.1PL-NONEX	corn	husk-eat-PURP.1PL-NONEX	banana	plant-PURP.1PL-NONEX	crazy	place-in
+(h / have-condition-91
+    :ARG1 (a / a'vogune-00  'sleep'
+        :actor (p / person
+            :refer-person 1st
+            :refer-number plural)
+        :companion (a2 / aki')  'woman'
+        :aspect habitual
+        :modal-strength full-negative)
+    :ARG2 (r / rmisupamo-00  'go down'
+        :actor p
+        :goal (k / kikopi'  'place'
+            :mod (d / degi))  'crazy'
+        :purpose <strong>(i / inclusive-disj
+            :op1 (h2 / hataisupi'bave-00  'bash'
+                :actor p
+                :undergoer (m / mnu'bo)  'pandanus'
+                :aspect performance
+                :modal-strength full-affirmative)
+            :op2 (k2 / krodesupi'bave-00  'husk and eat'
+                :actor p
+                :undergoer (k3 / kire'bo)  'corn'
+                :aspect performance
+                :modal-strength full-affirmative)
+            :op3 (b / bresupi'bave-00 'plant'
+                :actor p
+                :undergoer (e / egemo)  'banana'
+                :aspect performance
+                :modal-strength full-affirmative))</strong>
+        :aspect performance
+        :modal-strength full-affirmative))</span></span>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(a / and-but</strong><br>
+          <span class="indent"><strong>:op1</strong><br></span>
+          <span class="indent"><strong>:op2</strong><br></span>
+          <span class="indent"><strong>etc.)</strong></code></span></span>
+      </td>
+      <td class="definition">For languages that conflate addition and contrast.
+        <span class="exsent">
+          <span class="popup"></span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="highlight"><code><strong>(a / and</strong><br>
+                  <span class="indent"><strong>:op1</strong><br></span>
+                  <span class="indent"><strong>:op2</strong><br></span>
+                  <span class="indent"><strong>etc.)</strong></code></span></span></span></span>
+      </td>
+      <td class="definition">General addition.
+        <span class="exsent">I like <strong>coffee and tea</strong>.
+          <span class="popup">(l / like-01
+    :ARG0 (p / person
+        :refer-person 1st
+        :refer-number singular)
+    :ARG1 <strong>(a / and
+        :op1 (c / coffee)
+        :op2 (t / tea))</strong>
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="highlight"><code><strong>(c / consecutive</strong><br>
+                      <span class="indent"><strong>:op1</strong><br></span>
+                      <span class="indent"><strong>:op2</strong><br></span>
+                      <span class="indent"><strong>etc.)</strong></code></span></span></span></span></span>
+      </td>
+      <td class="definition">Expresses two or more events as a complex figure, with additional information on their temporal and/or logical sequencing.
+        <span class="exsent">I <strong>boiled the water and poured it into my cup</strong>.
+          <span class="popup"><strong>(a / and</strong>
+    :op1 (b / boil-01
+        :ARG0 (p / person
+            :refer-person 1st
+            :refer-number singular)
+        :ARG1 (w / water)
+        :aspect performance
+        :modal-strength full-affirmative)
+    :op2 (p2 / pour-01
+        :ARG0 p
+        :ARG1 w
+        :ARG2 (c / cup
+            :possessor p)
+        :aspect performance
+        :modal-strength full-affirmative))</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="indent">
+                        <span class="highlight"><code><strong>:purpose</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>:purpose-of</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>(h / have-purpose-91</strong></code><br>
+                            <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                            <span class="indent"><strong>:ARG2</strong> purpose)</strong></span></span></span></span></span></span>
+      </td>
+      <td class="definition">Expresses the intention on the part of the agent of one event towards bringing about another event.
+        <span class="exsent">I grabbed a stick <strong>in order to defend myself</strong>.
+          <span class="popup">(g / grab-01
+    :ARG0 (p / person
+        :refer-person 1st
+        :refer-number singular)
+    :ARG1 (s / stick
+        :refer-number singular)
+    :purpose <strong>(d / defend
+        :ARG0 p
+        :ARG1 p
+        :aspect performance
+        :modal-strength full-affirmative)</strong>
+    :aspect performance
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="indent">
+                        <span class="highlight"><code><strong>:manner</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>:manner-of</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>(h / have-manner-91</strong></code><br>
+                            <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                            <span class="indent"><strong>:ARG2</strong> manner)</strong></span></span></span></span></span></span>
+      </td>
+      <td class="definition">Expresses a relation where one event accompanies another and characterizes more specifically what happened (or didn’t happen) in another event.
+        <span class="exsent">He got into the army <strong>by lying about his age</strong>.
+          <span class="popup">(g / get-05
+    :ARG1 (p / person
+        :refer-person 3rd
+        :refer-number singular)
+    :ARG2 (a / army)
+    <strong>:manner (l / lie-08
+        :ARG0 p
+        :ARG1 (t / thing
+            :ARG2-of (h / have-age-91
+                :ARG1 p))
+        :aspect performance
+        :modal-strength full-affirmative)</strong>
+    :aspect performance
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="indent">
+                        <span class="highlight"><code><strong>:cause</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>:cause-of</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>(h / have-cause-91</strong></code><br>
+                            <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                            <span class="indent"><strong>:ARG2</strong> cause)</strong></span></span></span></span></span></span>
+      </td>
+      <td class="definition">Expresses a relation between a causing event and a resulting event, where the former explicitly brings about the latter.
+        <span class="exsent">Sarah moved back to California <strong>because she couldn't find a job in Washington</strong>.
+          <span class="popup">(m / move-01
+    :ARG0 (p / person
+        :name (n / name :op1 "Sarah))
+    :ARG2 (c / country-partition :wiki "California"
+        :name (n2 / name :op1 "California))
+    :ARG1-of (b / back-17)
+    <strong>:cause (f / find-01
+        :polarity -
+        :ARG0 p
+        :ARG1 (j / job)
+        :place (c2 / country-partition :wiki "Washington"
+            :name (n3 / name :op1 "Washington"))
+        :aspect state
+        :modal-strength full-negative)</strong>
+    :aspect performance
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="indent">
+                        <span class="highlight"><code><strong>:condition</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>:condition-of</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>(h / have-condition-91</strong><br>
+                          <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                          <span class="indent"><strong>:ARG2</strong> condition)</strong></code></span></strong></code></span></span></span></span></span>
+      </td>
+      <td class="definition">Expresses a relation where one event is contingent upon the occurrence of another event.
+        <span class="exsent"><strong>If you touch it</strong>, it might explode.
+          <span class="popup">(e / explode-01
+    :ARG1 (t / thing
+        :refer-number singular)
+    <strong>:condition (t2 / touch-01
+        :ARG0 (p / person)
+        :ARG1 t
+        :aspect performance
+        :modal-strength full-affirmative)</strong>
+    :aspect performance
+    :modal-strength neutral-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="indent">
+                        <span class="highlight"><code><strong>:temporal</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>:temporal-of</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>(h / have-temporal-91</strong></code><br>
+                            <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                            <span class="indent"><strong>:ARG2</strong> temporal phrase)</strong></span></span></span></span></span></span>
+      </td>
+      <td class="definition">Expresses that one event takes place before, after, or at the same time as another. This can either be expressed through an adverbial construction with the earlier event in the main clause and the later event in a subordinate clause, or through iconicity of tense in coordinated clauses.
+        <span class="exsent">I fed my dog <strong>before going to the office</strong>.
+          <span class="popup">(f / feed-01
+    :ARG0 (p / person
+        :refer-person 1st
+        :refer-number singular)
+    :ARG2 (d / dog
+        :possessor p
+        :refer-number singular)
+    <strong>:temporal (b / before
+        :op1 (g / go-01
+            :ARG1 p
+            :ARG4 (o / office
+                :refer-number singular)
+            :aspect performance
+            :modal-strength full-affirmative))</strong>
+    :aspect performance
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="highlight"><code><strong>(a / additive</strong><br>
+                      <span class="indent"><strong>:op1</strong><br></span>
+                      <span class="indent"><strong>:op2</strong><br></span>
+                      <span class="indent"><strong>etc.)</strong></code></span></span></span></span></span>
+      </td>
+      <td class="definition">Expresses the addition of one ‘figure’ (foregrounded participant or event) to another one in order to form a complex figure.
+        <span class="exsent">
+          <span class="popup"></span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="indent">
+                        <span class="highlight"><code><strong>:pure-addition</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>:pure-addition-of</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>(h / have-pure-addition-91</strong><br>
+                          <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                          <span class="indent"><strong>:ARG2</strong> additional event)</strong></code></span></strong></code></span></span></span></span></span>
+      </td>
+      <td class="definition">Expresses no temporal specification of the sequencing of events, but rather that the two events that form a complex figure cannot occur separately from each other in the context of the utterance.
+        <span class="exsent"><strong>In addition to having your hand stamped, you have to show your ticket to get into the concert</strong>.
+          <span class="popup">(h / have-04
+    :ARG0 (p / person
+        :refer-person 2nd
+        :refer-number singular)
+    :ARG1 (s / stamp-01
+        :ARG0 (p2 / person)
+        :ARG1 (h2 / hand
+            :part p)
+        :aspect performance
+        :modal-strength partial-affirmative)
+    <strong>:pure-addition (s2 / show-01
+        :ARG0 p
+        :ARG1 (t / ticket
+            :possessor p
+            :refer-number singular)
+        :ARG2 (p3 / person)
+        :aspect performance
+        :modal-strength partial-affirmative)
+        :purpose (g / get-05
+            :ARG0 p
+            :ARG2 (c / concert
+                :refer-number singular)
+        :aspect performance
+        :modal-strength full-affirmative)</strong>
+    :aspect performance
+    :modal-strength partial-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="indent">
+                        <span class="highlight"><code><strong>:substitute</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>:substitute-of</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>(h / have-substitute-91</strong><br>
+                          <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                          <span class="indent"><strong>:ARG2</strong> substituted event)</strong></code></span></strong></code></span></span></span></span>
+      </td>
+      <td class="definition">Expresses that one of the events that together form a complex figure is offered as an 'alternative' or 'replacement' for the other-- this is typically expressed through the negation of one of the two coordinands.
+        <span class="exsent"><strong>Instead of going out to eat</strong>, we barbecued chicken at home.
+          <span class="popup">(b / barbecue-01
+    :ARG0 (p / person
+        :refer-person 1st
+        :refer-number plural)
+    :ARG1 (c / chicken)
+    :place (h / home)
+    </strong>:substitute (g / go-out-17
+        :ARG0 p
+        :purpose (e / eat-01
+            :ARG0 p
+            :aspect endeavor
+            :modal-strength full-affirmative)
+        :aspect performance
+        :modal-strength full-negative)</strong>
+    :aspect performance
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+          <span class="highlight"><code><strong>(a / and-unexpected</strong><br>
+            <span class="indent"><strong>:op1</strong><br></span>
+            <span class="indent"><strong>:op2</strong><br></span>
+            <span class="indent"><strong>etc.)</strong></code></span></span></span>
+      </td>
+      <td class="definition">Ambiguous between unexpected-co-occurrence, :concession, and :concessive-condition.
+        <span class="exsent">
+          <span class="popup"></span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="nowrap">
+        <span class="indent">
+            <span class="indent">
+                <span class="highlight"><code><strong>(u / unexpected-co-occurence-91</strong><br>
+                  <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                  <span class="indent"><strong>:ARG2</strong> unexpected event)<br></code></span></span></span>
+      </td>
+      <td class="definition">Juxtaposition between 2 events where the 2nd event is unexpected in the case the first occurs
+        <span class="exsent">Vanja caught a cold <strong>but went to school</strong>.
+          <span class="popup">Vanja	prostudilsja,	no	poshël	v	shkolu
+Vanja	caught_cold	CONJ	went	to	school
+(u / unexpected-co-occurrence-91
+    :ARG1 (p / prostudilsja-00   'catch a cold'
+       	:experiencer (p2 / person
+            :name (n / name :op1 "Vanja"))
+       	:aspect performance
+       	:modal-strength full-affirmative)
+    :ARG2 (p3 / poshël-00  'go'
+       	:actor p2
+       	:goal (s / shkolu)  'school'
+       	:aspect performance
+       	:modal-strength full-affirmative))</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="nowrap">
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="highlight"><code><strong>:concession</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>:concession-of</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>(h / have-concession-91</strong><br>
+                          <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                          <span class="indent"><strong>:ARG2</strong> concession)</strong></code></span></strong></code></span></span></span></span>
+      </td>
+      <td class="definition">Expresses a relation between two events towards which the speaker has a positive epistemic stance (i.e. the speaker believes they both occurred/will occur), but specifies that this co-occurrence is unexpected.
+        <span class="exsent"><strong>Even though he was broke</strong>, he bought a new guitar.
+          <span class="popup">(b / buy-01
+    :ARG0 (p / person
+        :refer-person-person 3rd
+        :refer-number singular)
+    :ARG1 (g / guitar
+        :mod (n / new)
+        :ref-number singular)
+    <strong>:concession (h / have-mod-91
+        :ARG1 p
+        :ARG2 (b2 / broke)
+        :aspect state
+        :modal-strength full-affirmative)</strong>
+    :aspect performance
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="nowrap">
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="highlight"><code><strong>:concessive-condition</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>:concessive-concession-of</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>(h / have-concessive-concession-91</strong><br>
+                          <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                          <span class="indent"><strong>:ARG2</strong> concessive concession)</strong></code></span></strong></code></span></span></span></span>
+      </td>
+      <td class="definition">Expresses that the state of affairs described in the apodosis will be true under the entire range of conditions described in the protasis. These are different from regular conditionals in that they imply an expectation that the event expressed in the protasis may not lead to the event expressed in the apodosis happening.
+        <span class="exsent"><strong>Even if you arrive only 5 minutes late</strong>, you will be fired.
+          <span class="popup">(f / fire-02
+    :ARG1 (p / person
+        :refer-person 2nd
+        :refer-number singular)
+    :aspect performance
+    :modal-strength full-affirmative
+  	<strong>:concessive-condition (a / arrive-01
+        :ARG1 p
+        :temporal (l / late
+            :extent (t / temporal-quantity
+                :quant 5
+                :unit (m / minute)))</strong>
+        :aspect performance
+        :modal-strength full-affirmative))</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+          <span class="highlight"><code><strong>(a / and-contrast</strong><br>
+            <span class="indent"><strong>:op1</strong><br></span>
+            <span class="indent"><strong>:op2</strong><br></span>
+            <span class="indent"><strong>etc.)</strong></code></span></span></span>
+      </td>
+      <td class="definition">Ambiguous between addition, contrast and subtraction.
+        <span class="exsent">
+          <span class="popup"></span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="indent">
+            <span class="indent">
+            <span class="highlight"><code><strong>(c / contrast-91</strong><br>
+              <span class="indent"><strong>:ARG1 </strong>main event <br></span>
+              <span class="indent"><strong>:ARG2 </strong>contrastive event)</code></span></span></span>
+      </td>
+      <td class="definition">Expresses a relation of contrast in some way between events, without an element of unexpectedness.
+        <span class="exsent">Peter is diligent, <strong>but Vanja is lazy</strong>.
+          <span class="popup">Petja	staratel'nyi,	a	Vanja	lenivyj
+Peter	diligent	CONJ	Vanja	lazy
+<strong>(c / contrast-91</strong>
+      :ARG1 (h / have-mod-91
+         	:ARG1 (p / person
+         	    :name (n / name :op1 "Peter"))
+         	:ARG2 (s / staratel'nyi)  'diligent'
+         	:aspect state
+         	:modal-strength full-affirmative)
+      :ARG2 (h2 / have-mod-91
+         	:ARG1 (p2 / person
+         	    :name (n2 / name :op1 "Vanja"))
+         	:ARG2 (l / lenivyj 'lazy')
+         	:aspect state
+         	:modal-strength full-affirmative))</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="nowrap">
+        <span class="indent">
+            <span class="indent">
+                <span class="indent">
+                    <span class="highlight"><code><strong>:subtraction</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>:subtraction-of</strong></code></span><br><br>
+                        <span class="highlight"><code><strong>(h / have-subtraction-91</strong><br>
+                          <span class="indent"><strong>:ARG1</strong> main event<br></span>
+                          <span class="indent"><strong>:ARG2</strong> subtracted event)</strong></code></span></strong></code></span></span></span></span>
+      </td>
+      <td class="definition">One event is additionally characterized by the absence of a second event that is normally a part of the first event.
+        <span class="exsent">People don't own tigers, <strong>except for Joe Exotic</strong>.
+          <span class="popup">(o / own-01
+    :polarity -
+    :ARG0 (p / person
+        :refer-person plural)
+    :ARG1 (t / tiger
+        :refer-number plural)
+    <strong>:subtraction (p2 / person
+        :name (n / name :op1 "Joe" :op2 "Exotic"))</strong>
+    :aspect state
+    :modal-strength full-negative)</span></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  
+</body>
+</html>

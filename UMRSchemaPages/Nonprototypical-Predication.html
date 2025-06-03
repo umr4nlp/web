@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nonprototypical Predication</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      font-size: 0.9em;
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1em;
+      line-height: 1.6;
+    }
+    .box {
+      background-color: #e6f2ff;
+      padding: 0.5em;
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2em;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5em;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    td:nth-child(4), td:nth-child(5),
+    th:nth-child(4), th:nth-child(5){
+      white-space: normal;
+      width: auto;
+    }
+    .highlight {
+      background-color: #e6f2ff;
+      border-radius: 4px;
+      padding: 0.1em 0.3em;
+      display: inline-block;
+      position: relative;
+      font-family: monospace;
+      font-size: inherit;
+      line-height: 1.2;
+    }
+    .popup {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      padding: 0.5em;
+      background: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      width: max-content;
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-style: normal;
+    }
+    .highlight:hover .popup ,
+    .exsent:hover .popup {
+      display: block;
+    }
+    .indent {
+      display: block;
+      padding-left: 2em;
+      font-family: monospace;
+      font-size: inherit;
+    }
+    .exsent {
+      display: block;
+      margin-left: 1em;
+      font-family: inherit;
+      font-size: inherit;
+      font-style: italic;
+      position: relative;
+      line-height: 1.2;
+    }
+    .definition {
+      white-space: normal;
+      width: auto;
+      line-height: 1.2;
+    }
+    .nowrap {
+      white-space: nowrap;
+    }.smallcaps {
+      font-variant: small-caps;
+    }
+    .wrap-indent {
+      display: block;
+      margin-left: 2em;
+      text-indent: -1em;
+      font-family: monospace;
+      font-size: inherit;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Nonprototypical Predication:</h1>
+    
+<p>These rolesets cover several semantic categories whose predication is often expressed non-prototypically across many languages (via copular expressions, juxtaposition, etc.). For possession and location, many languages distinguish thetic from predicational expressions of information status (meaning they distinguish which arguments are new or old information). These categories are arranged into lattices so that users may choose whether or not to annotate this level of detail.</p>
+<p>(Current as of June 2025.)</p>
+
+<p>Note: it is always possible that lexeme-specific rolesets may be created and used in place of these. Ideally, those rolesets should include in their lexical files an indication which of these categories they fall under.</p>
+    
+
+<a href="images/nonverbalPredLattices.svg" target="_blank" title="Open full-size image">
+  <img src="images/nonverbalPredLattices.svg" alt="Nonprototypical Predication Lattices" width="100%">
+</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Semantic Category</th>
+      <th>Roleset & Associated Role</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <td rowspan="3" class="definition">Possession
+      </td>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(h / have-possession-91</strong>
+            <span class="indent"><strong>:ARG1</strong> possessor</span>
+            <span class="indent"><strong>:ARG2</strong> possession)</span></code></span><br>
+        
+        <span class="highlight"><code><strong>:possession</strong></code></span>
+      </td>
+      <td class="definition">Generic reification of :poss, or for nonprototypical predications that are agnostic for presentation strategy. Use for languages in which it is difficult to determine which information is new/old.
+        <span class="exsent">The dog <strong>is mine</strong>.
+          <span class="popup">*Note: annotation for English copular construction, where the choice has been made not to use the finer-grained possession rolesets.
+(h / have-possession-91 
+    :ARG1 (p / person
+        :refer-person 1st
+        :refer-number singular)
+    :ARG2 (d / dog)
+    :aspect state
+    :modal-strength full-affirmative)
+          </span></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(t / thetic-possession-91</strong><br>
+            <span class="indent"><strong>:ARG1</strong> possessor<br></span>
+            <span class="indent"><strong>:ARG2</strong> possession)</span></code></span>
+      </td>
+      <td class="definition">Thetic presentation of possession. Possessor in focus, possession is the argument turned into the predicate in some languages.
+        <span class="exsent">The teacher <strong>has a dog</strong>.
+          <span class="popup">*Note: English would typically still use the lexeme-specific have-03 roleset for this. But if no such roleset existed, and if English were using the finer-grained possession rolesets, this annotation would reflect the 'teacher' being in focus and the 'dog' being (probably) new information. 
+(t / thetic-possession-91 
+    :ARG1 (p / person
+        :ARG0 (t2 / teach-01))
+    :ARG2 (d / dog)
+    :aspect state
+    :modal-strength full-affirmative)</span></span><br>
+
+        <span class="exsent">Mijiri-tin	<strong>ɨara-yara</strong> 'Miguel <strong>does have a canoe</strong>.'  (lit. 'Miguel is a canoe-owner.')
+          <span class="popup">*Note: English would typically still use the lexeme-specific have-03 roleset for this. But if no such roleset existed, and if English were using the finer-grained possession rolesets, this annotation would reflect the 'teacher' being in focus and the 'dog' being (probably) new information. 
+Mijiri-tin	ɨara-yara
+Miguel-CER	canoe-owner
+(h / have-91
+:ARG1 (p / person
+  :name (n / name :op1 "Mijiri")
+      :refer-number Singular)
+:ARG2 (a / ɨarayara)  'canoe'
+:aspect state
+:modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(p / pred-possession-91</strong><br>
+            <span class="indent"><strong>:ARG1</strong> possession<br></span>
+            <span class="indent"><strong>:ARG2</strong> possessor)</span></code></span>
+      </td>
+      <td class="definition">Predicative presentation of possession. Possessum in focus, possessor is the argument turned into the predicate in some languages.
+        <span class="exsent">The dog <strong>belongs to</strong> a neighbor.
+          <span class="popup">*Note: English would typically still use the lexeme-specific belong-01 roleset for this. But if no such roleset existed, and if English were using the finer-grained possession rolesets, this annotation would reflect the 'dog' being in focus and the 'neighbor' being new information. 
+<strong>(p / pred-possession-91 </strong>
+    :ARG1 (d / dog)
+    <strong>:ARG2 (p2 / person
+        :ARG1-of (h / have-rel-role-91
+            :ARG3 (n / neighbor)))</strong>
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td rowspan="4" class="definition">Location
+      </td>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(e / exist-91</strong><br>
+            <span class="indent"><strong>:ARG1</strong> theme)</span></code></span>
+      </td>
+      <td class="definition">Quantification of existence only, e.g., 'there is a god'. Not just introducing an entity in discourse, but actually asserting existence as if existence were in question. The consensus is that if additional arguments are presented, this roleset should not be used, but a reification roleset for the other role. For example, <em>'There were good seeds from good plants'</em> would use <span class="highlight">have-source-91</span>. 
+        <span class="exsent"><strong>There is a god.</strong>
+          <span class="popup"></strong>(e / exist-91
+    :arg1 (g / god)</strong>
+    :aspect state
+    :modal-strength full-affirmative)
+          </span></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(h / have-place-91</strong><br>
+            <span class="indent"><strong>:ARG1</strong> theme<br></span>
+            <span class="indent"><strong>:ARG2</strong> location)</span></code></span><br>
+        
+        <span class="highlight"><code><strong>:place</strong></code></span>
+      </td>
+      <td class="definition">Generic reification of :place, or for nonprototypical predications that are agnostic for presentation strategy
+        <span class="exsent"><strong>There is a knife in the drawer</strong>.
+          <span class="popup"><strong>(h / have-place-91 
+    :ARG1 (k / knife)
+    :ARG2 (i / in
+        :op1 (d / drawer))</strong>
+    :aspect state
+    :modal-strength full-affirmative)
+          </span></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(t / thetic-location-91</strong><br>
+            <span class="indent"><strong>:ARG1</strong> location<br></span>
+            <span class="indent"><strong>:ARG2</strong> theme)</span></code></span>
+      </td>
+      <td class="definition">Thetic presentation of location. Location in focus, theme is new information, and theme may be the argument turned into the predicate in some languages. 
+    *Note: if it is not clear which presentation strategy is being used, default to <span class="highlight">have-place-91</span>.
+        <span class="exsent">The rock <strong>has a sigil on it</strong>.<br>
+          <span class="popup"><strong>(t / thetic-location-91</strong>
+    :ARG1 (r / rock)
+    <strong>:ARG2 (s / sigil)</strong>
+    :aspect state
+    :modal-strength full-affirmative)
+          </span></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(p / pred-location-91</strong><br>
+            <span class="indent"><strong>:ARG1</strong> theme<br></span>
+            <span class="indent"><strong>:ARG2</strong> location)</span></code></span>
+      </td>
+      <td class="definition">Predicative presentation of location. Theme in focus, location is (probably) new information, and location may be the argument turned into the predicate in some languages. 
+        <span class="exsent">The shoes <strong>are on a rock by the creek</strong>.
+          <span class="popup"><strong>(p / pred-location-91</strong>
+    :ARG1 (s / shoe
+        :refer-number plural)
+    <strong>:ARG2 (r / rock
+        :place (b / by
+            :op1 (c / creek)))</strong>
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="definition">Property Predication
+      </td>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(h / have-mod-91</strong>
+            <span class="indent"><strong>:ARG1</strong> theme</span>
+            <span class="indent"><strong>:ARG2</strong> property)</span></code></span><br>
+        
+        <span class="highlight"><code><strong>:mod</strong></code></span>
+      </td>
+      <td class="definition">Predication of properties. Pay close attention and make sure to annotate the overall <em>main point</em> of the proposition. Sometimes, predication of properties is packaged in such a way that it looks like object predication. This occurs sometimes when a copular construction is used with a noun phrase as the direct object, but the noun is not the main idea being conveyed-- it's just a carrier (already known information) for the property, which is presented as a modifier (e.g., an adjective). For example, consider the difference between <em>"We studied Shakespeare, Napoleon, and Muhammed. These are Great Men according to Carlyle's Great Men Theory."</em>, <em>"both of my grandfathers were great men"</em>, and <em>"these men are great".</em> The first example is object predication because "Great Men" is a Named Entity, a category in and of itself. In the second, we understand that my grandfathers are men, and the main point of the sentence is that they were great even though this property is embedded inside a redundant NP-- so have-mod-91 is a better option. The general idea is that a speaker might say <em>"These men are great"</em> or <em>"These are great men"</em> to convey the same main idea, and we want the annotations to be the same because UMR is supposed to be highlighting semantics over syntax.
+        <span class="exsent">My cat Carrot <strong>is overweight</strong>.
+          <span class="popup"><strong>(h / have-mod-91</strong>
+    :ARG1 (c / cat
+        :possessor (p / person
+            :refer-person 1st
+            :refer-number singular)
+        :ARG1-of (i / identity-91
+            :ARG2 (a / animal 
+                :name (n / name :op1 "Carrot"))))
+    <strong>:ARG2 (o / overweight)</strong>
+    :aspect state
+    :modal-strength full-affirmative)</span></span><br>
+          
+        <span class="exsent">My grandfathers <strong>were both great</strong>.
+          <span class="popup"><strong>(h / have-mod-91</strong>
+    :ARG1 (p / person
+        :quant (b / both)
+        :ARG1-of (h2 / have-rel-role-91 
+            :ARG2 (p2 / person
+                :refer-person 1st
+                :refer-number singular)
+            :ARG3 (g / grandfather)))
+    <strong>:ARG2 (g2 / great)</strong>
+    :aspect state
+    :modal-strength full-affirmative)</span></span><br>
+          
+        <span class="exsent">My grandfathers <strong>were both great</strong> men. (interpreted as property carrier here)
+          <span class="popup"><strong>(h / have-mod-91</strong>
+    :ARG1 (p / person
+        :quant (b / both)
+        :ARG1-of (h2 / have-rel-role-91 
+            :ARG2 (p2 / person
+                :refer-person 1st
+                :refer-number singular)
+            :ARG3 (g / grandfather)))
+    <strong>:ARG2 (g2 / great
+        :mod-of (m / man
+            :refer-number plural))</strong>
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="definition">Equational
+      </td>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(i / identity-91</strong><br>
+            <span class="indent"><strong>:ARG1</strong> theme</span></code>
+            <span class="indent"><strong>:ARG2</strong> equated referent)</span></code></span>
+      </td>
+      <td class="definition">Predication of equation, also used for apposition. 
+        <span class="exsent"><strong>My cat carrot</strong> is overweight. (apposition)
+          <span class="popup">(h / have-mod-91
+    :ARG1 </strong>(c / cat
+        :ARG1-of (i / identity-91
+            :ARG2 (a / animal 
+                :name (n / name :op1 "Carrot")))</strong>
+        :possessor (p / person
+            :refer-person 1st
+            :refer-number singular))
+    :ARG2 (o / overweight)
+    :aspect state
+    :modal-strength full-affirmative)</span></span><br>
+          
+        <span class="exsent"><strong>Neil Armstrong </strong>was the first person on the moon</strong>. (equivalence of two specific referents)
+          <span class="popup"><strong>(i / identity-91</strong>
+    :ARG1 (p / person
+        :name (n / name :op1 "Neil" :op2 "Armstrong"))
+    <strong>:ARG2 (p2 / person
+        :ord (o / ordinal-entity :value 1
+            :range (p3 / person 
+                :refer-number plural
+                :place (m / moon))))</strong>
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+
+    <tr>
+      <td rowspan="3" class="definition">Object predication.
+      </td>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(h / have-role-91</strong>
+            <span class="indent"><strong>:ARG1</strong> 1st entity</span>
+            <span class="indent"><strong>:ARG2</strong> (optional) 2nd entity</span>
+            <span class="indent"><strong>:ARG3</strong> object category, 1st entity</span>
+            <span class="indent"><strong>:ARG4</strong> (optional) object category, 2nd entity)</span></code></span><br>
+        
+        <span class="highlight"><code><strong>:role</strong> (under development)</code></span>
+      </td>
+      <td class="definition">For predication of objects, categorization, roles played. 
+        <span class="exsent">Carrot <strong>is a cat.</strong>
+          <span class="popup"><strong>(h / have-role-91</strong>
+    :ARG1 (a / animal
+        :name (n / name :op1 "Carrot"))
+    <strong>:ARG2 (c / cat)</strong>
+    :aspect state
+    :modal-strength full-affirmative)</span></span><br>
+          
+        <span class="exsent"><strong>The gymnast</strong> broke her foot.
+          <span class="popup">(b / break-01
+    :ARG0 <strong>(p / person
+        :ARG1-of (h / have-role-91
+            :ARG2 (g / gymnast)))</strong>
+    :ARG1 (f / foot
+        :part-of p)
+    :aspect state
+    :modal-strength full-affirmative)</span></span><br>
+          
+        <span class="exsent">We studied Shakespeare, Napoleon, and Muhammed. These <strong>are Great Men</strong> according to Carlyle's Great Men Theory.
+          <span class="popup"><strong>(h / have-role-91</strong>
+    :ARG1 (p / person
+        :refer-number plural
+        :mod (t / this))
+    <strong>:ARG2 (c / conceptualization
+        :name (n / name :op1 "Great" :op2 "Men"))</strong>
+    :ARG1-of (s / say-91 
+        :ARG0 (c2 / conceptualization
+            :name (n2 / name :op1 "Great" :op2 "Men" :op3 "Theory")
+            :possessor (p2 / person
+                :name (n3 / name :op1 "Carlyle"))))
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(h / have-rel-role-92</strong><br>
+            <span class="indent"><strong>:ARG1</strong> 1st entity<br></span>
+            <span class="indent"><strong>:ARG2</strong> 2nd entity (acquaintance/kin)<br></span>
+            <span class="indent"><strong>:ARG3</strong> role of 1st entity relative to 2nd entity<br></span>
+            <span class="indent"><strong>:ARG4</strong> role of 2nd entity relative to 1st)</span></code></span>
+      </td>
+      <td class="definition">For expression of kinship and other inter-personal relationships. Covers predication as well as modification and reference. 
+        <span class="exsent"><strong>My grandfathers</strong> were both great.
+          <span class="popup"><strong>(h / have-mod-91</strong>
+    :ARG1 (p / person
+        :quant (b / both)
+        :ARG1-of (h2 / have-rel-role-91 
+            :ARG2 (p2 / person
+                :refer-person 1st
+                :refer-number singular)
+            :ARG3 (g / grandfather)))
+    <strong>:ARG2 (g2 / great)</strong>
+    :aspect state
+    :modal-strength full-affirmative)
+          </span></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="nowrap">
+        <span class="highlight"><code><strong>(h / have-org-role-92</strong><br>
+            <span class="indent"><strong>:ARG1</strong> office holder<br></span>
+            <span class="indent"><strong>:ARG2</strong> 2nd entity (acquaintance/kin)<br></span>
+            <span class="indent"><strong>:ARG3</strong> role of 1st entity relative to 2nd entity<br></span>
+            <span class="indent"><strong>:ARG4</strong> role of 2nd entity relative to 1st</span>
+            <span class="indent"><strong>:ARG5</strong> relationship basis)</span></code></span>
+      </td>
+      <td class="definition">For expression of organizational relationships. Covers predication as well as modification and reference. 
+        <span class="exsent">I met <strong>the President of the University of New Mexico</strong>.
+          <span class="popup">(m / meet-03
+	:ARG0 (p / person
+		:refer-person 1st
+		:refer-number Singular)
+	:ARG1 <strong>(p2 / person
+		:ARG1-of (h / have-org-role-92
+			:ARG2 (a / academic_organization 
+                :wiki "University_of_New_Mexico"
+				:name (n / name :op1 "University :op2 "of" :op3 "New" :op4 "Mexico"))
+			:ARG2 (p3 / president)))</strong>
+	:aspect performance
+	:modal-strength full-affirmative)</span></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
