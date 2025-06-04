@@ -3,6 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <title>UMR Schema</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      background: #008080;
+      color: #ecf0f1;
+      padding: 25px 30px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    nav {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 25px 35px;
+      max-width: 750px;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav li {
+      margin-bottom: 18px;
+      position: relative;
+      padding-left: 24px;
+    }
+
+    nav li::before {
+      content: '➤';
+      position: absolute;
+      left: 0;
+      color: #008080;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      text-decoration: underline;
+      font-size: 1.15rem;
+      color: #39646d;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #1abc9c;
+      text-decoration: none;
+      transform: translateX(3px);
+    }
+
+    section {
+      margin-top: 50px;
+      text-align: center;
+      color: #888;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 20px;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      nav a {
+        font-size: 1.05rem;
+      }
+
+      nav li {
+        margin-bottom: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -19,12 +118,7 @@
       <li><a href="Nonprototypical-Predication.html">Nonprototypical Predication -91 rolesets</a></li>
       <li><a href="Discourse-Relations.html">Discourse Relations</a></li>
       <li><a href="Abstract-91-Rolesets.html">Abstract -91 rolesets</a></li>
-      <!-- etc… -->
     </ul>
   </nav>
-
-  <section>
-    <p></p>
-  </section>
 </body>
 </html>
